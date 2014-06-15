@@ -1734,7 +1734,7 @@ text-align: inherit;
 <section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Decision-Theoretic-Prediction-and-policy-Design-of-GDP-slot-Auctions">Decision-Theoretic Prediction and policy Design of GDP slot Auctions<a class="anchor-link" href="#Decision-Theoretic-Prediction-and-policy-Design-of-GDP-slot-Auctions">&#182;</a></h1>
+<h1 id="Decision-Theoretic-Prediction-and-Policy-Design-of-GDP-Slot-Auctions">Decision-Theoretic Prediction and Policy Design of GDP Slot Auctions<a class="anchor-link" href="#Decision-Theoretic-Prediction-and-Policy-Design-of-GDP-Slot-Auctions">&#182;</a></h1>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -1756,36 +1756,36 @@ text-align: inherit;
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Background-I---GDP-slot-auctions">Background I - GDP slot auctions<a class="anchor-link" href="#Background-I---GDP-slot-auctions">&#182;</a></h2>
+<h2 id="GDP-slot-auctions">GDP slot auctions<a class="anchor-link" href="#GDP-slot-auctions">&#182;</a></h2>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Some stuff on GDP's and slot auctions</li>
+<li>GDP</li>
+<li>RBS and its general inefficiencies</li>
+<li>(Put synthetic GDP schedule here to illustrate the point)</li>
+<li>Negotiations (Vossen and Ball)</li>
+<li>Double Auction (Rassenti et al.)</li>
 </ul>
-</div></section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Background-II---Game-theory">Background II - Game theory<a class="anchor-link" href="#Background-II---Game-theory">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>A brief refresher on traditional game theory</p>
 </div></section>
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Background-III---PGT">Background III - PGT<a class="anchor-link" href="#Background-III---PGT">&#182;</a></h2>
+<h2 id="Model-overview">Model overview<a class="anchor-link" href="#Model-overview">&#182;</a></h2>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>A meatier section on the basics of PGT (i.e. Bayesian decision maker and such)</p>
-</div></section><section>
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Background-III-(cont)---Intelligence">Background III (cont) - Intelligence<a class="anchor-link" href="#Background-III-(cont)---Intelligence">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about PGT intelligence</p>
+<ul>
+<li>GDP scenario where slots available &lt; scheduled flights</li>
+<li>Airlines have private information (cancellation and delay costs)</li>
+<li>Bid on GDP slots</li>
+<li>Airline costs
+<ul>
+<li>Delay costs</li>
+<li>Cancellation costs</li>
+</ul></li>
+<li>Social Costs</li>
+</ul>
 </div></section>
     </section><section>
     <section>
@@ -1794,14 +1794,78 @@ text-align: inherit;
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about the airline cost function</p>
+<p><span class="math">\(D_i = \displaystyle\sum_{f \in \mathcal{F_i}}g(t_f)t_f\)</span></p>
+<ul>
+<li><span class="math">\(\mathcal{F}\)</span> = Set of flights for airline <span class="math">\(i\)</span></li>
+<li><span class="math">\(t_f\)</span> = Minutes delayed</li>
+<li><span class="math">\(g\)</span> = a function that outputs per-minute delay cost</li>
+</ul>
 </div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Model-II---Social-Welfare">Model II - Social Welfare<a class="anchor-link" href="#Model-II---Social-Welfare">&#182;</a></h2>
+<h2 id="Model-II---Social-Costs">Model II - Social Costs<a class="anchor-link" href="#Model-II---Social-Costs">&#182;</a></h2>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>SW func</p>
+<p><span class="math">\(E = \displaystyle \sum_{f \in F} (t_fd(t_f))l_f\delta\)</span></p>
+<ul>
+<li><span class="math">\(d\)</span> = Delay multiplier</li>
+<li><span class="math">\(l_f\)</span> = Number of passengers</li>
+<li><span class="math">\(\delta\)</span> = per-passenger cost per minute delayed</li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Game-Theory">Game Theory<a class="anchor-link" href="#Game-Theory">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>&quot;Interactive decision making&quot;</li>
+<li>Economics, Biology, Industrial Organization</li>
+<li>Examples:
+<ul>
+<li>Parlor Games</li>
+<li>Production Decision</li>
+<li>Pricing Strategies</li>
+<li>...</li>
+</ul></li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PGT">PGT<a class="anchor-link" href="#PGT">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Distribution vs. set valued solution concept</li>
+<li><span class="math">\(P(x | \mathcal{I}) \propto P(x)P(\mathcal{I} | x)\)</span></li>
+<li>Allows for probabilistic statements regarding quantities of interest</li>
+</ul>
+</div></section>
+    </section><section>
+    <section>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="PGT---Intelligence">PGT - Intelligence<a class="anchor-link" href="#PGT---Intelligence">&#182;</a></h2>
+</div>
+
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Distribution valued solution concept
+<ul>
+<li>Sample a prior
+<ul>
+<li>Sample a strategy for all airlines and compute the expected utility</li>
+<li>For each airline:
+<ul>
+<li>Sample M alternative strategies, holding the opponents' strategy constant</li>
+<li>The intelligence is the proportion of strategies that yield lower expected utility</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
 </div></section>
     </section><section>
     <section>
@@ -1810,14 +1874,29 @@ text-align: inherit;
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about all of the sources for model parameters</p>
+<ul>
+<li>Delay multiplier (<span class="math">\(d\)</span>) - Beatty et al. (1998)</li>
+<li>Passenger delay cost per minute (<span class="math">\(\delta\)</span>) - Chang et al. (2001)</li>
+<li>Per minute airline delay cost (<span class="math">\(g\)</span>) - University of Westminster (2004), Private information</li>
+</ul>
 </div></section><section>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-II---GDP-schedules">Data II - GDP schedules<a class="anchor-link" href="#Data-II---GDP-schedules">&#182;</a></h2>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about where/how we got the GDP data</p>
+<ul>
+<li>Bureau of Transportation Statistics</li>
+<li>Airliners.net</li>
+<li>Average load factor</li>
+<li>Trimmed:
+<ul>
+<li>Domestic flights</li>
+<li><span class="math">\(&gt; 30\)</span> passengers</li>
+<li><span class="math">\(10\%\)</span> of pre-GDP slots</li>
+<li>Departure after announcement of GDP</li>
+</ul></li>
+</ul>
 </div></section>
     </section><section>
     <section>
@@ -1831,20 +1910,15 @@ text-align: inherit;
     </section><section>
     <section>
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Discussion">Discussion<a class="anchor-link" href="#Discussion">&#182;</a></h2>
-</div>
-
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about the implication of the results and simulation issues</p>
-</div></section>
-    </section><section>
-    <section>
-<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Future-work">Future work<a class="anchor-link" href="#Future-work">&#182;</a></h2>
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Talk about what to do next</p>
+<ul>
+<li>Improve Monte Carlo Calculations</li>
+<li>Extend to entire GDP programs</li>
+<li>Quantile analysis of slot auctions</li>
+</ul>
 </div></section>
     </section><section>
     <section>
@@ -1853,19 +1927,6 @@ text-align: inherit;
 </div>
 
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Put references here</p>
-</div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre>
-</pre></div>
-
-</div>
-</div>
 
 </div></section>
     </section>
