@@ -2762,6 +2762,85 @@ AAxi3AHAIMYdAAxi3AHAoP8DsvC8S6x9NWgAAAAASUVORK5CYII=
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SFT-Model-for-9/12/14">SFT-Model for 9/12/14<a class="anchor-link" href="#SFT-Model-for-9/12/14">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>2-D grid</li>
+<li>Each cell has a predefined fuel level</li>
+<li>A fuel level of 0 is the same as no fire</li>
+<li>The firs can spread to any neighbor of a node that is currently burning</li>
+</ul>
+<h2 id="state">State</h2>
+<ul>
+<li>Each cell in  the 2D grid is a node.</li>
+<li>The state space for each node is $\{0,1,2,3...F\}\times \{B, N\}$, which represents the fuel and (B)urning and (N)atural state</li>
+<li>The state of the system is just the fuel level of all nodes and is discrete.</li>
+</ul>
+<h2 id="spontaneous-transmission">Spontaneous Transmission</h2>
+<ul>
+<li>Here there are (at least) two options<ul>
+<li>Given node $i$ is in state $B$, the fuel decreases by 1 at a rate of $\lambda_{i,s}$ (in this case the rate at which fuel is burned up can depend on the level of fuel</li>
+<li>For node $i$, the fuel decreases at a rate of $\lambda_i$</li>
+</ul>
+</li>
+</ul>
+<h2 id="message-rates">Message rates</h2>
+<ul>
+<li>Node $i$ can send a message (burning ember) to node $j$ while it is ins state $s$, given by $\hat{\lambda}_{i,s,j}$</li>
+</ul>
+<h2 id="stimulated-transmission">Stimulated Transmission</h2>
+<ul>
+<li>Upon receiving an ember from node $i$, if node $j$ is in state $N$ and has fuel $&gt;0$, it changes it&#39;s state with probability $p$ </li>
+</ul>
+<p>This completes the description of the fire in terms of an SFT-Net</p>
+<h2 id="firefighters">Firefighters</h2>
+<ul>
+<li>To include adding retardant, we can have firefighters send a message to a cell and therefore the fuel level decreases at a higher rate ($\bar{\lambda}_i&gt;\lambda_i$)</li>
+</ul>
+<h2 id="uavs">UAVs</h2>
+<p>The UAVs have edges to <strong>all</strong> nodes in the grid.  However, the rate at which they send messages is restricted by the location (state).  To &quot;observe&quot; a cell, they send a message to cell $i$ (intuitively they are &quot;looking&quot; at the cell).  The message content includes the location of the UAV.  The cell then sends a message back to the UAV at rate $\beta_{i,UAV_s}$, where $UAV_s$ is the state (location of the UAV) that is transmitted to the cell by the message originating from the UAV.</p>
+<p>This formulation allows UAVs to observe cells other than the ones they are currently in.  I would imagine that the rate at which UAVs receive messages from cells is decreasing in the distance they are from the cell.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
