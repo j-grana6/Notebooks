@@ -2806,25 +2806,25 @@ In&nbsp;[]:
 <li>2-D grid</li>
 <li>Each cell has a predefined fuel level</li>
 <li>A fuel level of 0 is the same as no fire</li>
-<li>The firs can spread to any neighbor of a node that is currently burning</li>
+<li>The fire can spread to any neighbor of a node that is currently burning</li>
 </ul>
 <h2 id="state">State</h2>
 <ul>
 <li>Each cell in  the 2D grid is a node.</li>
 <li>The state space for each node is $\{0,1,2,3...F\}\times \{B, N\}$, which represents the fuel and (B)urning and (N)atural state</li>
-<li>The state of the system is just the fuel level of all nodes and is discrete.</li>
+<li>The state of the system is just the state of all nodes and is discrete.</li>
 </ul>
 <h2 id="spontaneous-transmission">Spontaneous Transmission</h2>
 <ul>
 <li>Here there are (at least) two options<ul>
-<li>Given node $i$ is in state $B$, the fuel decreases by 1 at a rate of $\lambda_{i,s}$ (in this case the rate at which fuel is burned up can depend on the level of fuel</li>
+<li>Given node $i$ is in state $s$, the fuel decreases by 1 at a rate of $\lambda_{i,s}$ (in this case the rate at which fuel is burned up can depend on the level of fuel)</li>
 <li>For node $i$, the fuel decreases at a rate of $\lambda_i$</li>
 </ul>
 </li>
 </ul>
 <h2 id="message-rates">Message rates</h2>
 <ul>
-<li>Node $i$ can send a message (burning ember) to node $j$ while it is ins state $s$, given by $\hat{\lambda}_{i,s,j}$</li>
+<li>Node $i$ can send a message (burning ember) to node $j$ while it is in state $s$, given by $\hat{\lambda}_{i,s,j}$</li>
 </ul>
 <h2 id="stimulated-transmission">Stimulated Transmission</h2>
 <ul>
@@ -2833,7 +2833,7 @@ In&nbsp;[]:
 <p>This completes the description of the fire in terms of an SFT-Net</p>
 <h2 id="firefighters">Firefighters</h2>
 <ul>
-<li>To include adding retardant, we can have firefighters send a message to a cell and therefore the fuel level decreases at a higher rate ($\bar{\lambda}_i&gt;\lambda_i$)</li>
+<li>To include adding retardant, we can have firefighters send a message to a cell then the cell undergoes a stimulated transmission with rate $\lambda_r$.  </li>
 </ul>
 <h2 id="uavs">UAVs</h2>
 <p>The UAVs have edges to <strong>all</strong> nodes in the grid.  However, the rate at which they send messages is restricted by the location (state).  To &quot;observe&quot; a cell, they send a message to cell $i$ (intuitively they are &quot;looking&quot; at the cell).  The message content includes the location of the UAV.  The cell then sends a message back to the UAV at rate $\beta_{i,UAV_s}$, where $UAV_s$ is the state (location of the UAV) that is transmitted to the cell by the message originating from the UAV.</p>
