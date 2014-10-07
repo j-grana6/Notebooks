@@ -2841,6 +2841,43 @@ In&nbsp;[]:
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Discrete-Time-Scenario-as-an-SFT-Net">Discrete Time Scenario as an SFT-Net<a class="anchor-link" href="#Discrete-Time-Scenario-as-an-SFT-Net">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It turns out that the way the SFT-Net formulation is set up, mixing discrete time and continuous time events is trivial.  In the case of YJs scenario, everything is discrete.  Recall:</p>
+<p>Recall:</p>
+<ul>
+<li>Time is Discrete $(0,1,2,3,4...)$</li>
+<li>The physical environment is a grid</li>
+<li>Each cell has a fuel level</li>
+<li>In each time step, the fire can spread in any direction with probability $p$ if there is fuel in the receiving cell.</li>
+<li>If a cell is burning, the fuel decreases by 1 in each timestep.</li>
+<li>The UAV has full observability.  That is, he knows which cells are burning and which cells are not.  He also knows the fuel level of all cells.</li>
+<li>His goal is to minimize the distance between what he knows to be true and the most recent observation. </li>
+</ul>
+<p>From the SFT-Net paper, if there is a deterministic time of action at time $t'$, we can write</p>
+<p>$P(\sigma(t' + \delta t) =\sigma''|\sigma(t') =\sigma')=B(\sigma'' |\sigma') + A'_{\sigma'', \sigma'}\delta t$  </p>
+<p>Where B represents the discrete time probability transition matrix and $A$ represents the transition matrix of all <em>but</em> the discrete time events.  However, in YJ&#39;s model, all transitions are discrete so the A matrix is a matrix of $0$&#39;s and therefore,
+for any time $t'$ where there is a possibility of a transition (<em>not excluding the null transition</em>), we have</p>
+<p>$P(\sigma(t') =\sigma''|\sigma(t'-\delta t) =\sigma')=B(\sigma'' |\sigma') + O(some\;function\;of\;dt)$</p>
+<p>where $B$ is the discrete time probability transition matrix.  Trivial?</p>
+<p>Also some other notes:</p>
+<p>To model simultaneous changes, we can always &quot;join nodes&quot;  For example, if we know beforehand that it is possible for two events to happen simultaneously then we just combine those nodes (i.e. create a node whose space and messages are the set products of the two nodes).  </p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
