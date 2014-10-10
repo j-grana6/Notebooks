@@ -15,11 +15,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/reveal.css">
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
 
 <!-- For syntax highlighting -->
-<link rel="stylesheet" href="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/css/zenburn.css">
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -27,14 +27,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         var link = document.createElement( 'link' );
         link.rel = 'stylesheet';
         link.type = 'text/css';
-        link.href = 'http://cdn.jsdelivr.net/reveal.js/2.5.0/css/print/pdf.css';
+        link.href = 'reveal.js/css/print/pdf.css';
         document.getElementsByTagName( 'head' )[0].appendChild( link );
 }
 
 </script>
 
 <!--[if lt IE 9]>
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/html5shiv.js"></script>
+<script src="reveal.js/lib/js/html5shiv.js"></script>
 <![endif]-->
 
 <!-- Get Font-awesome from cdn -->
@@ -1796,40 +1796,6 @@ In&nbsp;[16]:
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[17]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="o">%%</span><span class="nx">javascript</span>
-<span class="nx">IPython</span><span class="p">.</span><span class="nx">load_extensions</span><span class="p">(</span><span class="s2">&quot;calico-spell-check&quot;</span><span class="p">);</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt"></div>
-
-
-<div class="output_subarea output_javascript ">
-<script type="text/javascript">
-IPython.load_extensions("calico-spell-check");
-</script>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div></section>
     </section><section>
     <section>
@@ -1862,7 +1828,7 @@ IPython.load_extensions("calico-spell-check");
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Basic-Elements">Basic Elements<a class="anchor-link" href="#Basic-Elements">&#182;</a></h2>
+<h2 id="Transition-to-Event-Driven-Framework">Transition to Event Driven Framework<a class="anchor-link" href="#Transition-to-Event-Driven-Framework">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1873,13 +1839,11 @@ IPython.load_extensions("calico-spell-check");
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Physical Quantities (Fire, Geographical Characteristics, Locations of Agents)</li>
-<li>Incident Commander</li>
-<li>UAV Operator (multiple)</li>
-<li>UAV (multiple)</li>
-<li>Firefighter (multiple)</li>
-<li>Fire Simulator and Database</li>
-<li>Agent Goals (Surveillance, extinguish fire, efficient use of resources)</li>
+<li>Semi-Markov Processes - Duration time in each state is stochastic<ul>
+<li>If the state durations are Poisson then we have a continuous time Markov chain</li>
+<li>Recall that in a discrete time Markov chain, the system can be described by a <strong>probability transition matrix</strong> $P$.  In a continuous time Markov Chain, the evolution of the system is described by a <strong>Generator Matrix</strong>, $Q$,</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -1892,7 +1856,7 @@ IPython.load_extensions("calico-spell-check");
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Graphical-Structure">Graphical Structure<a class="anchor-link" href="#Graphical-Structure">&#182;</a></h2>
+<h2 id="SFT-Nets-and-Graphical-Structure">SFT-Nets and Graphical Structure<a class="anchor-link" href="#SFT-Nets-and-Graphical-Structure">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -2693,9 +2657,16 @@ width=600
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Each node has an internal state.</li>
+<li>Each node has an internal state.<ul>
+<li>For example, the state of the UAV can be &quot;connected&quot; or &quot;not connected&quot;.</li>
+</ul>
+</li>
 <li>Nodes can send &quot;messages&quot; along their directed edges.<ul>
-<li>As an example, a message from &quot;Fire&quot; to &quot;Firefighter&quot; can be an observation.</li>
+<li>ex. the UAV operator can send motion instructions to the UAV</li>
+</ul>
+</li>
+<li>Nodes can change their state either spontaneously or when they receive a message<ul>
+<li>ex. The UAV can spontaneously &quot;drop out&quot; and change its state from connected to not connected, or the UAV can change the direction it is moving when it receives a message from the UAV operator.</li>
 </ul>
 </li>
 <li>Parameters of the Physical System are set a priori.</li>
@@ -2703,6 +2674,8 @@ width=600
 <li>Humans can choose to change their state and send messages.</li>
 </ul>
 </li>
+<li><strong>If the duration between message transmission and state transition are exponential, then an SFT-Net defines an event-driven
+(Markov) stochastic process</strong></li>
 </ul>
 </div>
 </div>
@@ -2726,39 +2699,20 @@ width=600
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Monte Carlo Tree Search<ul>
-<li>Online Dynamic Programming</li>
-<li>Has shown to work well in games with large state spaces ($10^{57}$)</li>
-<li>Promising potential for adaptation into network structure</li>
+<li>MCTS provides a mapping from what a player &quot;knows&quot; to how a player acts.</li>
+<li>In an SFT-Net, the player will likely not know the state of the system (all nodes) at all times.  Therefore he has partial observability.</li>
+<li>What does he know?  <ul>
+<li>His state and the messages he sends</li>
+<li>Messages he receives</li>
+<li><em>Time that he receives messages</em></li>
 </ul>
 </li>
-</ul>
-</div>
-</div>
-</div></section>
-    </section><section>
-    <section>
-    
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What's-to-come">What's to come<a class="anchor-link" href="#What's-to-come">&#182;</a></h2>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Move beyond current, simple examples</li>
-<li>Examine the potential of MCTS in real-world, firefighting scenario</li>
-<li>Incorporate multiple agents</li>
-<li>Continue working with field experts to drill down details</li>
+<li>Recall a POMDP is defined by a (State, Action, Observation, Transition Probability and Reward) </li>
+<li>In an SFT-Net, the <strong>rewards</strong> are specified and the <strong>transition probabilities</strong> are determined by the generator</li>
+<li>The <strong>state</strong> of the system is the state of all nodes in the network.</li>
+<li>A player&#39;s action can either be a specific action at a specific time or an element of the <strong>generator</strong> matrix.</li>
+<li>A player&#39;s observation includes the state of his own node as well as the messages he receives.</li>
+<li><em>The main issue is that if the time of the messages matter, then the space of the history will be infinite</em>.</li>
 </ul>
 </div>
 </div>
@@ -2782,9 +2736,9 @@ In&nbsp;[]:
 </div>
 </div>
 
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/head.min.js"></script>
+<script src="reveal.js/lib/js/head.min.js"></script>
 
-<script src="http://cdn.jsdelivr.net/reveal.js/2.5.0/js/reveal.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
 
 <script>
 
@@ -2799,9 +2753,9 @@ transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/c
 
 // Optional libraries used to extend on reveal.js
 dependencies: [
-{ src: "http://cdn.jsdelivr.net/reveal.js/2.5.0/lib/js/classList.js", condition: function() { return !document.body.classList; } },
-{ src: "http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: "http://cdn.jsdelivr.net/reveal.js/2.5.0/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
+{ src: "reveal.js/lib/js/classList.js", condition: function() { return !document.body.classList; } },
+{ src: "reveal.js/plugin/highlight/highlight.js", async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: "reveal.js/plugin/notes/notes.js", async: true, condition: function() { return !!document.body.classList; } }
 ]
 });
 </script>
