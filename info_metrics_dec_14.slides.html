@@ -2403,8 +2403,8 @@ UmX/H9GGqOdXpDOoAAAAAElFTkSuQmCC
 <li>Strategy spaces and chance nodes are discrete</li>
 <li>Information known by the researcher:<ul>
 <li>The structure of the game (network topology, action space, spaces of random variables)</li>
-<li>Utility functions (relaxable)</li>
-<li>Conditional probability distributions of chance nodes (relaxable)</li>
+<li>Utility functions(relaxable)</li>
+<li>Conditional probability distributionstility functions of chance nodes (relaxable)</li>
 </ul>
 </li>
 </ul>
@@ -2562,7 +2562,10 @@ d_{i,x_i,x_{pa(i)}}&amp;= p_{i,x_i,x_{pa(i)}} + \sum_wv_{i,x_i,x_{pa(i)},w}u_{i,
 </ul>
 </div>
 </div>
-</div>
+</div></section>
+    </section><section>
+    <section>
+    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2572,10 +2575,7 @@ d_{i,x_i,x_{pa(i)}}&amp;= p_{i,x_i,x_{pa(i)}} + \sum_wv_{i,x_i,x_{pa(i)},w}u_{i,
 </div>
 </div>
 </div>
-</section>
-    </section><section>
-    <section>
-    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2611,20 +2611,21 @@ P(x_i) = \frac{e^{\beta y_i}}{\sum_{j=1}^n e^{\beta y_j}}
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>$\displaystyle\min_{\mathbf{k}}\displaystyle\min_{\mathbf{p, u, \beta}}  D(\mathbf{p}||q_k(\beta)) + D(\mathbf{u}||\mathbf{u_0})$  </p>
 <p><em>subject to</em> </p>
-<p>The probabilities equal the observed probabilities plus noise (the data) where</p>
-<p>\begin{equation}
-\mathbf{q}_k^i = \frac{e^{\beta EU(\mathbf{q}_k^i)}}{\sum_{j=1}^n e^{\beta \mathbf{q}_k^j}}
-\end{equation}</p>
+<ul>
+<li>The probabilities equal the observed probabilities plus noise (the data)</li>
+<li>The prior probabilitiea are defined by the quantal response probabilities with parameter $\beta$.</li>
+</ul>
 </div>
 </div>
-</div>
+</div></section><section>
+    
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>\begin{equation}
-\displaystyle\min_{\mathbf{k}}\displaystyle\min_{\mathbf{p, u, \beta}} D(\mathbf{p}||q_k(\beta)) + D(\mathbf{u}||\mathbf{u_0} = \Bigg[\sum_{I}\sum_{X_{pa(i)}}\sum_{X_i} p_{i,x_i,x_{pa(i)}}\log(\frac{p_{i,x_i,x_{pa(i)}}}{q_{i,x_i,x_{pa(i)},k}(\beta_i)}) +  \sum_{I}\sum_{X_{pa(i)}}\sum_{X_i}\sum_w u_{i,x_i,x_{pa(i)},w}\log(u_{i,x_i,x_{pa(i)},w})\Bigg]
+\displaystyle\min_{\mathbf{k}}\displaystyle\min_{\mathbf{p, u, \beta}} D(\mathbf{p}||q_k(\beta)) + D(\mathbf{u}||\mathbf{u_0}) = \Bigg[\sum_{I}\sum_{X_{pa(i)}}\sum_{X_i} p_{i,x_i,x_{pa(i)}}\log(\frac{p_{i,x_i,x_{pa(i)}}}{q_{i,x_i,x_{pa(i)},k}(\beta_i)}) +  \sum_{I}\sum_{X_{pa(i)}}\sum_{X_i}\sum_w u_{i,x_i,x_{pa(i)},w}\log(u_{i,x_i,x_{pa(i)},w})\Bigg]
 \end{equation}</p>
 <p>Subject to </p>
 <p>\begin{align}
@@ -2643,7 +2644,17 @@ d_{i,x_i,x_{pa(i)}}= p_{i,x_i,x_{pa(i)}} + \sum_wv_{i,x_i,x_{pa(i)},w}u_{i,x_i,x
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Inference">Inference<a class="anchor-link" href="#Inference">&#182;</a></h2>
+<h2 id="Relaxing-Assumptions">Relaxing Assumptions<a class="anchor-link" href="#Relaxing-Assumptions">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Utility-function-Relaxation">Utility function Relaxation<a class="anchor-link" href="#Utility-function-Relaxation">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -2654,15 +2665,137 @@ d_{i,x_i,x_{pa(i)}}= p_{i,x_i,x_{pa(i)}} + \sum_wv_{i,x_i,x_{pa(i)},w}u_{i,x_i,x
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Statistically, it is possible to test </li>
+<li>The researcher knows the utility functions <em>up to a set of parameters</em>, $\theta$</li>
+<li>$EU[x_i] = f(\theta, ...)$</li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$\displaystyle\min_{\mathbf{k}}\displaystyle\min_{\mathbf{p, u, \beta, \theta}}  D(\mathbf{p}||q_k(\beta, \theta)) + D(\mathbf{u}||\mathbf{u_0})$  </p>
+<p><em>subject to</em> </p>
+<ul>
+<li>The probabilities equal the observed probabilities plus noise (the data)</li>
+<li>The prior probabilitiea are defined by the quantal response probabilities with parameter $\beta$.</li>
+</ul>
+</div>
+</div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Relaxing-the-Level-0-Assumption">Relaxing the Level-0 Assumption<a class="anchor-link" href="#Relaxing-the-Level-0-Assumption">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Assumption: The level-k expected utilities can be written as a function of the level-0 distribution.  </li>
+<li>$\mathbf{q}_k = f_k(\mathbf{p_0})$</li>
+</ul>
+<p>The new formulation becomes:</p>
+<p>$\displaystyle\min_{\mathbf{k}}\displaystyle\max_{\mathbf{p, u}} H(\mathbf{p}) + H(\mathbf{u})$</p>
+<p><em>subject to</em></p>
+<p>$f_k(\mathbf{p}) =$ observed probabilities + noise</p>
+</div>
+</div>
+</div></section><section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>\begin{equation}
+ \displaystyle\min_{\mathbf{k}}\displaystyle\max_{\mathbf{p, u}} H(\mathbf{p}) + H(\mathbf{u}) = \Bigg[\sum_{I}\sum_{X_{pa(i)}}\sum_{X_i} p_{i,x_i,x_{pa(i)}}\log(p_{i,x_i,x_{pa(i)}}) +  \sum_{I}\sum_{X_{pa(i)}}\sum_{X_i}\sum_w u_{i,x_i,x_{pa(i)},w}\log(u_{i,x_i,x_{pa(i)},w})\Bigg]
+\end{equation}</p>
+<p><em>subject to</em></p>
 <p>\begin{align}
-H_0: k = k_0 \\
-H_A: k \neq k_0
+d_{i,x_i,x_{pa(i)}}= f_k(\mathbf{p}_{i,x_{pa(i)}}) + \sum_wv_{i,x_i,x_{pa(i)},w}u_{i,x_i,x_{pa(i)},w}  \; \; &amp;\forall i,x_i,x_{pa(i)}  \nonumber \\
+1= \sum_{X_i}p_{i,x_i,x_{pa(i)}}  \; \;  &amp;\forall  i, X_i,x_{pa(i)} \nonumber \\
+1= \sum_wu_{i,x_i,x_{pa(i)},w}  \; \; &amp;\forall  i,x_i,x_{pa(i)}
 \end{align}</p>
-<p>But...</p>
 </div>
 </div>
+</div></section>
+    </section><section>
+    <section>
+    
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Level-K:-Rock-paper-scissors">Level-K: Rock-paper-scissors<a class="anchor-link" href="#Level-K:-Rock-paper-scissors">&#182;</a></h2>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Augmented so there is a reward for playing and in ties, both players win</li>
+<li>Instead of logit Quantal Response, linear quantal response: $P(x_i)= \frac{EU[x_i]}{\sum_jEU[x_j]}$</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>L1 Rock prob = (p_s+p_r-pp+1)/4
+L2 Roch prib = (3ps-Pr-pp)/7</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[19]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[19]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
