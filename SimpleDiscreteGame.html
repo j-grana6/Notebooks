@@ -1810,6 +1810,7 @@ to the probability transition matrix.</li>
 <li>The game is dynamic and time is discrete and finite (for now), $\mathcal{T} = \{1,2,3...T\}$, $T \geq N$</li>
 <li>The sensor is modeled as a discrete time Markov chain with probability transition matrix $\mathbb{P}$</li>
 <li>$\mathbb{P}$ is $N \times N$, furthermore for simplicity, assume $N$ is an absorbing state.</li>
+<li>Notationally, $[X]_{i,j}$ refers to the element in row $i$ and column $j$ of matrix $X$</li>
 <li>Furthermore for each row $i$ of $\mathbb{P}$, $p_{ik}=0$ for $k&lt;i-1$ and  $k&gt;i+1$.  Intuitively, in one timestep the sensor can only increase by one, decrease by one or not change.</li>
 </ul>
 <p>The sequence of events is as follows</p>
@@ -1817,8 +1818,7 @@ to the probability transition matrix.</li>
 <li>At the start of the game, the defender chooses a threshold strategy $d\in \mathcal{D} = \{1,2,...N\}$.  </li>
 <li>The sensor depends on the choice of $d$ such that the $\mathbb{P}$ remains the same except that all
 states $\geq d$ become absorbing states.</li>
-<li><p>Then exogenous parameter $\pi_A$ determines whether an attacker is present in the network.</p>
-<ul>
+<li>Then exogenous parameter $\pi_A$ determines whether an attacker is present in the network.<ul>
 <li>If the attacker is not present in the network, then the sensor evolves according to $\mathbb{P}$.  The defender&#39;s reward is the number of time periods before the threshold is reached, or the game ends,  $\min(T, H(d))$, where $H(d)$ is the time that the sensor first hits $d$.</li>
 <li>If the attacker is present in the network, at every time step, he must choose to not attack or attack, which are coded as binary variables where attacking corresponds to $1$: $\mathcal{A} =\{0,1\}$</li>
 <li>The attacker does <em>not</em> observe the state of the sensor.  </li>
@@ -1834,20 +1834,37 @@ R_t(1) = 0 \text{ if } S_t =d
 <li>The probability transition matrix also depends on $a_t$ in the following way.<ul>
 <li>If $a_t(\cdot)=0, \text{ then } \mathbb{P}(a_t(\cdot), d)=\mathbb{P}$ (No change)</li>
 <li>If $a_t(\cdot) =1$:<ul>
-<li>$\mathbb{P}_{i,0}(a_t(\cdot), d) = 0, \forall i=1...N$</li>
-<li>$\mathbb{P}_{i,j}(a_t(\cdot), d) =\mathbb{P}_{i+1, j}  \forall j, i=1...d-1$ </li>
+<li>$\mathbb{P}_{i,0}(a_t(\cdot), d) = 0  \text{ for } \; i=1...d$</li>
+<li>$\mathbb{P}_{i,j}(a_t(\cdot), d) =\mathbb{P}_{i, j-1}  \text{ for } \; j=2...d, i=1...d-1$</li>
+<li>$\mathbb{P}_{d-1,d}(a_t(\cdot), d) =\mathbb{P}_{d-1, d} + \mathbb{P}_{d-1, d-1}$</li>
+<li>$\mathbb{P}_{d,d}(a_t(\cdot), d) = 1$</li>
 </ul>
 </li>
 <li>Intuitively, when the attacker chooses to attack, he deterministically increases the 
-  state of the sensor by $1$.  In other words, if the sensor is in state $4$ and the
-  attacker chooses to attack then the sensor jumps to state $5$.  Then the probability of
-  the sensor moving to state 4 or 6 or remaining in 5 is determined by the $5$th row of $\mathbb{P}$.</li>
+  state of the sensor by $1$.  For example, suppose the probability transition matrix governing 
+  the state of the sensor without an attacker is given by:</li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p>Other assumptions</p>
+</ul>
+<p>$\mathbb{P}= \begin{bmatrix}
+q&amp;1-q&amp; 0 &amp;0&amp;0 \\
+p_1 &amp;p_2&amp;p_3&amp; 0&amp;0 \\
+0&amp; p_1&amp;p_2&amp;p_3&amp;0\\
+0&amp;0&amp; p_1&amp;p_3&amp;p_3\\
+0&amp; 0&amp;0&amp;0&amp;1
+\end{bmatrix}$.</p>
+<p>If the attacker chooses to attack at time $t$, the transition matrix that now governs the system at time $t$ is given by:</p>
+<p>$\mathbb{P_t}(a_t=1)= \begin{bmatrix}
+0&amp;q&amp;1-q&amp; 0 &amp;0 \\
+0&amp;p_1 &amp;p_2&amp;p_3&amp; 0 \\
+0&amp;0&amp; p_1&amp;p_2&amp;p_3\\
+0&amp;0&amp; 0&amp;p_1&amp;p_2+p_3&amp;\\
+0&amp; 0&amp;0&amp;0&amp;1
+\end{bmatrix}$.</p>
 <ul>
+<li>Other assumptions<ul>
 <li>Sensor follows a bounded symmetric drunkards walk: The probability of increasing in state, decreasing in state or remaining in the current state is the same for all states.  Mathematically this means that $\mathbb{P}_{ij} = \mathbb{P}_{i+1, j}$ for all non absorbing or edge states.  More concretely, if we let $p_1, p_2, p_3$ be a proper probability distribution then an example the matrix $\mathbb{P}$ is of the form:</li>
 </ul>
 </li>
@@ -1863,12 +1880,12 @@ p_1 &amp;p_2&amp;p_3&amp; 0&amp;0&amp;0&amp;...&amp;0 \\
 \begin{bmatrix}
 q&amp;1-q&amp; 0 &amp;0&amp;0&amp;0&amp;...&amp;0 \\
 p_1 &amp;(1-2p_1)&amp;p_1&amp; 0&amp;0&amp;0&amp;...&amp;0 \\
-0&amp; p_1&amp;(1-p_1)&amp;p_3&amp;0&amp;0&amp;...&amp;0\\
-0&amp;0&amp; p_1&amp;(1-2p_1)&amp;p_3&amp;0&amp;...&amp;0\\
+0&amp; p_1&amp;(1-2p_1)&amp;p_1&amp;0&amp;0&amp;...&amp;0\\
+0&amp;0&amp; p_1&amp;(1-2p_1)&amp;p_1&amp;0&amp;...&amp;0\\
 \vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots&amp;\vdots\\
 \end{bmatrix}$</p>
 <ul>
-<li>Since the game is finite, we will not use discounted.  Therefore the defenders expected utility function is given by:
+<li>Since the game is finite, we will not use discounted rewards.  Therefore the defenders expected utility function is given by:
 \begin{equation}
 U_D(d, \{a_t(\cdot)\}) = \pi_AE\big[H(d)\big] - (1-\pi_A)E\big[H(d, \{a_t\}_{t=1}^T)\big]
 \end{equation} </li>
@@ -1876,16 +1893,16 @@ U_D(d, \{a_t(\cdot)\}) = \pi_AE\big[H(d)\big] - (1-\pi_A)E\big[H(d, \{a_t\}_{t=1
 <p>Intuitively, the defender earns utility for each time step the attacker is not in the network (this is equivalent to saying that the defender earns utility for each period there is <em>not</em> a false alarm).  The defender incurs a negative utility for each period the defender <em>is</em> present in the network.  Note that (for now) this is independent of the attacker&#39;s actions.  Also note that the only way the attacker&#39;s actions impact the defender&#39;s decision is through the expected hitting time when an attacker is present.</p>
 <p>The attacker&#39;s (expected) utility is given by:
 \begin{align}
-U_A (d, \{a_t\}_{t=1}^T) &amp;= \sum_{t=1}^T  \sum_{k=1}^ta_k(\cdot)P\bigg(H(d, \{a_j\}_{j=1}^T)&gt;t\bigg) \\
-&amp;=\sum_{t=1}^T\bigg[  P\bigg(H(d, \{a_j\}_{j=1}^T)&gt;t\bigg) \sum_{k=1}^ta_k(\cdot)\bigg]
+U_A (d, \{a_t\}_{t=1}^T) &amp;= \sum_{t=1}^T  \sum_{k=1}^ta_k(\cdot)P\bigg(H(d, \{a_j\}_{j=1}^T)=t+1\bigg) \\
+&amp;=\sum_{t=1}^T\bigg[  P\bigg(H(d, \{a_j\}_{j=1}^T)=t+1\bigg) \sum_{k=1}^ta_k(\cdot)\bigg]
 \end{align}</p>
 <p>Intuitively the attacker&#39;s expected utility from a strategy is the expected number of times he will attack before the threshold
 is reached.  </p>
 <p>In the usual sense, a pure strategy Nash equilibrium of this game are strategies $\big(d^*$,  $\{a^*_t\}_{t=1}^N\big)$ such that:  </p>
 <p>\begin{align}
-U_D(d^*, \{a^*_t(\cdot)\})&amp;\geq U_D(d^{\prime}, \{a^*_t(\cdot)\}) \; \; \forall \; \;d^{\prime} \\
+U_D(d^*, \{a^*_t(\cdot)\}_{t=1}^N)&amp;\geq U_D(d^{\prime}, \{a^*_t(\cdot)\}_{t=1}^N) \; \; \forall \; \;d^{\prime} \\
 &amp;\text{ And } \\
-U_A(d^*, \{a^*_t(\cdot)\})&amp;\geq U_A(d^*, \{a^{\prime}_t(\cdot)\}) \; \;\forall \; \; \{a^{\prime}_t\} \\
+U_A(d^*, \{a^*_t(\cdot)\}_{t=1}^N)&amp;\geq U_A(d^*, \{a^{\prime}_t(\cdot)\}_{t=1}^N) \; \;\forall \; \; \{a^{\prime}_t\} \\
 \end{align}</p>
 </div>
 </div>
@@ -1918,19 +1935,85 @@ U_A(d^*, \{a^*_t(\cdot)\})&amp;\geq U_A(d^*, \{a^{\prime}_t(\cdot)\}) \; \;\fora
 <p>Given a threshold $d$, we can compute the probability of hitting times for the defender when an attacker is not present. By construction, if the system reaches the defender&#39;s threshold it remains in that state for the remainder of the game.  In other words, $d$ is an absorbing state. Given a strategy $d$, the probability transition matrix that now governs the system, $\mathbb{P}_d$, is given
 by:</p>
 <p>\begin{align}
-[\mathbb{P}_d]_{i,j} = [\mathbb{P}]_{i,j} \; \; \text{if} \;\; i \neq d \\
-[\mathbb{P}_d]_{d,d} = 1 \\
-[\mathbb{P}_d]_{d,j\neq i } = 0
+[\mathbb{P}(d)]_{i,j} = [\mathbb{P}]_{i,j} \; \; \text{if} \;\; i \neq d \\
+[\mathbb{P}(d)]_{d,d} = 1 \\
+[\mathbb{P}(d)]_{d,j\neq i } = 0
 \end{align}</p>
 <p>There probability of being in state $d$ at time $t$, given that we start at state $0$ and no attacker 
 is present in the network is given by
 \begin{equation}
-P(S(t)=d) = [\mathbb{P}_d^{t}]_{1,d}
+P(S(t)=d) = [\mathbb{P}(d)]^t_{1,d}
 \end{equation}</p>
-<p>However, since $d$ is an absorbing state, $P(S(t)=d) = P(S(t)=d, S(t+1)=d...S(T)=d)$.  Therefore, the probability of the hitting time $P(H(d)=t)$, is given by:</p>
+<p>However, since $d$ is an absorbing state,the probability of the hitting time $P(H(d)=t)$, is given by:</p>
 <p>\begin{equation}
 P(H(d)=t)=P(H(d)\leq t)- P(H(d) &lt; t)=P(S(t)=d)-P(S(t-1)=d)  
+\end{equation}.</p>
+<p>Therefore, when the attacker is not present in the network, the defender&#39;s expected utility is given by:
+\begin{equation}
+E\big[H(d)\big]= \sum_{t=2}^{T-1}t[\mathbb{P}(d)^t -\mathbb{P}(d)^{t-1} ]_{1,d} + T(1-[\mathbb{P}(d)^{T-1}]_{1,d}) + [\mathbb{P}]_{1,d}
+\end{equation}
+The second and third term represent the contribution to expected utility when the hitting time is equal to $T$ and equal to
+$1$, respectively.</p>
+<p>When the attacker is in the network, the probability transition matrix that governs the sensor depends on the action of the attacker at each time-step.  Therefore, it is not possible to compute the probability of the hit time as an entry of a matrix raised to a power.  Instead, it must be computed as the product of time heterogeneous matrices.  In other words, given a defender&#39;s strategy, $d$ and an attacker&#39;s strategy $\{a_t(\cdot)\}_{t=1}^N$, the probability of hit times (for times $\geq 2$) is given by:</p>
+<p>\begin{equation}
+P\bigg(H(d, \{a_j\}_{j=1}^T)=t\bigg) = \bigg[\prod_{h=1}^t\mathbb{P}(a_h(\cdot), d) - \prod_{h=1}^{t-1}\mathbb{P}(a_h(\cdot), d)\bigg]_{1,d}
 \end{equation}</p>
+<p>Therefore, the expected utility of the defender when the attacker is present in the network is given by:
+\begin{equation}
+E\big[H(d, \{a_t\}_{t=1}^T)\big] = 
+\sum_{t=2}^{T-1}t\bigg[\prod_{h=1}^t\mathbb{P}(a_h(\cdot), d) - \prod_{h=2}^{t-1}\mathbb{P}(a_h(\cdot), d)\bigg]_{1,d}
++ [\mathbb{P}(a_1(\cdot), d)]_{1,d} + T\big(1-\big[\prod_{h=1}^{T-1}\mathbb{P}(a_h(\cdot), d)\big]_{1,d}\big)
+\end{equation}</p>
+<p>Plugging the equation for $E\big[H(d, \{a_t\}_{t=1}^T)\big]$ and $E\big[H(d)\big]$ into the equation for the defender&#39;s expected utility, we get:</p>
+<p>\begin{align}
+U_D(d, \{a_t(\cdot)\}) = \pi_A\bigg(\sum_{t=2}^{T-1}t[\mathbb{P}(d)^t -\mathbb{P}(d)^{t-1} ]_{1,d} + T(1-[\mathbb{P}(d)^{T-1}]_{1,d}) + [\mathbb{P}]_{1,d}\bigg) + \\
+(1-\pi_A)\bigg(\sum_{t=2}^{T-1}t\bigg[\prod_{h=1}^t\mathbb{P}(a_h(\cdot), d) - \prod_{h=2}^{t-1}\mathbb{P}(a_h(\cdot), d)\bigg]_{1,d}
++ \mathbb{P}(a_1(\cdot), d) + T\big(1-\big[\prod_{h=1}^{T-1}\mathbb{P}(a_h(\cdot), d)\big]_{1,d}\big)\bigg)
+\end{align}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="The-Attacker">The Attacker<a class="anchor-link" href="#The-Attacker">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recall that the attacker&#39;s expected utility is the expected number of times the attacker chooses to attack before the sensor reaches state $d$.  In deriving the defender&#39;s expected utility, we have also defined the probability of the hitting times.  Using the same formula for expected hitting time, we can define the expected utility of the attacker as
+\begin{align}
+U_A (d, \{a_t\}_{t=1}^T) &amp;=\sum_{t=1}^T\bigg[  P\bigg(H(d, \{a_j\}_{j=1}^T)=t+1\bigg) \sum_{k=1}^ta_k(\cdot)\bigg]\\
+&amp; = \sum_{t=2}^{T}\bigg(\big[\sum_{\tau=1}^{t-1}a_\tau(\cdot)\big]\bigg[\prod_{h=1}^t\mathbb{P}(a_h(\cdot), d) - \prod_{h=2}^{t-1}\mathbb{P}(a_h(\cdot), d)\bigg]_{1,d}
++ \big(1-\prod_{h=1}^{T}\mathbb{P}(a_h(\cdot), d)\big)\bigg)\sum_{\tau=1}^{T}a_\tau
+\end{align}</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-note-on-the-novel-element">A note on the novel element<a class="anchor-link" href="#A-note-on-the-novel-element">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The main source of novelty in this formulation is the addition of the defender having to make a decision, even when no attacker is present.  In the current literature, the games assume that the attacker and defender are playing a game.  Then, each agent chooses an equilibrium strategy &quot;knowing&quot; that they are playing against an opponent.</p>
+<p>In this model (and the real world) this is not the case.  Often times, cyber networks have not been compromised by an attacker and therefore the defender is not actively playing a game against an attacker.  Instead, he is trying to &quot;guess&quot; whether or not a game is actually being played.  Since this is the only difference in the formulation of the game from that of the current literature, I believe it is this facet that drives the somewhat novel results.</p>
 </div>
 </div>
 </div>
@@ -1947,11 +2030,17 @@ P(H(d)=t)=P(H(d)\leq t)- P(H(d) &lt; t)=P(S(t)=d)-P(S(t-1)=d)
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[96]:
+In&nbsp;[1]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">adsy.display</span> <span class="kn">import</span> <span class="n">extended_styles</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rc</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">copy</span>
+<span class="n">rc</span><span class="p">(</span><span class="s">&#39;text&#39;</span><span class="p">,</span> <span class="n">usetex</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
 <span class="n">extended_styles</span><span class="p">()</span>
 </pre></div>
@@ -2024,13 +2113,11 @@ In&nbsp;[96]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[188]:
+In&nbsp;[2]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">copy</span>
-<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">21</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
+<div class="highlight"><pre><span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">21</span><span class="p">,</span><span class="mi">21</span><span class="p">))</span>
 <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">=.</span><span class="mi">25</span>
 <span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=.</span><span class="mi">75</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
@@ -2039,8 +2126,6 @@ In&nbsp;[188]:
     <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=.</span><span class="mi">5</span>
 <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
-<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">product</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="k">class</span> <span class="nc">DiscreteMarkovAttackGame</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    The game&#39;s initial state is at T_0.</span>
@@ -2166,11 +2251,18 @@ In&nbsp;[188]:
         <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
             <span class="n">start</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">newseq</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
             <span class="n">pdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">start</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">d</span><span class="p">]</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">pdf</span><span class="p">))</span>
+        <span class="n">pdflast</span> <span class="o">=</span><span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">pdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">pdf</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="nb">sum</span><span class="p">(</span><span class="n">pdf</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
         <span class="n">with_attacker_eu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pdf</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">pdf</span><span class="p">))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">pi_A</span>
         <span class="n">defenders_final_utility</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">no_false_alarm</span> <span class="o">*</span> <span class="n">noattackeru</span> <span class="o">-</span> <span class="n">with_attacker_eu</span>
         <span class="c">### Now get attacker&#39;s utility</span>
-        <span class="n">au</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">attacker_strategy</span><span class="p">[:</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pdf</span><span class="p">[</span><span class="n">x</span><span class="p">:])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">attacker_strategy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="c">### Need to adjust PDF for attacker because even if the game ends at T, he might still receive</span>
+        <span class="c">### a reward at T.  </span>
+        <span class="n">au</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">attacker_strategy</span><span class="p">[:</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pdf</span><span class="p">[</span><span class="n">x</span><span class="p">:])</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">attacker_strategy</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> \
+            <span class="n">attacker_strategy</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pdf</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">+</span> <span class="n">pdflast</span><span class="p">)</span>
+        
+        <span class="c">#+ \</span>
+            <span class="c">#attacker_strategy[-1]*np.sum(pdf)</span>
         <span class="c"># for x =2,3,4,5,6,7,8,9,10 what is the attacker&#39;s utility given the alarm sounds</span>
         <span class="c"># in period 2,3,4,5,6,7,8,9,10.  It is the sum of a1 +a2...a_{p-1}</span>
         <span class="k">return</span> <span class="n">defenders_final_utility</span><span class="p">,</span> <span class="n">au</span>
@@ -2206,18 +2298,20 @@ In&nbsp;[188]:
     <span class="k">def</span> <span class="nf">brute_force_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">eqs</span><span class="o">=</span> <span class="p">[]</span>
         <span class="n">attackers_response</span><span class="o">=</span> <span class="p">{}</span> <span class="c"># Values are lists!</span>
-        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-            <span class="n">attackers_response</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attackers_best_response</span><span class="p">(</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">attackers_response</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attackers_best_response</span><span class="p">(</span><span class="n">d</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Dictionary from defender strategy to attacker BR list</span>
         <span class="n">defenders_response</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">attackers_response</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
                 <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
-                    <span class="n">defenders_response</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defenders_best_response</span><span class="p">(</span><span class="n">v</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Also a list</span>
+                    <span class="n">defenders_response</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">defenders_best_response</span><span class="p">(</span><span class="n">v</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c"># Maps attackers actions to defender BR </span>
         <span class="c">#return attackers_response, defenders_response</span>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">attackers_response</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
             <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">dr</span> <span class="ow">in</span> <span class="n">defenders_response</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)]:</span>
                     <span class="k">if</span> <span class="n">dr</span> <span class="o">==</span> <span class="n">key</span><span class="p">:</span>
                         <span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">defenders_response</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)],</span> <span class="n">v</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">eqs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+            <span class="k">print</span> <span class="s">&#39;Multiple Equilibria&#39;</span>
         <span class="k">return</span> <span class="n">eqs</span>
             
 </pre></div>
@@ -2232,6 +2326,38 @@ In&nbsp;[188]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Results">Results<a class="anchor-link" href="#Results">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>The parameters used were $T=10$, $N=10$, $q=.25$, $p_1=.25$ Other parameters were varied in the experiments</li>
+<li>There does exist a pure strategy Nash equilibrium<ul>
+<li>This implies that in attack and detection games with a noisy sensor, agents do <em>not</em> 
+need to randomize to outsmart their opponents. Instead, the attacker will pick a pure strategy that allows him to &quot;hide&quot; 
+in the background noise.  In other words, instead of using randomization to disguise his strategy, the attacker tries to
+use normal background noise to hide his malicious behavior.</li>
+</ul>
+</li>
+<li><p>Although this result does yield a pure strategy Nash equilibrium, the results are still consistent with the situational foundation.  For example, increasing the probability of an attempted attack makes the defender more sensitive (see experiment 1).  Furthermore, decreasing the cost of a false alarm makes the reduces the defender&#39;s threshold, $d$ (see experiment 2). </p>
+</li>
+<li><p>The attacker exhibits &quot;patience&quot;.  In other words, the attacker does not choose to attack every period.  This is important because current cyber attack detection assumes that once attacker&#39;s are able to traverse a network, they do so as fast as possible.  This simple model demonstrates that attackers will sometimes choose not to send messages in the hopes that by being patient, the sensor will move away from the defender&#39;s threshold.  </p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Experiment-1,-varying-intrusion-probability">Experiment 1, varying intrusion probability<a class="anchor-link" href="#Experiment-1,-varying-intrusion-probability">&#182;</a></h3>
 </div>
 </div>
@@ -2240,7 +2366,7 @@ In&nbsp;[188]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[193]:
+In&nbsp;[3]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2258,13 +2384,13 @@ In&nbsp;[193]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[194]:
+In&nbsp;[4]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">.</span><span class="mo">01</span><span class="p">,</span> <span class="o">.</span><span class="mi">5</span><span class="p">,</span><span class="o">.</span><span class="mi">1</span><span class="p">),</span> <span class="n">defenderstrat</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Defender</span><span class="se">\&#39;</span><span class="s">s Threshold&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Intrusion Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Intrusion Probability ($\pi_A$)&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2280,7 +2406,7 @@ In&nbsp;[194]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-&lt;matplotlib.text.Text at 0x7facb6943990&gt;
+&lt;matplotlib.text.Text at 0x7f7fe3871d50&gt;
 </pre>
 </div>
 
@@ -2290,152 +2416,133 @@ In&nbsp;[194]:
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-AAAAAElFTkSuQmCC
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -2459,13 +2566,13 @@ AAAAAElFTkSuQmCC
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[195]:
+In&nbsp;[5]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="n">defenderstrat2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">fa</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span> <span class="p">,</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">Game</span><span class="o">=</span> <span class="n">DiscreteMarkovAttackGame</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">pi_A</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">no_false_alarm</span><span class="o">=</span><span class="n">fa</span><span class="p">)</span>
+    <span class="n">Game</span><span class="o">=</span> <span class="n">DiscreteMarkovAttackGame</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">pi_A</span><span class="o">=.</span><span class="mi">25</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">no_false_alarm</span><span class="o">=</span><span class="n">fa</span><span class="p">)</span>
     <span class="n">defenderstrat2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Game</span><span class="o">.</span><span class="n">brute_force_solve</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
@@ -2477,7 +2584,7 @@ In&nbsp;[195]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[201]:
+In&nbsp;[6]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2501,7 +2608,7 @@ In&nbsp;[201]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-&lt;matplotlib.text.Text at 0x7facb64df250&gt;
+&lt;matplotlib.text.Text at 0x7f7fe3899210&gt;
 </pre>
 </div>
 
@@ -2511,107 +2618,96 @@ In&nbsp;[201]:
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-AElFTkSuQmCC
+<img src="data:image/png;base64,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
+PftalnSjE/rBirLT7GVmV7teu9jp4wHH9oqkk2b27KH+MYEujPhRB7Nmttn1eE3ZgmEXuxaGO6+v
+jnaXla0w+WoIzGkze07ZAnILZjalbE2d4z1tnZa04e53zWyvs0hg58lQ/unX7lPufjwsfeDuvho+
+GE67+zPh/nOS7nS1N6OeC2eE1U1lZi9L+j93/3UI97vKllJYkrTp7mc7xxb68bi7v5v7XxXog+BH
+HTxS6gnBfcrMOpfn7JRiOssGb0g6a2bXlQXrK5KekjRjZlfCNp2LinRbl3TbzFaULTJ3WtILXc/v
+9mlXCqP0oLNQ3X3tB/v9sM+vHJt6LjEaPlAWlK3seVXKPgzC4mH9jm3i1sZHdSj1oK5eVTaif0HS
+/2o/8DtBvCrpHXd/Rlk4risb4W+5+6q7rypbkOyhMFL/0N2fCa97SvsLznX2f7ZPu4cS6vgne0pA
+5yV9puzSjfOhb7NDjo1FtTA2jPhRBweF2juS3goj7x1lI/m5ru03JV01s73weMXd74Wa+HVl5ZH/
+7tnnurIvdbOdZKPszVCi8XC70qfdzvPKeb/bStjntLK/CK52SjY9/V0J2z9ybMpKX/Nm9izlHhTF
+6pwAkBhKPQCQGIIfABJD8ANAYgh+AEgMwQ8AiSH4ASAxBD8AJOb/AYk9okFvNC5fAAAAAElFTkSu
+QmCC
 "
 >
 </div>
@@ -2627,41 +2723,50 @@ AElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Discussion-and-Extensions">Discussion and Extensions<a class="anchor-link" href="#Discussion-and-Extensions">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here, I have developed a game where the defender must estimate whether or not an attacker is present in the network by observing a noisy sensor.  This is a very stylized game where the defender simply chooses an integer threshold and the attacker simply chooses &quot;attack&quot; and &quot;don&#39;t attack&quot;.  We have shown that a pure strategy Nash equilibrium exists in such a framework.  This implies that instead of masking an attack by randomizing, the attacker masks his attack by trying to appear like noise, a novel result.</p>
+<p>From here, there are two possible path&#39;s (and I have a feeling I will be taking both):</p>
+<p>1) I can continue to investigate this stylized model.  Some questions that arise are:</p>
+<ul>
+<li><p>Is the defender&#39;s strategy indeed a threshold strategy?  In this example, it was restricted to a threshold strategy because that is how current attack defenders operate.  However, it might be the case that by not choosing a threshold strategy, the defender can increase his expected utility.</p>
+</li>
+<li><p>What are the closed form solutions for the Nash equilibrium and what general results do we see?  This is more of an open ended question that is just further development of this work.</p>
+</li>
+</ul>
+<p>2) De-stylize the simple model.  In the real world, attackers do not simply attack one target but traverse a network and receive rewards as they encounter valuable targets. Furthermore, the defender does not only observe one sensor but observes multiple sensors and must choose a decision rule for a reading of all sensors.  Incorporating these elements raise many questions:</p>
+<ul>
+<li>First and foremost, how convenient is it to formulate and solve the more complex scenario?  Is it possible to formulate the more realistic version of the model using well-established tools?</li>
+<li>Do the results of a more complex scenario remain consistent with the traditional formulation?  If not, what are the differences?  If so, what is the driving force that applies to <strong>all</strong> formulations.</li>
+</ul>
+<p>My initial plan was to take path 2).  However, I think that the approach is different now.  In other words, before I was focusing on simply jumping into a more complex scenario and showing how a smart detector can do better than a dumb(er) one.  I think (hope) that by starting from this simple version of a model and building up, there will be much more to uncover.  In other words, at each step I will be comparing the results of a more complex scenario with the simple baseline model (the one that I presented here, that is indeed different from the current literature). So, a general progression of the work would be as follows:</p>
+<p>1) Present the model here that will be used as a baseline.  Also note how this model has an element that previous models do not</p>
+<p>2) Begin extending the model piece by piece (adding a network component, adding multiple sensors, etc).  In the process, explore how well the tools available to me can represent the scenario.</p>
+<p>2b) As each extension is built, compare the results with the results of the baseline case</p>
+<p>3) <strong>ONLY IF CURRENT TOOLS PROVE TO BE INADEQUATE</strong> introduce a new way to model strategic scenarios and then employ that method to the problem</p>
+<p>4) Show how a smart detector performs better than a dumber one (in a game theoretic framework, not with simulated data).  More specifically, show the changes in defender&#39;s utility when he uses different forms of detectors.</p>
+<p>4b) (Possibly) show how the defender&#39;s ability to exploit knowledge of the attacker&#39;s strategy is not obvious in the simple formulations of the game.  Or, if it is possible to exploit knowledge of an attacker&#39;s strategy to improve detection in the simple stylized examples, show how there is a parallel when considering real-world network intrusion scenarios.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Justin's-Scratch-notes">Justin's Scratch notes<a class="anchor-link" href="#Justin's-Scratch-notes">&#182;</a></h3>
 </div>
 </div>
 </div>
 
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -2674,110 +2779,11 @@ In&nbsp;[]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[197]:
+In&nbsp;[396]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">defenderstrat2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [3], [4], [4]]
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[116]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-1
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[117]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">x</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[2, 3, 4]
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[198]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">defenderstrat2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">3</span>
+<div class="highlight"><pre><span class="n">Game</span><span class="o">=</span> <span class="n">DiscreteMarkovAttackGame</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">pi_A</span><span class="o">=.</span><span class="mi">21</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">no_false_alarm</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -2788,44 +2794,11 @@ In&nbsp;[198]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[199]:
+In&nbsp;[397]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">defenderstrat2</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-[3, [3], [4], [4]]
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[186]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">=</span> <span class="n">DiscreteMarkovAttackGame</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">pi_A</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">T</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">no_false_alarm</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">sol</span><span class="o">=</span><span class="n">Game</span><span class="o">.</span><span class="n">brute_force_solve</span><span class="p">()</span>
 </pre></div>
 
 </div>
@@ -2836,7 +2809,7 @@ In&nbsp;[186]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[187]:
+In&nbsp;[399]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -2856,10 +2829,7 @@ In&nbsp;[187]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-([[1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 0, 1, 1]],
- [8.7816658020019531, 8.7816658020019531])
+([[1, 1, 0, 0, 0, 0, 1, 1, 1, 1]], [8.6552085876464844])
 </pre>
 </div>
 
@@ -2872,11 +2842,11 @@ In&nbsp;[187]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[170]:
+In&nbsp;[312]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">defenders_best_response</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">defenders_utility_given_attacker</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -2892,7 +2862,7 @@ In&nbsp;[170]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-([3], [1.2855625152587891])
+(-6.8471768188476556, 16.627952575683594)
 </pre>
 </div>
 
@@ -2905,11 +2875,11 @@ In&nbsp;[170]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[171]:
+In&nbsp;[400]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">brute_force_solve</span><span class="p">()</span>
+<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">defenders_best_response</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -2925,11 +2895,7 @@ In&nbsp;[171]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-[([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]),
- ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
- ([3], [1, 1, 0, 0, 0, 0, 0, 0, 0, 0]),
- ([3], [1, 1, 0, 0, 0, 0, 0, 1, 0, 0]),
- ([3], [1, 1, 0, 0, 0, 0, 0, 0, 1, 1])]
+([5], [6.0237060165405278])
 </pre>
 </div>
 
@@ -2942,11 +2908,11 @@ In&nbsp;[171]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[172]:
+In&nbsp;[375]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">attackers_best_response</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">defenders_utility_given_attacker</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 </div>
@@ -2962,99 +2928,12 @@ In&nbsp;[172]:
 
 <div class="output_text output_subarea output_pyout">
 <pre>
-([[1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 0, 1, 1]],
- [8.7816658020019531, 8.7816658020019531])
+(0.49879264831542969, -1.3285064697265625)
 </pre>
 </div>
 
 </div>
 
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[177]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">defenders_utility_given_attacker</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-(1.2855625152587891, 8.7487564086914062)
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[178]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre><span class="n">Game</span><span class="o">.</span><span class="n">attackers_best_response</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt"></div>
-
-
-<div class="output_text output_subarea output_pyout">
-<pre>
-([[1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 1, 0, 0],
-  [1, 1, 0, 0, 0, 0, 0, 0, 1, 1]],
- [8.7816658020019531, 8.7816658020019531])
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">
-In&nbsp;[]:
-</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class="highlight"><pre> 
-</pre></div>
-
-</div>
 </div>
 </div>
 
