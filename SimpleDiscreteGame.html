@@ -2343,9 +2343,12 @@ In&nbsp;[2]:
 need to randomize to outsmart their opponents. Instead, the attacker will pick a pure strategy that allows him to &quot;hide&quot; 
 in the background noise.  In other words, instead of using randomization to disguise his strategy, the attacker tries to
 use normal background noise to hide his malicious behavior.</li>
+<li>Similaraly, this implies that defenders also do not need to randomize their strategy to confuse the attacker.  This is an important result because real world defenders do not randomize their strategy but typically set a fixed threshold.</li>
 </ul>
 </li>
-<li><p>Although this result does yield a pure strategy Nash equilibrium, the results are still consistent with the situational foundation.  For example, increasing the probability of an attempted attack makes the defender more sensitive (see experiment 1).  Furthermore, decreasing the cost of a false alarm makes the reduces the defender&#39;s threshold, $d$ (see experiment 2). </p>
+<li><p>Another result that is novel and has only been tangentially explored before is that increasing the probability of an attempted attack makes the defender more sensitive (see experiment 1). </p>
+</li>
+<li><p>Although this result does yield a pure strategy Nash equilibrium, the results are still consistent with the situational foundation.  For example decreasing the cost of a false alarm makes the reduces the defender&#39;s threshold, $d$ (see experiment 2). In that sense, it retains all of the accepted intuition but adds a little snippet that shows attacker do not need to randomize their strategy in order to outsmart their opponent (and vice versa).  </p>
 </li>
 <li><p>The attacker exhibits &quot;patience&quot;.  In other words, the attacker does not choose to attack every period.  This is important because current cyber attack detection assumes that once attacker&#39;s are able to traverse a network, they do so as fast as possible.  This simple model demonstrates that attackers will sometimes choose not to send messages in the hopes that by being patient, the sensor will move away from the defender&#39;s threshold.  </p>
 </li>
