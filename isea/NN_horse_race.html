@@ -2519,6 +2519,32 @@ vRCyAvh6kr8AAAAASUVORK5CYII=
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Summary">Summary<a class="anchor-link" href="#Summary">&#182;</a></h3>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The reason we can do this analytically is that:</p>
+<ul>
+<li>The stochastic process generating the data is relatively simple.</li>
+<li>The aggregating function is simple (just the sum of independent processes).</li>
+<li>We can derive the conditional distribution of the &quot;small area&quot; data conditional on the aggregation.</li>
+</ul>
+<p>Owever, we we add spatial dependencies, more complex aggregation functions and additional covariates, all of the above will likely no longer be analytically tractable.  Note that even if the first bullet point becomes slightly more complicated, the second and third are also likely to become complicated.  </p>
+<p>Taken together, these results show that we need to turn to a neural network so that we can use the aggregated data (MSA) without having to specify the complex nonlinear function that expresses the conditional distirbution of the &quot;small area&quot; data conditional on the aggregation.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
