@@ -1677,16 +1677,90 @@ div#notebook {
 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[47]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">work_with_lanl</span> <span class="kn">import</span> <span class="n">LANLNetwork</span>
 <span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">igraph</span>
+<span class="kn">from</span> <span class="nn">adsy.display</span> <span class="kn">import</span> <span class="n">extended_styles</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[48]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">extended_styles</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[48]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <script type="text/javascript">
+        var toggleInput;
+        (function() {
+            var inputInterval;
+            var intervalCount = 0;
+            var init = false;
+            var inputUp = false;
+            toggleInput = function() {
+                if(inputUp) {
+                    $('div.input').slideDown();
+                    $('div.code_cell').attr('style', '');
+                }
+                else {
+                    $('div.input').slideUp();
+                    $('div.code_cell').attr('style', 'padding: 0px; margin: 0px');
+                }
+                inputUp = !inputUp;
+                init = true;
+            }
+            function initExtendedStyles() {
+                if(intervalCount > 15) {
+                    clearInterval(inputInterval);
+                }
+                intervalCount += 1;
+                try {
+                    toggleInput();
+                    clearInterval(inputInterval);
+                } catch(e) {}
+            }
+            if (typeof jQuery == 'undefined') {
+                // if jQuery Library is not loaded
+                var script = document.createElement( 'script' );
+                script.type = 'text/javascript';
+                script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js';
+                document.body.appendChild(script);
+            }
+
+            setTimeout(initExtendedStyles, 200);
+            // jQuery is doing this interval trick
+            // I guess its the way to do it then.
+            inputInterval = setInterval(initExtendedStyles, 1000);
+        }());
+        </script>
+       <a href="javascript:toggleInput()">Toggle Input</a>
+        
+</div>
+
+</div>
+
 </div>
 </div>
 
