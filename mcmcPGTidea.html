@@ -196,8 +196,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The gist of the idea is that we are looking at the problem the wrong way.  What we did was define a measure (intelligence) and then saught an algorithm that could sample efficiently from intelligences.  Unfortunately, this
-was difficult because algorithms like MCMC need to satisfy detail balance (and some other properties).  So, we were stuck looking for a smart way to sample.</p>
+<p>The gist of the idea is that we need to flip the way we are looking at the problem.  What we did was define a measure (intelligence) and then sought an algorithm that could sample efficiently from intelligences.  Unfortunately, this
+was difficult because algorithms like MCMC need to satisfy detail balance (and some other properties).  So, we were stuck looking for a smart way to sample and maybe "skip over" some of the inner loop.</p>
 <p>Here, I take the opposite approach.  Instead of deriving a quantity in which to base the probabilities, I first defined an algorithm (namely MCMC) and then defined an accept/reject criteria (ratio of probabilities) that fit in the algorithm and also "made sense" in the game theoretic way (i.e. it is close to intelligence).  Let's take a look...</p>
 
 </div>
@@ -208,7 +208,7 @@ was difficult because algorithms like MCMC need to satisfy detail balance (and s
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Here I only present the procedure/idea/ for games of imperfect information</p>
+<p>Here I only present the procedure/idea/ for games of perfect information</p>
 
 </div>
 </div>
@@ -218,16 +218,17 @@ was difficult because algorithms like MCMC need to satisfy detail balance (and s
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Instead of defining probabilities of the PGT posterior, we define odds.  We still want to capture some of the essence of intelligence so I chose to define odds as follows:</p>
-<p>Ina  two player game, if $s_1$ and $s_2$ are strategy profiles for player 1 and player 2.  Then the PGT posterior odds of the profile $(s_1, s_2)$ to some alternative strategy profile $(s_1', s_2')$ is given by:</p>
+<p><em>The trick : Instead of defining probabilities of the PGT posterior, we define odds.</em></p>
+<p>We still want to capture some of the essence of intelligence so I chose to define odds as follows:</p>
+<p>In a  two player game, if $s_1$ and $s_2$ are strategy profiles for player 1 and player 2.  Then the PGT posterior odds of the profile $(s_1, s_2)$ to some alternative strategy profile $(s_1', s_2')$ is given by:</p>
 \begin{align}
 \frac{P(s_1, s_2)}{P(s_1', s_2')} \propto \frac{exp(\alpha  EU_1(s_1, s_2))}{exp(\alpha  EU_1(s_1', s_2))} \times \frac{ exp(\alpha  EU_2(s_1, s_2))}{exp(\alpha  EU_2(s_1, s_2'))}\times\frac{exp(\alpha  EU_1(s_1, s_2'))}{exp(\alpha  EU_1(s_1', s_2'))} \times \frac{exp(\alpha  EU_2(s_1', s_2))}{exp(\alpha  EU_2(s_1', s_2'))}  \\
 %&\propto  \frac{exp\bigg(\alpha\big(EU_1(s_1, s_2) + EU_2(s_1, s_2) +EU_1(s_1, s_2') + EU_2(s_1', s_2)\big)\bigg)}%%{exp\bigg[\alpha\bigg(EU_1(s_1', s_2) + EU_2(s_1, s_2') + EU_1(s_1', s_2')+EU_2(s_1', s_2')\big)\bigg) }
 \propto exp\bigg(\alpha\big(EU_1(s_1, s_2) + EU_2(s_1, s_2) +EU_1(s_1, s_2') + EU_2(s_1', s_2) -
     EU_1(s_1', s_2) - EU_2(s_1, s_2') - EU_1(s_1', s_2')-EU_2(s_1', s_2')\big)\bigg)
 \end{align}<p>where $EU_i$, $i=1,2$ is the expected utility of player $i$ under the profiles in the argument of the function.</p>
-<p>The tie this into the idea of intelligence, consider the first two terms.  Those are minimal computation of the intelligence of $(s_1, s_2)$.  The second term can be considered the multiplicative inverse of a small computation of the intelligence of $(s_1', s_2')$.  The prodct of the exponential of all four terms is a measure of how intelligent $(s_1, s_2)$ is compared to $(s_1', s_2')$.</p>
-<p>Another way to think about it is that the first term captures the idea of intelligence while the second term captures the idea of dominance.  In other words, higher probability is assigned to profile where the strategies do well against each other but also do well against some of the opponents other strategies.</p>
+<p>The tie this into the idea of intelligence, consider the first two terms.  These capture the "intelligence" of the profile $(s_1, s_2)$.  We only sample one other profile (namely $(s_1', s_2')$) which might seem insufficient.  However, we are not concerned about capturing the intelligence of $(s_1, s_2)$ over all strategy profiles. Instead, we are just trying to capture the intelligence of $(s_1, s_2)$ when the alternative for the players are $(s_1', s_2')$.  I like to call this "pairwise intelligence" The second term can be considered the multiplicative inverse of the "pairwise intelligence" of $(s_1', s_2')$.  The prodct of the exponential of all four terms is a measure that attempts to capture the difference in "pairwise intelligence."  As the pairwise intelligence of $(s_1, s_2)$ increases, the odds ratio as defined above increases.  Of course, as the pairwise intelligence of $(s_1', s_2')$ increases the odds rate above decreases.</p>
+<p>Another way to think about it is that the first term captures the idea of intelligence while the second term captures the idea of dominance.  In other words, higher odds are assigned to profiles where the strategies do well against each other but also do well against some of the opponents other strategies.</p>
 <p>The $\alpha$ parameter controls the responsiveness of the probability to differences in intelligences.  Also the need for exponentiating is give a monotone mapping of expected utilities onto $\mathbf{R}^+$ while also preserving 1) below.</p>
 
 </div>
