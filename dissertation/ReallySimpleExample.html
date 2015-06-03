@@ -422,7 +422,7 @@ EU'_a(d,a)= F(d-a) -af(d-a) = 0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Claim:</strong> The solution, $a^*$ to $EU'_a(d,a)$ exists for any $d$ in the support of $f$, and is unqiue and $>0$.</p>
-<p><strong>Proof:</strong> The FOC can be rewritten as $\frac{F(d-a)}{f(d-a)} = a$.  At $a=0, \frac{F(d-a)}{f(d-a)}>0$ which implies $\frac{F(d-a)}{f(d-a)} - a >0$.  Furthermore, let $\overline{a} = \frac{F(d)}{f(d)}$ which must be $>0$.  By log concavity, $\frac{F(d-a)}{f(d-a)}$ is decreasing in $a$, so  for all $a' > \overline{a}$ we have that $\frac{F(d-a')}{f(d-a')} - a' <0$.  By the intermediate value theorem there exists an $a^* \in (0, \overline{a})$ such that  $\frac{F(d-a)}{f(d-a)} -a =0$.  Furthermore, since $\frac{F(d-a)}{f(d-a)} - a $ is strictly monotone decreasing in $a$, $a^*$ is unique.</p>
+<p><strong>Proof:</strong> The FOC can be rewritten as $\frac{F(d-a)}{f(d-a)} = a$.  At $a=0, \frac{F(d-a)}{f(d-a)}>0 $ which implies $\frac{F(d-a)}{f(d-a)} - a >0$.  Furthermore, let $\overline{a} = \frac{F(d)}{f(d)}$ which must be $>0$.  By log concavity, $\frac{F(d-a)}{f(d-a)}$ is decreasing in $a$, so  for all $a' > \overline{a}$ we have that $\frac{F(d-a')}{f(d-a')} - a' < 0$.  By the intermediate value theorem there exists an $a^* \in (0, \overline{a})$ such that  $\frac{F(d-a)}{f(d-a)} -a =0$.  Furthermore, since $\frac{F(d-a)}{f(d-a)} - a $ is strictly monotone decreasing in $a$, $a^*$ is unique.</p>
 
 </div>
 </div>
@@ -433,7 +433,7 @@ EU'_a(d,a)= F(d-a) -af(d-a) = 0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Claim:</strong> The solution, $a^*$ to $EU'_a(d,a)$ is a maximum.</p>
-<p><strong>Proof:</strong> At $a^*$ we have that $\frac{F(d-a^*)}{f(d-a^*)} -a =0$.  For any $\underline{a}<a^*$, we know by log concavity that   $\frac{F(d-\underline{a})}{f(d-\underline{a})}> \frac{F(d-a^*)}{f(d-a^*)}$  Therefore we must have that $\frac{F(d-\underline{a})}{f(d-\underline{a})} - \underline{a} >0$.  Paralle reasoning shows that for any $\overline{a} > a^*$, $\frac{F(d-\overline{a})}{f(d-\overline{a})}< \frac{F(d-a^*)}{f(d-a^*)}$ and therefore $\frac{F(d-\overline{a})}{f(d-\overline{a})} - \overline{a} <0$.  This establishes that for $\underline{a}<a^*$, $EU_a(d,\underline{a})$ is increasing and for any $\overline{a}>a^*$, $EU_a(d,\overline{a})$ is decreasing which is sufficient to establish that $a^*$ is a maximum.</p>
+<p><strong>Proof:</strong> At $a^*$ we have that $\frac{F(d-a^*)}{f(d-a^*)} - a =0$ .  For any $\underline{a} < a^*$, we know by log concavity that   $\frac{F(d-\underline{a})}{f(d-\underline{a})} > \frac{F(d-a^*)}{f(d-a^*)}$.  Therefore we must have that $\frac{F(d-\underline{a})}{f(d-\underline{a})} - \underline{a} >0$.  Parallel reasoning shows that for any $\overline{a} > a^*$, $\frac{F(d-\overline{a})}{f(d-\overline{a})}< \frac{F(d-a^*)}{f(d-a^*)}$ and therefore $\frac{F(d-\overline{a})}{f(d-\overline{a})} - \overline{a} <0$.  This establishes that for $\underline{a} < a^*$, $EU_a(d,\underline{a})$ is increasing and for any $\overline{a}>a^*$, $EU_a(d,\overline{a})$ is decreasing which is sufficient to establish that $a^*$ is a maximum.</p>
 
 </div>
 </div>
@@ -491,7 +491,7 @@ EU''_d(d,a) = (1-\pi)Xf'(d) - \pi cf'(d-a) <0
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Claim 1:</strong>  $\frac{f(d)}{f(d-a)}$ decreasing in $d$ is sufficient to establish $d^*$ is a maximum.</p>
-<p><strong>Proof:</strong> At $d^*$, it must be that $\frac{\pi c}{(1-\pi)X} = \frac{f(d^*)}{f(d^*-a)}$.  If $\frac{f(d^*)}{f(d^*-a)}$ is decreasing in d, then for any $\underline{d}<d^*$ we have $\frac{\pi c}{(1-\pi)X} <\frac{f(\underline{d})}{f(\underline{d}-a)}$.  This implies that $(1-\pi)Xf(\underline{d}) - \pi cf(\underline{d}-a)=EU'(\underline{d})>0$,  which implies $EU_d$ is increasing at any $\underline{d}<d^*$.   Parallel reasoning shows that for any $\overline{d}>d^*$ we must have $EU'(\overline{d})<0$, which implies $EU_d$ is decreasing at any $\overline{d}>d^*$.  This is sufficient for $d^*$ to be a unique, global maximum.</p>
+<p><strong>Proof:</strong> At $d^*$, it must be that $\frac{\pi c}{(1-\pi)X} = \frac{f(d^*)}{f(d^*-a)}$.  If $\frac{f(d^*)}{f(d^*-a)}$ is decreasing in d, then for any $\underline{d} < d^*$ we have $\frac{\pi c}{(1-\pi)X} <\frac{f(\underline{d})}{f(\underline{d}-a)}$.  This implies that $(1-\pi)Xf(\underline{d}) - \pi cf(\underline{d}-a)=EU'(\underline{d}) > 0$,  which implies $EU_d$ is increasing at any $\underline{d} < d^*$.   Parallel reasoning shows that for any $\overline{d} > d^*$ we must have $EU'(\overline{d}) < 0$, which implies $EU_d$ is decreasing at any $\overline{d} > d^*$.  This is sufficient for $d^*$ to be a unique, global maximum.</p>
 
 </div>
 </div>
