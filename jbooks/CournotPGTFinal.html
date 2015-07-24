@@ -207,7 +207,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>The state of the market is product demand of the form $P = a_s-\beta_s Q$</li>
+<li>The state of the market is product demand of the form $P = a-\beta_s Q$, where $\beta_s$ is determined by the state of the market.</li>
 <li>The market spontaneously changes state at a rate of $\lambda_m$</li>
 <li>The market sends messages to the player 1 and 2 at a rate of $\mu_1$ and $\mu_2$, respectively.</li>
 </ul>
@@ -230,9 +230,10 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>2 human controlled SFTs</li>
+<li>2 human controlled SFTs that represent firms</li>
 <li>The players only have one state</li>
-<li>The player's choose production quantities upon receiving a message from the market by sending messages to the market.  Products go to market at a rate of $\nu_1$ and $\nu_2$</li>
+<li>The player's choose production quantities upon receiving a message from the market by sending messages to the market.  Products go to market at a rate of $\nu_1$ and $\nu_2$.  </li>
+<li>In short, the player's can receive messages from the market at different times and their messages (which are quantities) can reach the market at different times.</li>
 </ul>
 
 </div>
@@ -997,7 +998,7 @@ div#notebook {
 \begin{equation}
 \int_0^\infty e^{-\beta t}\pi(t)dt.
 \end{equation}</p>
-<p>However, profits only change when either the market changes state or a new product quantity is received by the market.<br>
+<p>However, profits only change when either the market changes state (demand shock) or a new product quantity is received by the market.<br>
 Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream changes.  Total utility is computed as</p>
 \begin{equation}
 \sum_{i=1}^{\infty}\int_{\tau_i}^{\tau_{i+1}}  e^{-\beta t}\pi(t)dt.
@@ -1154,6 +1155,7 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Although the game continues to infinity, because of a positive discount rate, the expected utilities should converge.  Let's take a look and see what expected utility looks like for a given joint profile and different lengths of simulation.  In this example we simulate the network 5000 times to estimate expected utility.</p>
+<p>Again, this has nothing to do with PGT.  Since the game is of infinite horizon, these simulations are meant to determine how many time steps is "enough" so that the expected utility is "close" to the expected utility if the game were to run until infinity.</p>
 
 </div>
 </div>
@@ -1230,8 +1232,8 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Comment</strong>:  It looks like the expected utility becomes stationary around 20 time steps but there is still too much variance in the expected utility calculation, indicating we need to raise the number of samples.</p>
-<p>Let's see how the expected utility behaves as we raise the number of times we simulate the network.</p>
+<p>It looks like the expected utility becomes stationary around 20 time steps but there is still too much variance in the expected utility calculation, indicating we need to raise the number of samples.  In other words, to estimate the expected utility when the simulation runs for $20$ timesteps, it is necessary to sample the stochastic process many times (since each run of the network does not yield the same reward for each player).  However, if the number of simulations for a given length of simulation is not "high enough" there will still be variance in the expected utility.</p>
+<p>Let's see how the expected utility behaves as we raise the number of times we simulate the network.  This holds the length of simulation constant at 20.</p>
 
 </div>
 </div>
@@ -1297,7 +1299,11 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also look at the relative error.</p>
+<p>We can also look at the relative error which is computed as 
+\begin{equation}
+\frac{\big|(\text{expected utility after n samples)-(expected utility after 100000 samples})\big|}{(\text{expected utility after 100000 samples})}
+\end{equation}
+for $n=1,2...100000$.  $n$ is the x axis in the plots below.</p>
 
 </div>
 </div>
@@ -1349,7 +1355,7 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the above graphs, we kept the duration of the simulation fixed at 20 time steps.  Let's see what happens when we raise it to 50.</p>
+<p>Let's see what happens when the length of each simulation is 50 instead of 20.</p>
 
 </div>
 </div>
@@ -1436,7 +1442,7 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also look at the relative error</p>
+<p>And here is the relative error</p>
 
 </div>
 </div>
@@ -1499,7 +1505,7 @@ Therefore, if we let $\tau_1, \tau_2...$ denote the times that the profit stream
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Based on the profiling estimate, it takes 42 seconds to estimate expected utiliy to within 1% relative error.  So, if we sample 30 alternative profiles for each player when computing intelligence, it will take 42 minutes to compute the intelligence of just one strategy profile.</p>
-<p>In this case I am working in, the market has 5 states and the players have twenty actions.  That means each player has 3.2 million profiles for a total of $3.2$M$^2$ or $10.24 \times 10^{12}$ joint profiles.  If we wanted to compute the intelligence for one one-millionth ($10^{-6}$) of the total number of joint profiles, it would take us approximately $300000$ days.</p>
+<p>In this case, the market has 5 states and the players have twenty actions.  That means each player has 3.2 million profiles for a total of $3.2$M$^2$ or $10.24 \times 10^{12}$ joint profiles.  If we wanted to compute the intelligence for one one-millionth ($10^{-6}$) of the total number of joint profiles, it would take us approximately $300000$ days.</p>
 <p>So how do we solve this problem?  Right now we just shrink the game.</p>
 
 </div>
@@ -2941,6 +2947,7 @@ INFO: Loading help data...
 <li>When the rate of message transmission to and from player 1 increases, player 1's expected utility is $451$ and player 2's expected utility is $439$.</li>
 <li>When we introduce trembling, player 1's expected utility is $452$ and player 2's expected utility is $441$</li>
 </ul>
+<p>The difference in player 1 is not as pronounced as in a Stackelberg game.  One reason for this is that not enough relative weight is given to high intelligence profiles.  In other words, the next experiment to run is to change the exponent parameter in the intelligence calculations.</p>
 
 </div>
 </div>
