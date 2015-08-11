@@ -317,7 +317,7 @@ that is a piece of information that firms use to set their quantity and price.</
 <li>For any internal state, the players can set a price in $[5, 10, 15, 20]$</li>
 <li>Players can only change their price upon receiving an order.  That is, there are no spontaneous transmissions, only stimulated ones.</li>
 <li>The market's state is defined by a triple, $(s, p_1, p_2)$.  $p_1$ and $p_2$ are the most recent prices
-the market has received from the players.  $s$ can take one of 3 values, $[30, 50, 70]$ representing states of demand.  Each state of demand uniquely determines the rate at which the market sends orders to the players. The prices in the market determine the order quantity.  More specifically, the order quantity received by player $i$ is given by $Q_i = s_m - p_i + .5p_j$ where $s_m$ is the state of the market. (Economically, these goods are substitutes, the coefficient on $p_j$ gives the degree of substitutability)</li>
+the market has received from the players.  $s$ can take one of 3 values, $[30, 50, 70]$ representing states of demand.   The prices in the market determine the order quantity.  More specifically, the order quantity received by player $i$ is given by $Q_i = s_m - p_i + .5p_j$ where $s_m$ is the state of the market. (Economically, these goods are substitutes, the coefficient on $p_j$ gives the degree of substitutability)</li>
 <li>The state of the market evolves stochastically according to an underlying Poisson process.</li>
 <li>The player's state consists of the most recent price they sent to the market as well as the price and order quantity of their last two messages received.  </li>
 </ul>
