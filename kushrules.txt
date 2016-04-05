@@ -1,0 +1,29 @@
+Keepers
+-------
+
+* Every team *must* keep 4 players.  Contrary to ESPN rules, not keeping all 4 players results in a loss of draft pick and you do *not* get a pick in place of not selecting a keeper
+
+* Every team *may* keep two farm players in addition to their 4 keepers.  For a player to be kept as a farm keeper they must meet the following requirements:
+  * No more than 275 at bats in a single season for any hitter
+  * No more than 15 games started in a single season for an SP
+  * No more than 30 relief appearances in a single season for an RP
+
+* Farm keepers are to be drafted in the last two rounds of the draft.  If someone accidentally drafts another team's farm keeper, the person who drafted the player must drop the player immediately after the draft
+
+Position Limits
+---------------
+
+* Teams are limited to 9 pitching games started per week.  This is a standard ESPN rule but it should be noted for newcomers that ESPN does not always lock pitchers when the limit is reached.  There is a penalty in terms of negative points for going over the pitching limit.
+
+* Relief pitchers with dual SP and RP eligibility cannot be used in an SP slot
+
+* Outfielders cannot be used in the utility slot.  Only infielders, catchers and DH players can be used in the utility slot.  However, players with OF and DH eligibility are NOT eligible for the utility slot
+
+Other
+-----
+
+* Kush does not allow trade vetos
+
+* No roster moves allowed between the last day of the the fantasy championship matchup and the day keepers are submitted
+
+* Draft pick trading is allowed.  Any trade involving a draft pick must be posted on the league message board and it is the responsibility of the teams that traded to make sure the trade is executed during the draft
