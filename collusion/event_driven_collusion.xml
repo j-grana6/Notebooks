@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?latexml searchpaths="/home/justin/src/Notebooks/collusion"?>
+<?latexml class="article"?>
+<?latexml package="amsmath"?>
+<?latexml package="amssymb"?>
+<?latexml RelaxNGSchema="LaTeXML"?>
+<document xmlns="http://dlmf.nist.gov/LaTeXML" class="ltx_authors_1line">
+  <resource src="LaTeXML.css" type="text/css"/>
+  <resource src="ltx-article.css" type="text/css"/>
+  <title>Event-Driven Collusion</title>
+  <creator role="author">
+    <personname>Justin Grana</personname>
+  </creator>
+  <section refnum="1" xml:id="S1">
+    <title><tag close=" ">1</tag>Introduction</title>
+    <para xml:id="S1.p1">
+      <p>This write-up is intended to be the “white paper” to an
+Econometrica, AER, JET…submission. It will begin with a brief
+introduction that outlines a Bertrand game and the notion of
+collusion. It will then briefly outline some of the foundational as
+well as more current literature that investigate collusion in a
+Bertrand environment. Finally the introduction will clearly juxtapose
+an event-driven Bertrand game with the current literature.</p>
+    </para>
+    <para xml:id="S1.p2">
+      <p>The second section will outline the model in terms of an SFT-Net. It
+omits the fully rigorous specification of the network in favor of an
+intuitive explanation with the requisite notation. Note that this
+section also omits the “one step deviation principal” for
+event-driven games as well as the notion of subgame perfect/sequential
+equilibrium. Basically, all of this involves a “translation” of the
+idea of subgame perfect/sequential equilibrium in repeated games to an
+<!-- %**** event˙driven˙collusion.tex Line 25 **** -->event-driven framework. It is a ton of tedious mathematical
+boilerplate but conceptually very simple. (On another note, it might
+make sense to describe something like an “event-driven equilibrium”
+that is similar to subgame perfect. For example, we can say something
+like “If all players’ internal state includes a component that
+represents the entire history of past observations, then if for
+all players <Math mode="inline" xml:id="S1.p2.m1" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> and histories <Math mode="inline" xml:id="S1.p2.m2" tex="h_{i}" text="h _ i"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">h</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp></XMath></Math>, <Math mode="inline" xml:id="S1.p2.m3" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> cannot improve his expected
+utility by deviating, the strategy profile is an event-driven
+equilibrium. I’m sure there will be some gotchyas but it might be
+worth thinking along those lines)</p>
+    </para>
+    <para xml:id="S1.p3">
+      <p>The third section will present the results. These will be amended as
+new results come in.</p>
+    </para>
+    <subsection refnum="1.1" xml:id="S1.SS1">
+      <title><tag close=" ">1.1</tag>Preliminaries</title>
+      <para xml:id="S1.SS1.p1">
+        <p><text font="italic">This just outlines the basic static and repeated Bertrand
+game. Can be skipped if you are familiar with “trigger
+strategies”</text> The standard, static Bertrand example is as follows: Suppose there are <Math mode="inline" xml:id="S1.SS1.p1.m1" tex="I=\{1,2\}" text="I = set@(1, 2)"><XMath><XMApp><XMTok meaning="equals" role="RELOP">=</XMTok><XMTok role="UNKNOWN" font="italic">I</XMTok><XMApp><XMTok argclose="}" argopen="{" meaning="set" role="FENCED" separators=","/><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMApp></XMath></Math> firms. Each firm has identical per-unit cost <Math mode="inline" xml:id="S1.SS1.p1.m2" tex="\theta" text="theta"><XMath><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMath></Math>. Firm <Math mode="inline" xml:id="S1.SS1.p1.m3" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> chooses a price, <Math mode="inline" xml:id="S1.SS1.p1.m4" tex="p_{i}" text="p _ i"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp></XMath></Math> in <Math mode="inline" xml:id="S1.SS1.p1.m5" tex="\mathbb{R}" text="R"><XMath><XMTok role="UNKNOWN" font="blackboard">R</XMTok></XMath></Math>. Suppose there is a continuum of consumers on the interval <Math mode="inline" xml:id="S1.SS1.p1.m6" tex="[0,1]" text="closed-interval@(0, 1)"><XMath><XMApp><XMTok argclose="]" argopen="[" meaning="closed-interval" role="FENCED" separators=","/><XMTok meaning="0" role="NUMBER">0</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok></XMApp></XMath></Math> with reservation price <Math mode="inline" xml:id="S1.SS1.p1.m7" tex="r&gt;\theta" text="r &gt; theta"><XMath><XMApp><XMTok meaning="greater-than" role="RELOP">&gt;</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMApp></XMath></Math>. Then, player <Math mode="inline" xml:id="S1.SS1.p1.m8" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math>’s utility function is given by</p>
+        <equation frefnum="(1)" refnum="1" xml:id="S1.E1" labels="LABEL:eq:profits">
+          <Math mode="display" xml:id="S1.E1.m1" tex="\Pi_{i}(p_{i},p_{j})=\begin{cases}p_{i}-\theta&amp;p_{i}&lt;p_{j},p_{i}&lt;r\\&#10;\frac{p_{i}-\theta}{2}&amp;p_{i}=p_{j},p_{i}&lt;r\\&#10;0&amp;\text{ otherwise }\end{cases}" text="Pi _ i * open-interval@(p _ i, p _ j) = cases[[p _ i - theta, formulae@(p _ i less p _ j, p _ i less r)], [(p _ i - theta) / 2, formulae@(p _ i = p _ j, p _ i less r)], [0, [ otherwise ]]]">
+            <XMath>
+              <XMApp>
+                <XMTok meaning="equals" role="RELOP">=</XMTok>
+                <XMApp>
+                  <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                  <XMApp>
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                    <XMTok name="Pi" possibleFunction="yes" role="UNKNOWN">Π</XMTok>
+                    <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                  </XMApp>
+                  <XMApp>
+                    <XMTok argclose=")" argopen="(" meaning="open-interval" role="FENCED" separators=","/>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                      <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                      <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                    </XMApp>
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                      <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                      <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                    </XMApp>
+                  </XMApp>
+                </XMApp>
+                <XMArray meaning="cases" open="{">
+                  <XMRow>
+                    <XMCell align="left">
+                      <XMApp>
+                        <XMTok meaning="minus" role="ADDOP">-</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                        </XMApp>
+                        <XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok>
+                      </XMApp>
+                    </XMCell>
+                    <XMCell align="left">
+                      <XMApp>
+                        <XMTok meaning="formulae" separators=","/>
+                        <XMApp>
+                          <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                          </XMApp>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                          </XMApp>
+                        </XMApp>
+                        <XMApp>
+                          <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                          </XMApp>
+                          <XMTok role="UNKNOWN" font="italic">r</XMTok>
+                        </XMApp>
+                      </XMApp>
+                    </XMCell>
+                  </XMRow>
+                  <XMRow>
+                    <XMCell align="left">
+                      <XMApp>
+                        <XMTok mathstyle="display" meaning="divide" role="MULOP"/>
+                        <XMApp>
+                          <XMTok meaning="minus" role="ADDOP">-</XMTok>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post8"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                          </XMApp>
+                          <XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok>
+                        </XMApp>
+                        <XMTok meaning="2" role="NUMBER">2</XMTok>
+                      </XMApp>
+                    </XMCell>
+                    <XMCell align="left">
+                      <XMApp>
+                        <XMTok meaning="formulae" separators=","/>
+                        <XMApp>
+                          <XMTok meaning="equals" role="RELOP">=</XMTok>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                          </XMApp>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                          </XMApp>
+                        </XMApp>
+                        <XMApp>
+                          <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                          <XMApp>
+                            <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                            <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                            <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                          </XMApp>
+                          <XMTok role="UNKNOWN" font="italic">r</XMTok>
+                        </XMApp>
+                      </XMApp>
+                    </XMCell>
+                  </XMRow>
+                  <XMRow>
+                    <XMCell align="left">
+                      <XMTok meaning="0" role="NUMBER">0</XMTok>
+                    </XMCell>
+                    <XMCell align="left">
+                      <XMText> otherwise </XMText>
+                    </XMCell>
+                  </XMRow>
+                </XMArray>
+              </XMApp>
+            </XMath>
+          </Math>
+        </equation>
+        <p>As is standard, the only equilibrium in this game is when
+<Math mode="inline" xml:id="S1.SS1.p1.m9" tex="p_{i}=p_{j}=\theta" text="p _ i = p _ j = theta"><XMath><XMApp><XMTok meaning="multirelation"/><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp><XMTok meaning="equals" role="RELOP">=</XMTok><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp><XMTok meaning="equals" role="RELOP">=</XMTok><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMApp></XMath></Math>. This is easy to see since any equilibrium with
+<Math mode="inline" xml:id="S1.SS1.p1.m10" tex="p_{i},p_{j}&gt;\theta" text="list@(p _ i, p _ j) &gt; theta"><XMath><XMApp><XMTok meaning="greater-than" role="RELOP">&gt;</XMTok><XMApp><XMTok meaning="list" role="FENCED" separators=","/><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp></XMApp><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMApp></XMath></Math>, firms have the incentive to undercut one another by
+a tiny amount (from here an throughout, I will assume that firm <Math mode="inline" xml:id="S1.SS1.p1.m11" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math>
+can undercut a competitor who charges <Math mode="inline" xml:id="S1.SS1.p1.m12" tex="p_{j}" text="p _ j"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp></XMath></Math> by charging <Math mode="inline" xml:id="S1.SS1.p1.m13" tex="p_{j}-\epsilon" text="p _ j - epsilon"><XMath><XMApp><XMTok meaning="minus" role="ADDOP">-</XMTok><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp><XMTok name="epsilon" role="UNKNOWN" font="italic">ϵ</XMTok></XMApp></XMath></Math>
+but the profits are still computed as <Math mode="inline" xml:id="S1.SS1.p1.m14" tex="p_{j}-\theta" text="p _ j - theta"><XMath><XMApp><XMTok meaning="minus" role="ADDOP">-</XMTok><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMApp></XMath></Math>.</p>
+      </para>
+      <para xml:id="S1.SS1.p2">
+        <p>Of course, when the game is repeated in discrete time, the result
+change. First, suppose that the Bertrand game is repeated for a known
+and finite amount of time, <Math mode="inline" xml:id="S1.SS1.p2.m1" tex="T" text="T"><XMath><XMTok role="UNKNOWN" font="italic">T</XMTok></XMath></Math>, and each player has common discount
+rate <Math mode="inline" xml:id="S1.SS1.p2.m2" tex="\delta" text="delta"><XMath><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok></XMath></Math>. Now, player’s strategies are mappings from histories, <Math mode="inline" xml:id="S1.SS1.p2.m3" tex="h" text="h"><XMath><XMTok role="UNKNOWN" font="italic">h</XMTok></XMath></Math>,
+(all observations of past actions) to next action. Define the
+“finite trigger strategy” for player <Math mode="inline" xml:id="S1.SS1.p2.m4" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> as <Math mode="inline" xml:id="S1.SS1.p2.m5" tex="a_{i}(h)=" text="a _ i * h = absent"><XMath><XMApp><XMTok meaning="equals" role="RELOP">=</XMTok><XMApp><XMTok meaning="times" role="MULOP">⁢</XMTok><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok possibleFunction="yes" role="UNKNOWN" font="italic">a</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp><XMTok close=")" open="(" role="UNKNOWN" font="italic">h</XMTok></XMApp><XMTok meaning="absent"/></XMApp></XMath></Math> “play <Math mode="inline" xml:id="S1.SS1.p2.m6" tex="r" text="r"><XMath><XMTok role="UNKNOWN" font="italic">r</XMTok></XMath></Math>
+in every period unless <Math mode="inline" xml:id="S1.SS1.p2.m7" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> does not play <Math mode="inline" xml:id="S1.SS1.p2.m8" tex="r" text="r"><XMath><XMTok role="UNKNOWN" font="italic">r</XMTok></XMath></Math>. In that case, play
+<Math mode="inline" xml:id="S1.SS1.p2.m9" tex="\theta" text="theta"><XMath><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMath></Math> forever.” It can be shown that this is <emph>not</emph> a (symmetric)
+Nash equilibrium strategy. To see why, note that in period <Math mode="inline" xml:id="S1.SS1.p2.m10" tex="T" text="T"><XMath><XMTok role="UNKNOWN" font="italic">T</XMTok></XMath></Math>,
+player <Math mode="inline" xml:id="S1.SS1.p2.m11" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> will want to undercut <Math mode="inline" xml:id="S1.SS1.p2.m12" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> since he does not receive any
+future benefit from not undercutting <Math mode="inline" xml:id="S1.SS1.p2.m13" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math>. Knowing this, in period
+<Math mode="inline" xml:id="S1.SS1.p2.m14" tex="T-1" text="T - 1"><XMath><XMApp><XMTok meaning="minus" role="ADDOP">-</XMTok><XMTok role="UNKNOWN" font="italic">T</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok></XMApp></XMath></Math>, <Math mode="inline" xml:id="S1.SS1.p2.m15" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> would no longer have an incentive not to undercut <Math mode="inline" xml:id="S1.SS1.p2.m16" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math>.
+This logic can be extrapolated back to period <Math mode="inline" xml:id="S1.SS1.p2.m17" tex="1" text="1"><XMath><XMTok meaning="1" role="NUMBER">1</XMTok></XMath></Math> and therefore the
+only Nash equilibrium is when both players charge <Math mode="inline" xml:id="S1.SS1.p2.m18" tex="\theta" text="theta"><XMath><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMath></Math>.</p>
+      </para>
+      <para xml:id="S1.SS1.p3">
+        <p>Now, suppose the game is repeated infinitely and extend the finite
+trigger strategy to an infinite trigger strategy. We will now show
+<!-- %**** event˙driven˙collusion.tex Line 75 **** -->that under a high enough discount rate, the infinite trigger strategy
+is a subgame perfect equilibrium. To see why, note that <Math mode="inline" xml:id="S1.SS1.p3.m1" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math>’s total
+discounted utility under the trigger strategy (played by both players)
+is given by <Math mode="inline" xml:id="S1.SS1.p3.m2" tex="\frac{r}{2(1-\delta)}" text="r / (2 * (1 - delta))"><XMath><XMApp><XMTok mathstyle="text" meaning="divide" role="MULOP"/><XMTok role="UNKNOWN" font="italic">r</XMTok><XMApp><XMTok meaning="times" role="MULOP">⁢</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok><XMApp close=")" open="("><XMTok meaning="minus" role="ADDOP">-</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok></XMApp></XMApp></XMApp></XMath></Math>. Note that if <Math mode="inline" xml:id="S1.SS1.p3.m3" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> undercuts <Math mode="inline" xml:id="S1.SS1.p3.m4" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math>,
+then his expected utility is given by <Math mode="inline" xml:id="S1.SS1.p3.m5" tex="r" text="r"><XMath><XMTok role="UNKNOWN" font="italic">r</XMTok></XMath></Math> since he gets the entire
+market share in the first period and then nothing after. Therefore,
+<Math mode="inline" xml:id="S1.SS1.p3.m6" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> has an incentive to undercut <Math mode="inline" xml:id="S1.SS1.p3.m7" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> in the first period iff
+<Math mode="inline" xml:id="S1.SS1.p3.m8" tex="r&gt;\frac{r}{2(1-\delta)}" text="r &gt; r / (2 * (1 - delta))"><XMath><XMApp><XMTok meaning="greater-than" role="RELOP">&gt;</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok><XMApp><XMTok mathstyle="text" meaning="divide" role="MULOP"/><XMTok role="UNKNOWN" font="italic">r</XMTok><XMApp><XMTok meaning="times" role="MULOP">⁢</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok><XMApp close=")" open="("><XMTok meaning="minus" role="ADDOP">-</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok></XMApp></XMApp></XMApp></XMApp></XMath></Math> or equivalently <Math mode="inline" xml:id="S1.SS1.p3.m9" tex="\delta&lt;\frac{1}{2}" text="delta less 1 / 2"><XMath><XMApp><XMTok meaning="less-than" role="RELOP">&lt;</XMTok><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok><XMApp><XMTok mathstyle="text" meaning="divide" role="MULOP"/><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMApp></XMath></Math>. We
+can also show that this is subgame perfect since if
+<Math mode="inline" xml:id="S1.SS1.p3.m10" tex="\delta&gt;\frac{1}{2}" text="delta &gt; 1 / 2"><XMath><XMApp><XMTok meaning="greater-than" role="RELOP">&gt;</XMTok><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok><XMApp><XMTok mathstyle="text" meaning="divide" role="MULOP"/><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMApp></XMath></Math>, given one player has deviated, it is weakly
+dominant for each player to charge <Math mode="inline" xml:id="S1.SS1.p3.m11" tex="\theta" text="theta"><XMath><XMTok name="theta" role="UNKNOWN" font="italic">θ</XMTok></XMath></Math>.</p>
+      </para>
+    </subsection>
+    <subsection refnum="1.2" xml:id="S1.SS2">
+      <title><tag close=" ">1.2</tag>Literature Review</title>
+      <para xml:id="S1.SS2.p1">
+        <p>Recent literature on Bertrand competition has taken two
+approaches. The first approach is to extend the game of perfect
+observability to understand other
+phenomenon. For example, <cite>[<bibref bibrefs="AB" separator="," show="Refnum" yyseparator=","/>]</cite> model a Bertrand game in which
+each firm’s per-unit <text font="bold">cost</text> dynamics are described by a two-state Markov
+chain. They show that there exists an equilibrium where all
+firms charge the reserve price in every period, regardless of their
+per-unit cost. Again, note that the firms’ pricing decisions are
+fully observable.</p>
+      </para>
+      <para xml:id="S1.SS2.p2">
+        <p>Another example with perfectly observable prices is
+<cite>[<bibref bibrefs="differentialresource" separator="," show="Refnum" yyseparator=","/>]</cite>. This is a differential game in
+<!-- %**** event˙driven˙collusion.tex Line 100 **** -->which players must also consume a renewable resource. Also note that
+in this game, the demand function is linear and not a reserve price.
+Nevertheless, the demand function and the parameters are known exactly
+to the players. The authors then show that a collusive equilibrium
+exists (although collusion was not the main focus of their paper).
+Again, this is a game with <emph>no</emph> uncertainty.</p>
+      </para>
+      <para xml:id="S1.SS2.p3">
+        <p>The second approach in extending Bertrand games is with secret price
+cuts. That is, players do <emph>not</emph> observe the action of the other
+players in the previous rounds. Instead, stochastic
+profits are realized in each period and firms base their continuation strategy off of
+such a signal. For example, <cite>[<bibref bibrefs="greenold" separator="," show="Refnum" yyseparator=","/>]</cite> shows that there exists a
+collusive equilibrium in which players play the collusive price if the
+total profit of everyone is greater than a certain constant and then
+revert to marginal cost pricing for <Math mode="inline" xml:id="S1.SS2.p3.m1" tex="T" text="T"><XMath><XMTok role="UNKNOWN" font="italic">T</XMTok></XMath></Math> periods if the sum total
+of profits is below <Math mode="inline" xml:id="S1.SS2.p3.m2" tex="c" text="c"><XMath><XMTok role="UNKNOWN" font="italic">c</XMTok></XMath></Math>, and then return. In other words, there is a
+finite punishment period in which the players cut prices.</p>
+      </para>
+      <para xml:id="S1.SS2.p4">
+        <p>Other work such as <cite>[<bibref bibrefs="powercomm" separator="," show="Refnum" yyseparator=","/>]</cite> and <cite>[<bibref bibrefs="commandcoll" separator="," show="Refnum" yyseparator=","/>]</cite> show how
+there exist information sharing mechanisms that facilitate collusion.
+For example, after each period firms may have an incentive to share
+their private profit information. For example, if firms profits are
+correlated, each has an incentive to truthfully announce their profits
+because if they announce profits that are “far away” from their
+opponent, the opponent will think they are lying and therefore enter a
+<!-- %**** event˙driven˙collusion.tex Line 125 **** -->punishment phase. Again, these models assume <emph>private</emph> profit
+and pricing information.</p>
+      </para>
+      <para xml:id="S1.SS2.p5">
+        <p>Note the difference between the two approaches to the repeated
+Bertrand game. One is where all information is known and observable
+(demand, prices, profits, etc) and the other is when firms receive a
+signal that is correlated with both demand and the other player’s
+prices. That is, firms can choose to undercut the market but they run
+the risk of their signal being too strong. The event-driven framework
+falls into the second category of secrete price cuts. However, the
+nature of the “correlation” between prices and information is
+different. In the event-driven framework, a player can undercut the
+market without generating <emph>any</emph> signal to the other players. The
+reason is that in the event-driven framework, the players observe
+their opponents prices subject to a stochastic lag. That is, if
+player <Math mode="inline" xml:id="S1.SS2.p5.m1" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> under undercuts the market at time <Math mode="inline" xml:id="S1.SS2.p5.m2" tex="t" text="t"><XMath><XMTok role="UNKNOWN" font="italic">t</XMTok></XMath></Math>, player <Math mode="inline" xml:id="S1.SS2.p5.m3" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> might
+not find out about the undercut until time <Math mode="inline" xml:id="S1.SS2.p5.m4" tex="t+\tau" text="t + tau"><XMath><XMApp><XMTok meaning="plus" role="ADDOP">+</XMTok><XMTok role="UNKNOWN" font="italic">t</XMTok><XMTok name="tau" role="UNKNOWN" font="italic">τ</XMTok></XMApp></XMath></Math>. However, neither
+<Math mode="inline" xml:id="S1.SS2.p5.m5" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> nor <Math mode="inline" xml:id="S1.SS2.p5.m6" tex="j" text="j"><XMath><XMTok role="UNKNOWN" font="italic">j</XMTok></XMath></Math> know <emph>exactly</emph> when prices will be made public.
+Therefore, it might be optimal for <Math mode="inline" xml:id="S1.SS2.p5.m7" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> to undercut the market for a
+fixed amount of time and then, after realizing he has not been caught,
+return to the collusive price. In other words, players in the
+event-driven Bertrand model do not focus on <text font="italic">what</text> their
+information tells them about the other player’s strategies but
+<emph>when</emph> they will receive information about other player’s
+strategies.
+<!-- %**** event˙driven˙collusion.tex Line 150 **** --></p>
+      </para>
+      <para xml:id="S1.SS2.p6">
+        <p>Although this will be made clearer in the following section, in the
+event-driven Bertrand model, the players almost always do not know
+demand or the other players’ price. They only observe signals in
+sporadic intervals and there is no restriction that players must learn
+of a change immediately after it happens. In other words, the
+event-driven Bertrand game is a new version of secret price cuts
+(in which players are not apprised of the exact state of demand or
+other players’ prices).</p>
+      </para>
+      <!-- %% What is collusion 
+     %% What are some example with observed actions
+     %% What are some examples without observed actions
+     %% How is our model different-->
+    </subsection>
+  </section>
+  <section refnum="2" xml:id="S2">
+    <title><tag close=" ">2</tag>Model</title>
+    <para xml:id="S2.p1">
+      <p>There is a market node whose state space consists of <Math mode="inline" xml:id="S2.p1.m1" tex="\{\underline{r},\overline{r}\}" text="set@(underline@(r), overline@(r))"><XMath><XMApp><XMTok argclose="}" argopen="{" meaning="set" role="FENCED" separators=","/><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp><XMApp><XMTok name="overline" role="OVERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMApp></XMath></Math> (as well as the prices of each firm’s product). The market
+changes states spontaneously at rate <Math mode="inline" xml:id="S2.p1.m2" tex="\gamma" text="gamma"><XMath><XMTok name="gamma" role="UNKNOWN" font="italic">γ</XMTok></XMath></Math>.
+Intuitively, there are two reserve prices. The market alternates
+between these reserve prices at rate <Math mode="inline" xml:id="S2.p1.m3" tex="\gamma" text="gamma"><XMath><XMTok name="gamma" role="UNKNOWN" font="italic">γ</XMTok></XMath></Math>. At rate <Math mode="inline" xml:id="S2.p1.m4" tex="\lambda_{1}" text="lambda _ 1"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok name="lambda" role="UNKNOWN" font="italic">λ</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok></XMApp></XMath></Math>,
+the market emits a message that travels instantaneously to player
+<Math mode="inline" xml:id="S2.p1.m5" tex="1" text="1"><XMath><XMTok meaning="1" role="NUMBER">1</XMTok></XMath></Math> that informs player <Math mode="inline" xml:id="S2.p1.m6" tex="1" text="1"><XMath><XMTok meaning="1" role="NUMBER">1</XMTok></XMath></Math> of the reserve price. This message is
+noiseless. At a rate of <Math mode="inline" xml:id="S2.p1.m7" tex="\lambda_{2}" text="lambda _ 2"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok name="lambda" role="UNKNOWN" font="italic">λ</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMath></Math>, the market does the same but the
+message is directed to player <Math mode="inline" xml:id="S2.p1.m8" tex="2" text="2"><XMath><XMTok meaning="2" role="NUMBER">2</XMTok></XMath></Math>.
+<!-- %**** event˙driven˙collusion.tex Line 175 **** --></p>
+    </para>
+    <para xml:id="S2.p2">
+      <p>When player, <Math mode="inline" xml:id="S2.p2.m1" tex="i=1,2" text="i = list@(1, 2)"><XMath><XMApp><XMTok meaning="equals" role="RELOP">=</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok><XMApp><XMTok meaning="list" role="FENCED" separators=","/><XMTok meaning="1" role="NUMBER">1</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMApp></XMath></Math> receives a message, he must make two decisions. First,
+he must decide what price to charge in <Math mode="inline" xml:id="S2.p2.m2" tex="\mathbb{R}^{+}" text="R ^ +"><XMath><XMApp><XMTok role="SUPERSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="blackboard">R</XMTok><XMTok meaning="plus" role="ADDOP">+</XMTok></XMApp></XMath></Math>. Secondly, he
+can decide whether or not to send a message to player <Math mode="inline" xml:id="S2.p2.m3" tex="2" text="2"><XMath><XMTok meaning="2" role="NUMBER">2</XMTok></XMath></Math>, indicating
+what message he just received. The players are not restricted to
+telling the truth and the message to the other player is costless. In
+other words, the players can engage in cheap talk.</p>
+    </para>
+    <para xml:id="S2.p3">
+      <p>The rewards for player <Math mode="inline" xml:id="S2.p3.m1" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> given his price is <Math mode="inline" xml:id="S2.p3.m2" tex="p_{i}" text="p _ i"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">i</XMTok></XMApp></XMath></Math>, the other
+player’s price is <Math mode="inline" xml:id="S2.p3.m3" tex="p_{j}" text="p _ j"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post2"/><XMTok role="UNKNOWN" font="italic">p</XMTok><XMTok role="UNKNOWN" font="italic">j</XMTok></XMApp></XMath></Math> and the reserve price is <Math mode="inline" xml:id="S2.p3.m4" tex="r" text="r"><XMath><XMTok role="UNKNOWN" font="italic">r</XMTok></XMath></Math> is given by:</p>
+      <equation frefnum="(2)" refnum="2" xml:id="S2.E2" labels="LABEL:eq:rewards">
+        <Math mode="display" xml:id="S2.E2.m1" tex="r_{i}(p_{i},p_{j})=\begin{cases}p_{i}&amp;p_{i}&lt;p_{j},p_{i}&lt;r\\&#10;\frac{p_{i}}{2}&amp;p_{i}=p_{j},p_{i}&lt;r\\&#10;0&amp;\text{ otherwise }\end{cases}" text="r _ i * open-interval@(p _ i, p _ j) = cases[[p _ i, formulae@(p _ i less p _ j, p _ i less r)], [p _ i / 2, formulae@(p _ i = p _ j, p _ i less r)], [0, [ otherwise ]]]">
+          <XMath>
+            <XMApp>
+              <XMTok meaning="equals" role="RELOP">=</XMTok>
+              <XMApp>
+                <XMTok meaning="times" role="MULOP">⁢</XMTok>
+                <XMApp>
+                  <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                  <XMTok possibleFunction="yes" role="UNKNOWN" font="italic">r</XMTok>
+                  <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                </XMApp>
+                <XMApp>
+                  <XMTok argclose=")" argopen="(" meaning="open-interval" role="FENCED" separators=","/>
+                  <XMApp>
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                    <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                    <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                  </XMApp>
+                  <XMApp>
+                    <XMTok role="SUBSCRIPTOP" scriptpos="post2"/>
+                    <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                    <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                  </XMApp>
+                </XMApp>
+              </XMApp>
+              <XMArray meaning="cases" open="{">
+                <XMRow>
+                  <XMCell align="left">
+                    <XMApp>
+                      <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                      <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                      <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                    </XMApp>
+                  </XMCell>
+                  <XMCell align="left">
+                    <XMApp>
+                      <XMTok meaning="formulae" separators=","/>
+                      <XMApp>
+                        <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                        </XMApp>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                        </XMApp>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                        </XMApp>
+                        <XMTok role="UNKNOWN" font="italic">r</XMTok>
+                      </XMApp>
+                    </XMApp>
+                  </XMCell>
+                </XMRow>
+                <XMRow>
+                  <XMCell align="left">
+                    <XMApp>
+                      <XMTok mathstyle="display" meaning="divide" role="MULOP"/>
+                      <XMApp>
+                        <XMTok role="SUBSCRIPTOP" scriptpos="post8"/>
+                        <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                        <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                      </XMApp>
+                      <XMTok meaning="2" role="NUMBER">2</XMTok>
+                    </XMApp>
+                  </XMCell>
+                  <XMCell align="left">
+                    <XMApp>
+                      <XMTok meaning="formulae" separators=","/>
+                      <XMApp>
+                        <XMTok meaning="equals" role="RELOP">=</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                        </XMApp>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">j</XMTok>
+                        </XMApp>
+                      </XMApp>
+                      <XMApp>
+                        <XMTok meaning="less-than" role="RELOP">&lt;</XMTok>
+                        <XMApp>
+                          <XMTok role="SUBSCRIPTOP" scriptpos="post7"/>
+                          <XMTok role="UNKNOWN" font="italic">p</XMTok>
+                          <XMTok role="UNKNOWN" font="italic">i</XMTok>
+                        </XMApp>
+                        <XMTok role="UNKNOWN" font="italic">r</XMTok>
+                      </XMApp>
+                    </XMApp>
+                  </XMCell>
+                </XMRow>
+                <XMRow>
+                  <XMCell align="left">
+                    <XMTok meaning="0" role="NUMBER">0</XMTok>
+                  </XMCell>
+                  <XMCell align="left">
+                    <XMText> otherwise </XMText>
+                  </XMCell>
+                </XMRow>
+              </XMArray>
+            </XMApp>
+          </XMath>
+        </Math>
+      </equation>
+      <p>In other words, the players split the market if they both charge below
+the reward price and charge the same price. If the players charge two
+different prices, the player with the lowest price captures the entire
+market. If player <Math mode="inline" xml:id="S2.p3.m5" tex="i" text="i"><XMath><XMTok role="UNKNOWN" font="italic">i</XMTok></XMath></Math> is undercut or is charging above the reserve
+price, then he earns zero reward. Here I normalize per unit cost to
+<Math mode="inline" xml:id="S2.p3.m6" tex="0" text="0"><XMath><XMTok meaning="0" role="NUMBER">0</XMTok></XMath></Math>. Therefore, the term “marginal cost pricing” will be referred
+to the case when a firm charges <Math mode="inline" xml:id="S2.p3.m7" tex="0" text="0"><XMath><XMTok meaning="0" role="NUMBER">0</XMTok></XMath></Math>.
+<!-- %**** event˙driven˙collusion.tex Line 200 **** --></p>
+    </para>
+    <para xml:id="S2.p4">
+      <p>Finally, the market sends messages to player <Math mode="inline" xml:id="S2.p4.m1" tex="1" text="1"><XMath><XMTok meaning="1" role="NUMBER">1</XMTok></XMath></Math> and player <Math mode="inline" xml:id="S2.p4.m2" tex="2" text="2"><XMath><XMTok meaning="2" role="NUMBER">2</XMTok></XMath></Math>
+simultaneously at rate <Math mode="inline" xml:id="S2.p4.m3" tex="\mu" text="mu"><XMath><XMTok name="mu" role="UNKNOWN" font="italic">μ</XMTok></XMath></Math> and those messages traverse
+instantaneously. The messages reveal the price of each player’s
+product currently in the market. Upon receiving the public message,
+each player can decide to either revert to marginal cost pricing or
+maintain its current price.</p>
+    </para>
+    <para xml:id="S2.p5">
+      <p>There are a ton of assumptions built into this model. Without
+explaining, I just want to enumerate which ones can be relaxed.</p>
+      <enumerate xml:id="I1">
+        <item frefnum="1." refnum="1" xml:id="I1.i1">
+          <tag>1.</tag>
+          <para xml:id="I1.i1.p1">
+            <p>We can change from perfect substitutes to a case of linear
+demand.</p>
+          </para>
+        </item>
+        <item frefnum="2." refnum="2" xml:id="I1.i2">
+          <tag>2.</tag>
+          <para xml:id="I1.i2.p1">
+            <p>We can change to a case where firms also observe their profits
+instead of the exact state of the market.</p>
+          </para>
+        </item>
+        <item frefnum="3." refnum="3" xml:id="I1.i3">
+          <tag>3.</tag>
+          <para xml:id="I1.i3.p1">
+            <p>The public price message does not have to contain both players’
+price. In other words, it could be at rate <Math mode="inline" xml:id="I1.i3.p1.m1" tex="\mu_{1}" text="mu _ 1"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post3"/><XMTok name="mu" role="UNKNOWN" font="italic">μ</XMTok><XMTok meaning="1" role="NUMBER">1</XMTok></XMApp></XMath></Math> player 1’s
+price is known publicly and at rate <Math mode="inline" xml:id="I1.i3.p1.m2" tex="\mu_{2}" text="mu _ 2"><XMath><XMApp><XMTok role="SUBSCRIPTOP" scriptpos="post3"/><XMTok name="mu" role="UNKNOWN" font="italic">μ</XMTok><XMTok meaning="2" role="NUMBER">2</XMTok></XMApp></XMath></Math>, player 2’s price is
+known publicly. What is essential (at least for now) is that the
+price revelations are public (i.e. player 1 sometimes learns
+player 2’s price and player 2 knows player 1 learned player 2’s
+price.)</p>
+          </para>
+        </item>
+        <item frefnum="4." refnum="4" xml:id="I1.i4">
+          <tag>4.</tag>
+          <para xml:id="I1.i4.p1">
+            <p>We can change to a case where instead of public realizations of
+prices, there is a public realization of profits.</p>
+          </para>
+        </item>
+        <item frefnum="5." refnum="5" xml:id="I1.i5">
+          <tag>5.</tag>
+          <para xml:id="I1.i5.p1">
+            <p>We can extend to <Math mode="inline" xml:id="I1.i5.p1.m1" tex="N" text="N"><XMath><XMTok role="UNKNOWN" font="italic">N</XMTok></XMath></Math> firms.
+<!-- %**** event˙driven˙collusion.tex Line 225 **** --></p>
+          </para>
+        </item>
+        <item frefnum="6." refnum="6" xml:id="I1.i6">
+          <tag>6.</tag>
+          <para xml:id="I1.i6.p1">
+            <p>We can extend to Cournot</p>
+          </para>
+        </item>
+        <item frefnum="7." refnum="7" xml:id="I1.i7">
+          <tag>7.</tag>
+          <para xml:id="I1.i7.p1">
+            <p>Upon receiving the public announcement, firms need not be
+limited to only changing their price to marginal cost pricing.
+However, the results will not be affected if this restriction is
+changed but the formal justification will be much more involved.</p>
+          </para>
+        </item>
+      </enumerate>
+      <p>All of these assumptions are used to make the initial math easier and
+a bit cleaner. Each new assumption will add parameters and make the
+math messier but all (to some degree) are able to be relaxed.</p>
+    </para>
+    <para xml:id="S2.p6">
+      <p>Now, let’s define a collusive information sharing strategy as follows:</p>
+    </para>
+    <para xml:id="S2.p7">
+      <p><text font="bold">Truthful information sharing strategy:</text> Upon receiving a
+message that the reserve price is <Math mode="inline" xml:id="S2.p7.m1" tex="\underline{r}" text="underline@(r)"><XMath><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math> (<Math mode="inline" xml:id="S2.p7.m2" tex="\overline{r}" text="overline@(r)"><XMath><XMApp><XMTok name="overline" role="OVERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math>), inform the other
+player that the reserve price is <Math mode="inline" xml:id="S2.p7.m3" tex="\underline{r}" text="underline@(r)"><XMath><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math> (<Math mode="inline" xml:id="S2.p7.m4" tex="\overline{r}" text="overline@(r)"><XMath><XMApp><XMTok name="overline" role="OVERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math>), set
+price equal to <Math mode="inline" xml:id="S2.p7.m5" tex="\underline{r}" text="underline@(r)"><XMath><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math>. Upon being told by the other player
+that the reserve price is <Math mode="inline" xml:id="S2.p7.m6" tex="\underline{r}" text="underline@(r)"><XMath><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math> (<Math mode="inline" xml:id="S2.p7.m7" tex="\overline{r}" text="overline@(r)"><XMath><XMApp><XMTok name="overline" role="OVERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math>), set price
+equal to <Math mode="inline" xml:id="S2.p7.m8" tex="\underline{r}" text="underline@(r)"><XMath><XMApp><XMTok name="underline" role="UNDERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math> (<Math mode="inline" xml:id="S2.p7.m9" tex="\overline{r}" text="overline@(r)"><XMath><XMApp><XMTok name="overline" role="OVERACCENT">¯</XMTok><XMTok role="UNKNOWN" font="italic">r</XMTok></XMApp></XMath></Math>). Upon receiving a public
+message that the the price of both players in the market is the same,
+take no action. Upon receiving a public message that the prices of
+the two firms in the market are <emph>not</emph> the same, set price equal
+to <Math mode="inline" xml:id="S2.p7.m10" tex="0" text="0"><XMath><XMTok meaning="0" role="NUMBER">0</XMTok></XMath></Math> forever</p>
+    </para>
+    <para xml:id="S2.p8">
+      <p>Intuitively, the truthful information sharing strategy is one in which
+all information is shared between the firms and the firms charge the
+<!-- %**** event˙driven˙collusion.tex Line 250 **** -->reserve price whenever they are informed of it. The claim is that for
+specific parameter values, there exists a Nash equilibrium in which
+both players play the Truthful information sharing strategy.</p>
+    </para>
+  </section>
+  <section refnum="3" xml:id="S3">
+    <title><tag close=" ">3</tag>Results</title>
+    <para xml:id="S3.p1">
+      <p>Below is an interactive plot (you need to install the Mathematica
+plugin, fairly simple) that illustrates the parameter region in which
+the truthful information sharing strategy exists. The shaded region
+is the “collusive” region.</p>
+    </para>
+    <para xml:id="S3.p2">
+      <p>As a “first pass” result, we see that firms have more incentive when
+<Math mode="inline" xml:id="S3.p2.m1" tex="\delta" text="delta"><XMath><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok></XMath></Math> is low (remember in continuous time, low <Math mode="inline" xml:id="S3.p2.m2" tex="\delta" text="delta"><XMath><XMTok name="delta" role="UNKNOWN" font="italic">δ</XMTok></XMath></Math> means more
+value placed on future rewards) and the rate of public price
+revelation <Math mode="inline" xml:id="S3.p2.m3" tex="\mu" text="mu"><XMath><XMTok name="mu" role="UNKNOWN" font="italic">μ</XMTok></XMath></Math>, (i.e. the rate of being caught), is high.</p>
+    </para>
+  </section>
+  <bibliography bibstyle="plain" citestyle="numbers" files="/home/justin/Documents/event_driven_bertrand/bertrandrefs.bib" xml:id="bib">
+    <title>References</title>
+  </bibliography>
+</document>

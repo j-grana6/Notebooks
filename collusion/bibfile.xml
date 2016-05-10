@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?latexml searchpaths="/home/justin/Documents/event_driven_bertrand"?>
+<!-- %Some control structure from latex.ltx -->
+<!-- %(amazing that it actually works!) -->
+<!-- %How much of this control struture will I need? -->
+<!-- %**** String Line 50 **** -->
+<!-- %**** String Line 75 **** -->
+<?latexml RelaxNGSchema="LaTeXML"?>
+<document xmlns="http://dlmf.nist.gov/LaTeXML">
+  <resource src="LaTeXML.css" type="text/css"/>
+  <bibliography citestyle="numbers" xml:id="bib">
+    <title/>
+    <biblist>
+      <bibentry key="AB" type="article" xml:id="bib.bib1">
+        <bib-name role="author">
+          <surname>Athey</surname>
+          <givenname>Susan</givenname>
+        </bib-name>
+        <bib-name role="author">
+          <surname>Bagwell</surname>
+          <givenname>Kyle</givenname>
+        </bib-name>
+        <bib-title>Collusion with persistent cost shocks</bib-title>
+        <bib-related role="host" type="journal">
+          <bib-title>Econometrica</bib-title>
+        </bib-related>
+        <bib-part role="volume">76</bib-part>
+        <bib-part role="number">3</bib-part>
+        <bib-publisher>Blackwell Publishing Ltd</bib-publisher>
+        <bib-identifier id="1468-0262" scheme="issn">ISSN 1468-0262</bib-identifier>
+        <bib-url href="http://dx.doi.org/10.1111/j.1468-0262.2008.00845.x">Link</bib-url>
+        <bib-identifier href="http://dx.doi.org/10.1111/j.1468-0262.2008.00845.x" id="10.1111/j.1468-0262.2008.00845.x" scheme="doi">Document</bib-identifier>
+        <bib-part role="pages">493–540</bib-part>
+        <bib-extract role="keywords">Collusion, persistent private information, dynamic games, auctions</bib-extract>
+        <bib-date role="publication">2008</bib-date>
+        <bib-data role="self" type="BibTeX">@article{AB,
+    author = {Athey, Susan and Bagwell, Kyle},
+     title = {Collusion With Persistent Cost Shocks},
+   journal = {Econometrica},
+    volume = {76},
+    number = {3},
+ publisher = {Blackwell Publishing Ltd},
+      issn = {1468-0262},
+       url = {http://dx.doi.org/10.1111/j.1468-0262.2008.00845.x},
+       doi = {10.1111/j.1468-0262.2008.00845.x},
+     pages = {493–540},
+  keywords = {Collusion, persistent private information, dynamic games, auctions},
+      year = {2008}}
+</bib-data>
+      </bibentry>
+      <bibentry key="differentialresource" type="article" xml:id="bib.bib2">
+        <bib-title>On the markovian efficiency of bertrand and cournot equilibria</bib-title>
+        <bib-related role="host" type="journal">
+          <bib-title>Journal of Economic Theory</bib-title>
+        </bib-related>
+        <bib-part role="volume">155</bib-part>
+        <bib-part role="number"/>
+        <bib-part role="pages">332 – 358</bib-part>
+        <bib-date role="publication">2015</bib-date>
+        <bib-note role="annotation"/>
+        <bib-identifier id="0022-0531" scheme="issn">ISSN 0022-0531</bib-identifier>
+        <bib-identifier href="http://dx.doi.org/http://dx.doi.org/10.1016/j.jet.2014.11.007" id="http://dx.doi.org/10.1016/j.jet.2014.11.007" scheme="doi">Document</bib-identifier>
+        <bib-url href="http://www.sciencedirect.com/science/article/pii/S0022053114001665">Link</bib-url>
+        <bib-name role="author">
+          <surname>Colombo</surname>
+          <givenname>Luca</givenname>
+        </bib-name>
+        <bib-name role="author">
+          <surname>Labrecciosa</surname>
+          <givenname>Paola</givenname>
+        </bib-name>
+        <bib-extract role="keywords">Closed-Loop Nash Equilibria</bib-extract>
+        <bib-extract role="keywords">Market efficiency</bib-extract>
+        <bib-extract role="keywords">Product differentiation</bib-extract>
+        <bib-extract role="keywords">Productive asset oligopoly</bib-extract>
+        <bib-data role="self" type="BibTeX">@article{differentialresource,
+     title = {On the Markovian efficiency of Bertrand and Cournot equilibria},
+   journal = {Journal of Economic Theory},
+    volume = {155},
+    number = {},
+     pages = {332 - 358},
+      year = {2015},
+      note = {},
+      issn = {0022-0531},
+       doi = {http://dx.doi.org/10.1016/j.jet.2014.11.007},
+       url = {http://www.sciencedirect.com/science/article/pii/S0022053114001665},
+    author = {Luca Colombo and Paola Labrecciosa},
+  keywords = {Closed-Loop Nash Equilibria},
+  keywords = {Market efficiency},
+  keywords = {Product differentiation},
+  keywords = {Productive asset oligopoly}}
+</bib-data>
+      </bibentry>
+      <bibentry key="greenold" type="article" xml:id="bib.bib3">
+        <bib-identifier id="00129682, 14680262" scheme="issn">ISSN 00129682, 14680262</bib-identifier>
+        <bib-url href="http://www.jstor.org/stable/1911462">Link</bib-url>
+        <bib-extract role="abstract">Recent work in game theory has shown that, in principle, it may be possible for firms in an industry to form a self-policing cartel to maximize their joint profits. This paper examines the nature of cartel self-enforcement in the presence of demand uncertainty. A model of a noncooperatively supported cartel is presented, and the aspects of industry structure which would make such a cartel viable are discussed.</bib-extract>
+        <bib-name role="author">
+          <surname>Edward J. Green</surname>
+          <givenname>Robert H. Porter</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>Econometrica</bib-title>
+        </bib-related>
+        <bib-part role="number">1</bib-part>
+        <bib-part role="pages">87–100</bib-part>
+        <bib-publisher>[Wiley, Econometric Society]</bib-publisher>
+        <bib-title>Noncooperative collusion under imperfect price information</bib-title>
+        <bib-part role="volume">52</bib-part>
+        <bib-date role="publication">1984</bib-date>
+        <bib-data role="self" type="BibTeX">@article{greenold,
+      issn = {00129682, 14680262},
+       url = {http://www.jstor.org/stable/1911462},
+  abstract = {Recent work in game theory has shown that, in principle, it may be possible for firms in an industry to form a self-policing cartel to maximize their joint profits. This paper examines the nature of cartel self-enforcement in the presence of demand uncertainty. A model of a noncooperatively supported cartel is presented, and the aspects of industry structure which would make such a cartel viable are discussed.},
+    author = {Edward J. Green, Robert H. Porter},
+   journal = {Econometrica},
+    number = {1},
+     pages = {87-100},
+ publisher = {[Wiley, Econometric Society]},
+     title = {Noncooperative Collusion under Imperfect Price Information},
+    volume = {52},
+      year = {1984}}
+</bib-data>
+      </bibentry>
+      <bibentry key="truthtell" type="article" xml:id="bib.bib4">
+        <bib-title>Information sharing in oligopoly: the truth-telling problem</bib-title>
+        <bib-name role="author">
+          <surname>Ziv</surname>
+          <givenname>Amir</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>The RAND Journal of Economics</bib-title>
+        </bib-related>
+        <bib-part role="pages">455–465</bib-part>
+        <bib-date role="publication">1993</bib-date>
+        <bib-publisher>JSTOR</bib-publisher>
+        <bib-data role="self" type="BibTeX">@article{truthtell,
+     title = {Information sharing in oligopoly: The truth-telling problem},
+    author = {Ziv, Amir},
+   journal = {The RAND Journal of Economics},
+     pages = {455–465},
+      year = {1993},
+ publisher = {JSTOR}}
+</bib-data>
+      </bibentry>
+      <bibentry key="generalizedcomm" type="article" xml:id="bib.bib5">
+        <bib-title>Communication in cournot oligopoly</bib-title>
+        <bib-name role="author">
+          <surname>Goltsman</surname>
+          <givenname>Maria</givenname>
+        </bib-name>
+        <bib-name role="author">
+          <surname>Pavlov</surname>
+          <givenname>Gregory</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>Journal of Economic Theory</bib-title>
+        </bib-related>
+        <bib-part role="volume">153</bib-part>
+        <bib-part role="pages">152–176</bib-part>
+        <bib-date role="publication">2014</bib-date>
+        <bib-publisher>Elsevier</bib-publisher>
+        <bib-data role="self" type="BibTeX">@article{generalizedcomm,
+     title = {Communication in Cournot oligopoly},
+    author = {Goltsman, Maria and Pavlov, Gregory},
+   journal = {Journal of Economic Theory},
+    volume = {153},
+     pages = {152–176},
+      year = {2014},
+ publisher = {Elsevier}}
+</bib-data>
+      </bibentry>
+      <bibentry key="shareinfo" type="article" xml:id="bib.bib6">
+        <bib-identifier id="0361915X" scheme="issn">ISSN 0361915X</bib-identifier>
+        <bib-url href="http://www.jstor.org/stable/3003442">Link</bib-url>
+        <bib-extract role="abstract">This article studies the fulfilled expectations equilibrium for a Cournot duopoly model in which firms acquire information about uncertain linear demand. Several propositions are established concerning the incentives to acquire and release information in this duopoly environment.</bib-extract>
+        <bib-name role="author">
+          <surname>William Novshek</surname>
+          <givenname>Hugo Sonnenschein</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>The Bell Journal of Economics</bib-title>
+        </bib-related>
+        <bib-part role="number">1</bib-part>
+        <bib-part role="pages">214–218</bib-part>
+        <bib-publisher>[RAND Corporation, Wiley]</bib-publisher>
+        <bib-title>Fulfilled expectations cournot duopoly with information acquisition and release</bib-title>
+        <bib-part role="volume">13</bib-part>
+        <bib-date role="publication">1982</bib-date>
+        <bib-data role="self" type="BibTeX">@article{shareinfo,
+      issn = {0361915X},
+       url = {http://www.jstor.org/stable/3003442},
+  abstract = {This article studies the fulfilled expectations equilibrium for a Cournot duopoly model in which firms acquire information about uncertain linear demand. Several propositions are established concerning the incentives to acquire and release information in this duopoly environment.},
+    author = {William Novshek, Hugo Sonnenschein},
+   journal = {The Bell Journal of Economics},
+    number = {1},
+     pages = {214-218},
+ publisher = {[RAND Corporation, Wiley]},
+     title = {Fulfilled Expectations Cournot Duopoly with Information Acquisition and Release},
+    volume = {13},
+      year = {1982}}
+</bib-data>
+      </bibentry>
+      <bibentry key="repeatedbook" type="book" xml:id="bib.bib7">
+        <bib-title>Repeated games and reputations</bib-title>
+        <bib-name role="author">
+          <surname>Mailath</surname>
+          <givenname>George J</givenname>
+        </bib-name>
+        <bib-name role="author">
+          <surname>Samuelson</surname>
+          <givenname>Larry</givenname>
+        </bib-name>
+        <bib-part role="volume">2</bib-part>
+        <bib-date role="publication">2006</bib-date>
+        <bib-publisher>Oxford university press Oxford</bib-publisher>
+        <bib-data role="self" type="BibTeX">@book{repeatedbook,
+     title = {Repeated games and reputations},
+    author = {Mailath, George J and Samuelson, Larry},
+    volume = {2},
+      year = {2006},
+ publisher = {Oxford university press Oxford}}
+</bib-data>
+      </bibentry>
+      <bibentry key="powercomm" type="article" xml:id="bib.bib8">
+        <bib-title>The power of communication</bib-title>
+        <bib-name role="author">
+          <surname>Rahman</surname>
+          <givenname>David</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>The American Economic Review</bib-title>
+        </bib-related>
+        <bib-part role="volume">104</bib-part>
+        <bib-part role="number">11</bib-part>
+        <bib-part role="pages">3737–3751</bib-part>
+        <bib-date role="publication">2014</bib-date>
+        <bib-publisher>American Economic Association</bib-publisher>
+        <bib-data role="self" type="BibTeX">@article{powercomm,
+     title = {The power of communication},
+    author = {Rahman, David},
+   journal = {The American Economic Review},
+    volume = {104},
+    number = {11},
+     pages = {3737–3751},
+      year = {2014},
+ publisher = {American Economic Association}}
+</bib-data>
+      </bibentry>
+      <bibentry key="commandcoll" type="article" xml:id="bib.bib9">
+        <bib-title>On communication and collusion</bib-title>
+        <bib-name role="author">
+          <surname>Awaya</surname>
+          <givenname>Yu</givenname>
+        </bib-name>
+        <bib-name role="author">
+          <surname>Krishna</surname>
+          <givenname>Vijay</givenname>
+        </bib-name>
+        <bib-related role="host" type="journal">
+          <bib-title>The American Economic Review</bib-title>
+        </bib-related>
+        <bib-date role="publication">2015</bib-date>
+        <bib-data role="self" type="BibTeX">@article{commandcoll,
+     title = {On communication and collusion},
+    author = {Awaya, Yu and Krishna, Vijay},
+   journal = {The American Economic Review},
+      year = {2015}}
+</bib-data>
+      </bibentry>
+    </biblist>
+  </bibliography>
+</document>

@@ -1,0 +1,447 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>Event-Driven Collusion</title>
+<!--Generated on Tue May 10 17:47:34 2016 by LaTeXML (version 0.8.0) http://dlmf.nist.gov/LaTeXML/.-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="LaTeXML.css" type="text/css">
+<link rel="stylesheet" href="ltx-article.css" type="text/css">
+</head>
+<body>
+<div class="ltx_page_main">
+<div class="ltx_page_content">
+<div class="ltx_document ltx_authors_1line">
+<h1 class="ltx_title ltx_title_document">Event-Driven Collusion</h1>
+<div class="ltx_authors">
+<span class="ltx_creator ltx_role_author">
+<span class="ltx_personname">Justin Grana
+</span></span>
+</div>
+
+<div id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">1 </span>Introduction</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">This write-up is intended to be the “white paper” to an
+Econometrica, AER, JET…submission. It will begin with a brief
+introduction that outlines a Bertrand game and the notion of
+collusion. It will then briefly outline some of the foundational as
+well as more current literature that investigate collusion in a
+Bertrand environment. Finally the introduction will clearly juxtapose
+an event-driven Bertrand game with the current literature.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">The second section will outline the model in terms of an SFT-Net. It
+omits the fully rigorous specification of the network in favor of an
+intuitive explanation with the requisite notation. Note that this
+section also omits the “one step deviation principal” for
+event-driven games as well as the notion of subgame perfect/sequential
+equilibrium. Basically, all of this involves a “translation” of the
+idea of subgame perfect/sequential equilibrium in repeated games to an
+event-driven framework. It is a ton of tedious mathematical
+boilerplate but conceptually very simple. (On another note, it might
+make sense to describe something like an “event-driven equilibrium”
+that is similar to subgame perfect. For example, we can say something
+like “If all players’ internal state includes a component that
+represents the entire history of past observations, then if for
+all players <img id="S1.p2.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> and histories <img id="S1.p2.m2" class="ltx_Math" style="vertical-align:-5px" src="mi/mi30.png" width="20" height="19" alt="h_{i}">, <img id="S1.p2.m3" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> cannot improve his expected
+utility by deviating, the strategy profile is an event-driven
+equilibrium. I’m sure there will be some gotchyas but it might be
+worth thinking along those lines)</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The third section will present the results. These will be amended as
+new results come in.</p>
+</div>
+<div id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.1 </span>Preliminaries</h3>
+
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">This just outlines the basic static and repeated Bertrand
+game. Can be skipped if you are familiar with “trigger
+strategies”</span> The standard, static Bertrand example is as follows: Suppose there are <img id="S1.SS1.p1.m1" class="ltx_Math" style="vertical-align:-6px" src="mi/mi6.png" width="80" height="21" alt="I=\{1,2\}"> firms. Each firm has identical per-unit cost <img id="S1.SS1.p1.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi24.png" width="13" height="16" alt="\theta">. Firm <img id="S1.SS1.p1.m3" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> chooses a price, <img id="S1.SS1.p1.m4" class="ltx_Math" style="vertical-align:-5px" src="mi/mi36.png" width="19" height="15" alt="p_{i}"> in <img id="S1.SS1.p1.m5" class="ltx_Math" style="vertical-align:-2px" src="mi/mi18.png" width="17" height="16" alt="\mathbb{R}">. Suppose there is a continuum of consumers on the interval <img id="S1.SS1.p1.m6" class="ltx_Math" style="vertical-align:-6px" src="mi/mi10.png" width="39" height="21" alt="[0,1]"> with reservation price <img id="S1.SS1.p1.m7" class="ltx_Math" style="vertical-align:-3px" src="mi/mi41.png" width="45" height="17" alt="r&gt;\theta">. Then, player <img id="S1.SS1.p1.m8" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i">’s utility function is given by</p>
+<table id="S1.E1" class="ltx_equation">
+
+<tr class="ltx_equation ltx_align_baseline">
+<td class="ltx_eqn_pad"></td>
+<td class="ltx_align_center"><img id="S1.E1.m1" class="ltx_Math" style="vertical-align:-36px" src="mi/mi1.png" width="288" height="80" alt="\Pi_{i}(p_{i},p_{j})=\begin{cases}p_{i}-\theta&amp;p_{i}&lt;p_{j},p_{i}&lt;r\\
+\frac{p_{i}-\theta}{2}&amp;p_{i}=p_{j},p_{i}&lt;r\\
+0&amp;\text{ otherwise }\end{cases}"></td>
+<td class="ltx_eqn_pad"></td>
+<td rowspan="1" class="ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation">(1)</span></td>
+</tr>
+</table>
+<p class="ltx_p">As is standard, the only equilibrium in this game is when
+<img id="S1.SS1.p1.m9" class="ltx_Math" style="vertical-align:-7px" src="mi/mi35.png" width="91" height="21" alt="p_{i}=p_{j}=\theta">. This is easy to see since any equilibrium with
+<img id="S1.SS1.p1.m10" class="ltx_Math" style="vertical-align:-7px" src="mi/mi34.png" width="75" height="21" alt="p_{i},p_{j}&gt;\theta">, firms have the incentive to undercut one another by
+a tiny amount (from here an throughout, I will assume that firm <img id="S1.SS1.p1.m11" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i">
+can undercut a competitor who charges <img id="S1.SS1.p1.m12" class="ltx_Math" style="vertical-align:-7px" src="mi/mi39.png" width="20" height="17" alt="p_{j}"> by charging <img id="S1.SS1.p1.m13" class="ltx_Math" style="vertical-align:-7px" src="mi/mi37.png" width="49" height="19" alt="p_{j}-\epsilon">
+but the profits are still computed as <img id="S1.SS1.p1.m14" class="ltx_Math" style="vertical-align:-7px" src="mi/mi38.png" width="51" height="21" alt="p_{j}-\theta">.</p>
+</div>
+<div id="S1.SS1.p2" class="ltx_para">
+<p class="ltx_p">Of course, when the game is repeated in discrete time, the result
+change. First, suppose that the Bertrand game is repeated for a known
+and finite amount of time, <img id="S1.SS1.p2.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi9.png" width="17" height="16" alt="T">, and each player has common discount
+rate <img id="S1.SS1.p2.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi13.png" width="13" height="16" alt="\delta">. Now, player’s strategies are mappings from histories, <img id="S1.SS1.p2.m3" class="ltx_Math" style="vertical-align:-2px" src="mi/mi29.png" width="14" height="16" alt="h">,
+(all observations of past actions) to next action. Define the
+“finite trigger strategy” for player <img id="S1.SS1.p2.m4" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> as <img id="S1.SS1.p2.m5" class="ltx_Math" style="vertical-align:-6px" src="mi/mi27.png" width="62" height="21" alt="a_{i}(h)="> “play <img id="S1.SS1.p2.m6" class="ltx_Math" style="vertical-align:-2px" src="mi/mi42.png" width="13" height="12" alt="r">
+in every period unless <img id="S1.SS1.p2.m7" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> does not play <img id="S1.SS1.p2.m8" class="ltx_Math" style="vertical-align:-2px" src="mi/mi42.png" width="13" height="12" alt="r">. In that case, play
+<img id="S1.SS1.p2.m9" class="ltx_Math" style="vertical-align:-2px" src="mi/mi24.png" width="13" height="16" alt="\theta"> forever.” It can be shown that this is <em class="ltx_emph">not</em> a (symmetric)
+Nash equilibrium strategy. To see why, note that in period <img id="S1.SS1.p2.m10" class="ltx_Math" style="vertical-align:-2px" src="mi/mi9.png" width="17" height="16" alt="T">,
+player <img id="S1.SS1.p2.m11" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> will want to undercut <img id="S1.SS1.p2.m12" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> since he does not receive any
+future benefit from not undercutting <img id="S1.SS1.p2.m13" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j">. Knowing this, in period
+<img id="S1.SS1.p2.m14" class="ltx_Math" style="vertical-align:-3px" src="mi/mi8.png" width="47" height="17" alt="T-1">, <img id="S1.SS1.p2.m15" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> would no longer have an incentive not to undercut <img id="S1.SS1.p2.m16" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i">.
+This logic can be extrapolated back to period 1 and therefore the
+only Nash equilibrium is when both players charge <img id="S1.SS1.p2.m18" class="ltx_Math" style="vertical-align:-2px" src="mi/mi24.png" width="13" height="16" alt="\theta">.</p>
+</div>
+<div id="S1.SS1.p3" class="ltx_para">
+<p class="ltx_p">Now, suppose the game is repeated infinitely and extend the finite
+trigger strategy to an infinite trigger strategy. We will now show
+that under a high enough discount rate, the infinite trigger strategy
+is a subgame perfect equilibrium. To see why, note that <img id="S1.SS1.p3.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i">’s total
+discounted utility under the trigger strategy (played by both players)
+is given by <img id="S1.SS1.p3.m2" class="ltx_Math" style="vertical-align:-11px" src="mi/mi14.png" width="51" height="25" alt="\frac{r}{2(1-\delta)}">. Note that if <img id="S1.SS1.p3.m3" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> undercuts <img id="S1.SS1.p3.m4" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j">,
+then his expected utility is given by <img id="S1.SS1.p3.m5" class="ltx_Math" style="vertical-align:-2px" src="mi/mi42.png" width="13" height="12" alt="r"> since he gets the entire
+market share in the first period and then nothing after. Therefore,
+<img id="S1.SS1.p3.m6" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> has an incentive to undercut <img id="S1.SS1.p3.m7" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> in the first period iff
+<img id="S1.SS1.p3.m8" class="ltx_Math" style="vertical-align:-11px" src="mi/mi40.png" width="83" height="25" alt="r&gt;\frac{r}{2(1-\delta)}"> or equivalently <img id="S1.SS1.p3.m9" class="ltx_Math" style="vertical-align:-8px" src="mi/mi11.png" width="47" height="25" alt="\delta&lt;\frac{1}{2}">. We
+can also show that this is subgame perfect since if
+<img id="S1.SS1.p3.m10" class="ltx_Math" style="vertical-align:-8px" src="mi/mi12.png" width="47" height="25" alt="\delta&gt;\frac{1}{2}">, given one player has deviated, it is weakly
+dominant for each player to charge <img id="S1.SS1.p3.m11" class="ltx_Math" style="vertical-align:-2px" src="mi/mi24.png" width="13" height="16" alt="\theta">.</p>
+</div>
+</div>
+<div id="S1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">1.2 </span>Literature Review</h3>
+
+<div id="S1.SS2.p1" class="ltx_para">
+<p class="ltx_p">Recent literature on Bertrand competition has taken two
+approaches. The first approach is to extend the game of perfect
+observability to understand other
+phenomenon. For example, <cite class="ltx_cite">[<a href="#bib.bib1" title="Collusion with persistent cost shocks" class="ltx_ref">1</a>]</cite> model a Bertrand game in which
+each firm’s per-unit <span class="ltx_text ltx_font_bold">cost</span> dynamics are described by a two-state Markov
+chain. They show that there exists an equilibrium where all
+firms charge the reserve price in every period, regardless of their
+per-unit cost. Again, note that the firms’ pricing decisions are
+fully observable.</p>
+</div>
+<div id="S1.SS2.p2" class="ltx_para">
+<p class="ltx_p">Another example with perfectly observable prices is
+<cite class="ltx_cite">[<a href="#bib.bib2" title="On the markovian efficiency of bertrand and cournot equilibria" class="ltx_ref">3</a>]</cite>. This is a differential game in
+which players must also consume a renewable resource. Also note that
+in this game, the demand function is linear and not a reserve price.
+Nevertheless, the demand function and the parameters are known exactly
+to the players. The authors then show that a collusive equilibrium
+exists (although collusion was not the main focus of their paper).
+Again, this is a game with <em class="ltx_emph">no</em> uncertainty.</p>
+</div>
+<div id="S1.SS2.p3" class="ltx_para">
+<p class="ltx_p">The second approach in extending Bertrand games is with secret price
+cuts. That is, players do <em class="ltx_emph">not</em> observe the action of the other
+players in the previous rounds. Instead, stochastic
+profits are realized in each period and firms base their continuation strategy off of
+such a signal. For example, <cite class="ltx_cite">[<a href="#bib.bib3" title="Noncooperative collusion under imperfect price information" class="ltx_ref">4</a>]</cite> shows that there exists a
+collusive equilibrium in which players play the collusive price if the
+total profit of everyone is greater than a certain constant and then
+revert to marginal cost pricing for <img id="S1.SS2.p3.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi9.png" width="17" height="16" alt="T"> periods if the sum total
+of profits is below <img id="S1.SS2.p3.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi28.png" width="12" height="12" alt="c">, and then return. In other words, there is a
+finite punishment period in which the players cut prices.</p>
+</div>
+<div id="S1.SS2.p4" class="ltx_para">
+<p class="ltx_p">Other work such as <cite class="ltx_cite">[<a href="#bib.bib8" title="The power of communication" class="ltx_ref">5</a>]</cite> and <cite class="ltx_cite">[<a href="#bib.bib9" title="On communication and collusion" class="ltx_ref">2</a>]</cite> show how
+there exist information sharing mechanisms that facilitate collusion.
+For example, after each period firms may have an incentive to share
+their private profit information. For example, if firms profits are
+correlated, each has an incentive to truthfully announce their profits
+because if they announce profits that are “far away” from their
+opponent, the opponent will think they are lying and therefore enter a
+punishment phase. Again, these models assume <em class="ltx_emph">private</em> profit
+and pricing information.</p>
+</div>
+<div id="S1.SS2.p5" class="ltx_para">
+<p class="ltx_p">Note the difference between the two approaches to the repeated
+Bertrand game. One is where all information is known and observable
+(demand, prices, profits, etc) and the other is when firms receive a
+signal that is correlated with both demand and the other player’s
+prices. That is, firms can choose to undercut the market but they run
+the risk of their signal being too strong. The event-driven framework
+falls into the second category of secrete price cuts. However, the
+nature of the “correlation” between prices and information is
+different. In the event-driven framework, a player can undercut the
+market without generating <em class="ltx_emph">any</em> signal to the other players. The
+reason is that in the event-driven framework, the players observe
+their opponents prices subject to a stochastic lag. That is, if
+player <img id="S1.SS2.p5.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> under undercuts the market at time <img id="S1.SS2.p5.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi44.png" width="11" height="15" alt="t">, player <img id="S1.SS2.p5.m3" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> might
+not find out about the undercut until time <img id="S1.SS2.p5.m4" class="ltx_Math" style="vertical-align:-3px" src="mi/mi43.png" width="42" height="16" alt="t+\tau">. However, neither
+<img id="S1.SS2.p5.m5" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> nor <img id="S1.SS2.p5.m6" class="ltx_Math" style="vertical-align:-5px" src="mi/mi33.png" width="12" height="19" alt="j"> know <em class="ltx_emph">exactly</em> when prices will be made public.
+Therefore, it might be optimal for <img id="S1.SS2.p5.m7" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> to undercut the market for a
+fixed amount of time and then, after realizing he has not been caught,
+return to the collusive price. In other words, players in the
+event-driven Bertrand model do not focus on <span class="ltx_text ltx_font_italic">what</span> their
+information tells them about the other player’s strategies but
+<em class="ltx_emph">when</em> they will receive information about other player’s
+strategies.
+</p>
+</div>
+<div id="S1.SS2.p6" class="ltx_para">
+<p class="ltx_p">Although this will be made clearer in the following section, in the
+event-driven Bertrand model, the players almost always do not know
+demand or the other players’ price. They only observe signals in
+sporadic intervals and there is no restriction that players must learn
+of a change immediately after it happens. In other words, the
+event-driven Bertrand game is a new version of secret price cuts
+(in which players are not apprised of the exact state of demand or
+other players’ prices).</p>
+</div>
+</div>
+</div>
+<div id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2 </span>Model</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">There is a market node whose state space consists of <img id="S2.p1.m1" class="ltx_Math" style="vertical-align:-6px" src="mi/mi26.png" width="46" height="21" alt="\{\underline{r},\overline{r}\}"> (as well as the prices of each firm’s product). The market
+changes states spontaneously at rate <img id="S2.p1.m2" class="ltx_Math" style="vertical-align:-5px" src="mi/mi15.png" width="14" height="15" alt="\gamma">.
+Intuitively, there are two reserve prices. The market alternates
+between these reserve prices at rate <img id="S2.p1.m3" class="ltx_Math" style="vertical-align:-5px" src="mi/mi15.png" width="14" height="15" alt="\gamma">. At rate <img id="S2.p1.m4" class="ltx_Math" style="vertical-align:-5px" src="mi/mi16.png" width="22" height="19" alt="\lambda_{1}">,
+the market emits a message that travels instantaneously to player
+1 that informs player 1 of the reserve price. This message is
+noiseless. At a rate of <img id="S2.p1.m7" class="ltx_Math" style="vertical-align:-5px" src="mi/mi17.png" width="22" height="19" alt="\lambda_{2}">, the market does the same but the
+message is directed to player 2.
+</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">When player, <img id="S2.p2.m1" class="ltx_Math" style="vertical-align:-5px" src="mi/mi31.png" width="59" height="19" alt="i=1,2"> receives a message, he must make two decisions. First,
+he must decide what price to charge in <img id="S2.p2.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi19.png" width="29" height="18" alt="\mathbb{R}^{+}">. Secondly, he
+can decide whether or not to send a message to player 2, indicating
+what message he just received. The players are not restricted to
+telling the truth and the message to the other player is costless. In
+other words, the players can engage in cheap talk.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">The rewards for player <img id="S2.p3.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> given his price is <img id="S2.p3.m2" class="ltx_Math" style="vertical-align:-5px" src="mi/mi36.png" width="19" height="15" alt="p_{i}">, the other
+player’s price is <img id="S2.p3.m3" class="ltx_Math" style="vertical-align:-7px" src="mi/mi39.png" width="20" height="17" alt="p_{j}"> and the reserve price is <img id="S2.p3.m4" class="ltx_Math" style="vertical-align:-2px" src="mi/mi42.png" width="13" height="12" alt="r"> is given by:</p>
+<table id="S2.E2" class="ltx_equation">
+
+<tr class="ltx_equation ltx_align_baseline">
+<td class="ltx_eqn_pad"></td>
+<td class="ltx_align_center"><img id="S2.E2.m1" class="ltx_Math" style="vertical-align:-36px" src="mi/mi2.png" width="255" height="80" alt="r_{i}(p_{i},p_{j})=\begin{cases}p_{i}&amp;p_{i}&lt;p_{j},p_{i}&lt;r\\
+\frac{p_{i}}{2}&amp;p_{i}=p_{j},p_{i}&lt;r\\
+0&amp;\text{ otherwise }\end{cases}"></td>
+<td class="ltx_eqn_pad"></td>
+<td rowspan="1" class="ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation">(2)</span></td>
+</tr>
+</table>
+<p class="ltx_p">In other words, the players split the market if they both charge below
+the reward price and charge the same price. If the players charge two
+different prices, the player with the lowest price captures the entire
+market. If player <img id="S2.p3.m5" class="ltx_Math" style="vertical-align:-2px" src="mi/mi32.png" width="10" height="16" alt="i"> is undercut or is charging above the reserve
+price, then he earns zero reward. Here I normalize per unit cost to
+0. Therefore, the term “marginal cost pricing” will be referred
+to the case when a firm charges 0.
+</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Finally, the market sends messages to player 1 and player 2
+simultaneously at rate <img id="S2.p4.m3" class="ltx_Math" style="vertical-align:-5px" src="mi/mi20.png" width="15" height="15" alt="\mu"> and those messages traverse
+instantaneously. The messages reveal the price of each player’s
+product currently in the market. Upon receiving the public message,
+each player can decide to either revert to marginal cost pricing or
+maintain its current price.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">There are a ton of assumptions built into this model. Without
+explaining, I just want to enumerate which ones can be relaxed.</p>
+<ol id="I1" class="ltx_enumerate">
+<li id="I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">1.</span> 
+<div id="I1.i1.p1" class="ltx_para">
+<p class="ltx_p">We can change from perfect substitutes to a case of linear
+demand.</p>
+</div>
+</li>
+<li id="I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">2.</span> 
+<div id="I1.i2.p1" class="ltx_para">
+<p class="ltx_p">We can change to a case where firms also observe their profits
+instead of the exact state of the market.</p>
+</div>
+</li>
+<li id="I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">3.</span> 
+<div id="I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The public price message does not have to contain both players’
+price. In other words, it could be at rate <img id="I1.i3.p1.m1" class="ltx_Math" style="vertical-align:-5px" src="mi/mi21.png" width="23" height="15" alt="\mu_{1}"> player 1’s
+price is known publicly and at rate <img id="I1.i3.p1.m2" class="ltx_Math" style="vertical-align:-5px" src="mi/mi22.png" width="23" height="15" alt="\mu_{2}">, player 2’s price is
+known publicly. What is essential (at least for now) is that the
+price revelations are public (i.e. player 1 sometimes learns
+player 2’s price and player 2 knows player 1 learned player 2’s
+price.)</p>
+</div>
+</li>
+<li id="I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">4.</span> 
+<div id="I1.i4.p1" class="ltx_para">
+<p class="ltx_p">We can change to a case where instead of public realizations of
+prices, there is a public realization of profits.</p>
+</div>
+</li>
+<li id="I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">5.</span> 
+<div id="I1.i5.p1" class="ltx_para">
+<p class="ltx_p">We can extend to <img id="I1.i5.p1.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi7.png" width="20" height="16" alt="N"> firms.
+</p>
+</div>
+</li>
+<li id="I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">6.</span> 
+<div id="I1.i6.p1" class="ltx_para">
+<p class="ltx_p">We can extend to Cournot</p>
+</div>
+</li>
+<li id="I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_enumerate">7.</span> 
+<div id="I1.i7.p1" class="ltx_para">
+<p class="ltx_p">Upon receiving the public announcement, firms need not be
+limited to only changing their price to marginal cost pricing.
+However, the results will not be affected if this restriction is
+changed but the formal justification will be much more involved.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">All of these assumptions are used to make the initial math easier and
+a bit cleaner. Each new assumption will add parameters and make the
+math messier but all (to some degree) are able to be relaxed.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Now, let’s define a collusive information sharing strategy as follows:</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Truthful information sharing strategy:</span> Upon receiving a
+message that the reserve price is <img id="S2.p7.m1" class="ltx_Math" style="vertical-align:-6px" src="mi/mi25.png" width="13" height="15" alt="\underline{r}"> (<img id="S2.p7.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi23.png" width="13" height="15" alt="\overline{r}">), inform the other
+player that the reserve price is <img id="S2.p7.m3" class="ltx_Math" style="vertical-align:-6px" src="mi/mi25.png" width="13" height="15" alt="\underline{r}"> (<img id="S2.p7.m4" class="ltx_Math" style="vertical-align:-2px" src="mi/mi23.png" width="13" height="15" alt="\overline{r}">), set
+price equal to <img id="S2.p7.m5" class="ltx_Math" style="vertical-align:-6px" src="mi/mi25.png" width="13" height="15" alt="\underline{r}">. Upon being told by the other player
+that the reserve price is <img id="S2.p7.m6" class="ltx_Math" style="vertical-align:-6px" src="mi/mi25.png" width="13" height="15" alt="\underline{r}"> (<img id="S2.p7.m7" class="ltx_Math" style="vertical-align:-2px" src="mi/mi23.png" width="13" height="15" alt="\overline{r}">), set price
+equal to <img id="S2.p7.m8" class="ltx_Math" style="vertical-align:-6px" src="mi/mi25.png" width="13" height="15" alt="\underline{r}"> (<img id="S2.p7.m9" class="ltx_Math" style="vertical-align:-2px" src="mi/mi23.png" width="13" height="15" alt="\overline{r}">). Upon receiving a public
+message that the the price of both players in the market is the same,
+take no action. Upon receiving a public message that the prices of
+the two firms in the market are <em class="ltx_emph">not</em> the same, set price equal
+to 0 forever</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Intuitively, the truthful information sharing strategy is one in which
+all information is shared between the firms and the firms charge the
+reserve price whenever they are informed of it. The claim is that for
+specific parameter values, there exists a Nash equilibrium in which
+both players play the Truthful information sharing strategy.</p>
+</div>
+</div>
+<div id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3 </span>Results</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Below is an interactive plot (you need to install the Mathematica
+plugin, fairly simple) that illustrates the parameter region in which
+the truthful information sharing strategy exists. The shaded region
+  is the “collusive” region.</p>
+<script type="text/javascript" src="http://www.wolfram.com/cdf-player/plugin/v2.1/cdfplugin.js"></script>
+<script type="text/javascript">
+var cdf = new cdfplugin();
+cdf.setDefaultContent('<a href="http://www.wolfram.com/cdf-player/"><img  src="collusiveregion.png"></a>');
+cdf.embed('collusiveregion.cdf', 1066, 466);
+</script>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">As a “first pass” result, we see that firms have more incentive when
+<img id="S3.p2.m1" class="ltx_Math" style="vertical-align:-2px" src="mi/mi13.png" width="13" height="16" alt="\delta"> is low (remember in continuous time, low <img id="S3.p2.m2" class="ltx_Math" style="vertical-align:-2px" src="mi/mi13.png" width="13" height="16" alt="\delta"> means more
+value placed on future rewards) and the rate of public price
+revelation <img id="S3.p2.m3" class="ltx_Math" style="vertical-align:-5px" src="mi/mi20.png" width="15" height="15" alt="\mu">, (i.e. the rate of being caught), is high.</p>
+</div>
+</div>
+<div id="bib" class="ltx_bibliography">
+<h2 class="ltx_title ltx_title_bibliography">References</h2>
+
+<ul id="L1" class="ltx_biblist">
+<li id="bib.bib1" class="ltx_bibitem ltx_bib_article">
+<span class="ltx_bibtag ltx_bib_key ltx_role_refnum">[1]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S. Athey and K. Bagwell</span><span class="ltx_text ltx_bib_year">(2008)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Collusion with persistent cost shocks</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">76</span> (<span class="ltx_text ltx_bib_number">3</span>), <span class="ltx_text ltx_bib_pages"> pp. 493–540</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text issn ltx_bib_external">ISSN 1468-0262</span>,
+<a href="http://dx.doi.org/10.1111/j.1468-0262.2008.00845.x" title="" class="ltx_ref ltx_bib_external">Link</a>,
+<a href="http://dx.doi.org/10.1111/j.1468-0262.2008.00845.x" title="" class="ltx_ref doi ltx_bib_external">Document</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.SS2.p1" title="1.2 Literature Review ‣ 1 Introduction ‣ Event-Driven Collusion" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>.
+</span>
+</li>
+<li id="bib.bib9" class="ltx_bibitem ltx_bib_article">
+<span class="ltx_bibtag ltx_bib_key ltx_role_refnum">[2]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y. Awaya and V. Krishna</span><span class="ltx_text ltx_bib_year">(2015)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On communication and collusion</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The American Economic Review</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.SS2.p4" title="1.2 Literature Review ‣ 1 Introduction ‣ Event-Driven Collusion" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>.
+</span>
+</li>
+<li id="bib.bib2" class="ltx_bibitem ltx_bib_article">
+<span class="ltx_bibtag ltx_bib_key ltx_role_refnum">[3]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">L. Colombo and P. Labrecciosa</span><span class="ltx_text ltx_bib_year">(2015)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">On the markovian efficiency of bertrand and cournot equilibria</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Journal of Economic Theory</span> <span class="ltx_text ltx_bib_volume">155</span> (<span class="ltx_text ltx_bib_number"></span>), <span class="ltx_text ltx_bib_pages"> pp. 332 – 358</span>.
+</span>
+<span class="ltx_bibblock">Note: <span class="ltx_text ltx_bib_note"></span>
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text issn ltx_bib_external">ISSN 0022-0531</span>,
+<a href="http://dx.doi.org/http://dx.doi.org/10.1016/j.jet.2014.11.007" title="" class="ltx_ref doi ltx_bib_external">Document</a>,
+<a href="http://www.sciencedirect.com/science/article/pii/S0022053114001665" title="" class="ltx_ref ltx_bib_external">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.SS2.p2" title="1.2 Literature Review ‣ 1 Introduction ‣ Event-Driven Collusion" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>.
+</span>
+</li>
+<li id="bib.bib3" class="ltx_bibitem ltx_bib_article">
+<span class="ltx_bibtag ltx_bib_key ltx_role_refnum">[4]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">R. H. P. Edward J. Green</span><span class="ltx_text ltx_bib_year">(1984)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Noncooperative collusion under imperfect price information</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">Econometrica</span> <span class="ltx_text ltx_bib_volume">52</span> (<span class="ltx_text ltx_bib_number">1</span>), <span class="ltx_text ltx_bib_pages"> pp. 87–100</span>.
+</span>
+<span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text issn ltx_bib_external">ISSN 00129682, 14680262</span>,
+<a href="http://www.jstor.org/stable/1911462" title="" class="ltx_ref ltx_bib_external">Link</a></span>
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.SS2.p3" title="1.2 Literature Review ‣ 1 Introduction ‣ Event-Driven Collusion" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>.
+</span>
+</li>
+<li id="bib.bib8" class="ltx_bibitem ltx_bib_article">
+<span class="ltx_bibtag ltx_bib_key ltx_role_refnum">[5]</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">D. Rahman</span><span class="ltx_text ltx_bib_year">(2014)</span>
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">The power of communication</span>.
+</span>
+<span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">The American Economic Review</span> <span class="ltx_text ltx_bib_volume">104</span> (<span class="ltx_text ltx_bib_number">11</span>), <span class="ltx_text ltx_bib_pages"> pp. 3737–3751</span>.
+</span>
+<span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.SS2.p4" title="1.2 Literature Review ‣ 1 Introduction ‣ Event-Driven Collusion" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1.2</span></a>.
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ltx_page_footer">
+<div class="ltx_page_logo">Generated  on Tue May 10 17:47:34 2016 by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="[LOGO]"></a>
+</div>
+</div>
+</div>
+</body>
+</html>
