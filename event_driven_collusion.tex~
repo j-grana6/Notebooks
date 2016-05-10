@@ -1,0 +1,13 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackags{amssymb}
+\begin{document}
+\title{Event-Driven Collusion}
+\author{Justin Grana}
+\maketitle
+
+\section{Introduction}
+%% What is collusion
+%% What are some example with observed actions
+%% What are some examples without observed actions
+%% 
