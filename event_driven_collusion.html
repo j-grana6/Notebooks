@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>Event-Driven Collusion</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- html --> 
+<meta name="src" content="event_driven_collusion.tex"> 
+<meta name="date" content="2016-05-10 16:11:00"> 
+<link rel="stylesheet" type="text/css" href="event_driven_collusion.css"> 
+</head><body 
+>
+   <div class="maketitle">
+
+
+
+<h2 class="titleHead">Event-Driven Collusion</h2>
+<div class="author" ><span 
+class="cmr-12">Justin Grana</span></div><br />
+<div class="date" ><span 
+class="cmr-12">May 10, 2016</span></div>
+   </div>
+   <h3 class="sectionHead"><span class="titlemark">1   </span> <a 
+ id="x1-10001"></a>Introduction</h3>
+<!--l. 10--><p class="noindent" >This write-up is intended to be the &#8220;white paper&#8221; to an Econometrica, AER,
+JET...submission. It will begin with a brief introduction that outlines a Bertrand
+game and the notion of collusion. It will then briefly outline some of the foundational
+as well as more current literature that investigate collusion in a Bertrand
+environment. Finally the introduction will clearly juxtapose an event-driven Bertrand
+game with the current literature.
+<!--l. 18--><p class="indent" >   The second section will outline the model in terms of an SFT-Net. It omits the
+fully rigorous specification of the network in favor of an intuitive explanation with
+the requisite notation. Note that this section also omits the &#8220;one step deviation
+principal&#8221; for event-driven games as well as the notion of subgame perfect/sequential
+equilibrium. Basically, all of this involves a &#8220;translation&#8221; of the idea of subgame
+perfect/sequential equilibrium in repeated games to an event-driven framework. It is
+a ton of tedious mathematical boilerplate but conceptually very simple. (On
+another note, it might make sense to describe something like an &#8220;event-driven
+equilibrium&#8221; that is similar to subgame perfect. For example, we can say something
+like &#8220;If all players&#8217; internal state includes a component that represents the
+entire history of past observations, then for all players <span 
+class="cmmi-10">i </span>and histories <span 
+class="cmmi-10">h</span><sub><span 
+class="cmmi-7">i</span></sub>, <span 
+class="cmmi-10">i</span>
+cannot improve his expected utility by deviating, the strategy profile is an
+event-driven equilibrium. I&#8217;m sure there will be some gotchyas but the intuition is
+there.)
+<!--l. 36--><p class="indent" >   The third section will present the results and discuss extensions and future
+work.
+<!--l. 39--><p class="noindent" >
+
+   <h4 class="subsectionHead"><span class="titlemark">1.1   </span> <a 
+ id="x1-20001.1"></a>Preliminaries</h4>
+<!--l. 42--><p class="noindent" ><span 
+class="cmti-10">This just outlines the basic static and repeated Bertrand game. Can be skipped if you</span>
+<span 
+class="cmti-10">are familiar with &#8220;trigger strategies&#8221; </span>The standard, static Bertrand example is as
+follows: Suppose there are <span 
+class="cmmi-10">I </span>= <span 
+class="cmsy-10">{</span>1<span 
+class="cmmi-10">,</span>2<span 
+class="cmsy-10">} </span>firms. Each firm has identical per-unit cost <span 
+class="cmmi-10">&#x03B8;</span>.
+Firm <span 
+class="cmmi-10">i </span>chooses a price, <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">i</span></sub> in <span 
+class="msbm-10">&#x211D;</span>. Suppose there is a continuum of consumers on the
+interval [0<span 
+class="cmmi-10">,</span>1] with reservation price <span 
+class="cmmi-10">r &#x003E; &#x03B8;</span>. Then, player <span 
+class="cmmi-10">i</span>&#8217;s utility function is given
+by
+   <table 
+class="equation"><tr><td><a 
+ id="x1-2001r1"></a>
+   <center class="math-display" >
+<img 
+src="event_driven_collusion0x.png" alt="           (
+           |{pi - &#x03B8; pi &#x003C; pj,pi &#x003C; r
+&#x03A0;i(pi,pj) =  pi-&#x03B8;   pi = pj,pi &#x003C; r
+           |(  2
+            0       otherwise
+" class="math-display" ></center></td><td class="equation-label">(1)</td></tr></table>
+<!--l. 50--><p class="nopar" >
+As is standard, the only equilibrium in this game is when <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">i</span></sub> = <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">j</span></sub> = <span 
+class="cmmi-10">&#x03B8;</span>. This is easy to
+see since any equilibrium with <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">i</span></sub><span 
+class="cmmi-10">,p</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmmi-10">&#x003E; &#x03B8;</span>, firms have the incentive to undercut one
+another by a tiny amount (from here an throughout, I will assume that firm <span 
+class="cmmi-10">i </span>can
+undercut a competitor who charges <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">j</span></sub> by charging <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">&#x03F5; </span>but the profits are still
+computed as <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">j</span></sub> <span 
+class="cmsy-10">- </span><span 
+class="cmmi-10">&#x03B8;</span>.
+<!--l. 58--><p class="indent" >   Of course, when the game is repeated in discrete time, the result change. First,
+suppose that the Bertrand game is repeated for a known and finite amount of time,
+<span 
+class="cmmi-10">T</span>, and each player has common discount rate <span 
+class="cmmi-10">&#x03B4;</span>. Now, player&#8217;s strategies are
+mappings from histories, <span 
+class="cmmi-10">h</span>, (all observations of past actions) to next action. Define
+the &#8220;finite trigger strategy&#8221; for player <span 
+class="cmmi-10">i </span>as <span 
+class="cmmi-10">a</span><sub><span 
+class="cmmi-7">i</span></sub>(<span 
+class="cmmi-10">h</span>) = &#8220;play <span 
+class="cmmi-10">r </span>in every period unless <span 
+class="cmmi-10">j</span>
+does not play <span 
+class="cmmi-10">r</span>. In that case, play <span 
+class="cmmi-10">&#x03B8; </span>forever.&#8221; It can be shown that this is <span 
+class="cmti-10">not </span>a
+(symmetric) Nash equilibrium strategy. To see why, note that in period <span 
+class="cmmi-10">T</span>,
+player <span 
+class="cmmi-10">i </span>will want to undercut <span 
+class="cmmi-10">j </span>since he does not receive any future benefit
+from not undercutting <span 
+class="cmmi-10">j</span>. Knowing this, in period <span 
+class="cmmi-10">T </span><span 
+class="cmsy-10">- </span>1, <span 
+class="cmmi-10">j </span>would no longer
+have an incentive not to undercut <span 
+class="cmmi-10">i</span>. This logic can be extrapolated back to
+period 1 and therefore the only Nash equilibrium is when both players charge
+<span 
+class="cmmi-10">&#x03B8;</span>.
+<!--l. 73--><p class="indent" >   Now, suppose the game is repeated infinitely and extend the finite trigger strategy
+to an infinite trigger strategy. We will now show that under a high enough discount
+rate, the infinite trigger strategy is a subgame perfect equilibrium. To see why, note
+that <span 
+class="cmmi-10">i</span>&#8217;s total discounted utility under the trigger strategy (played by both players) is
+given by <img 
+src="event_driven_collusion1x.png" alt="--r--
+2(1-&#x03B4;)"  class="frac" align="middle">. Note that if <span 
+class="cmmi-10">i </span>undercuts <span 
+class="cmmi-10">j</span>, then his expected utility is given by <span 
+class="cmmi-10">r</span>
+since he gets the entire market share in the first period and then nothing after.
+
+Therefore, <span 
+class="cmmi-10">i </span>has an incentive to undercut <span 
+class="cmmi-10">j </span>in the first period iff <span 
+class="cmmi-10">r &#x003E;</span> <img 
+src="event_driven_collusion2x.png" alt="--r--
+2(1-&#x03B4;)"  class="frac" align="middle"> or
+equivalently <span 
+class="cmmi-10">&#x03B4; &#x003C;</span> <img 
+src="event_driven_collusion3x.png" alt="1
+2"  class="frac" align="middle">. We can also show that this is subgame perfect since if <span 
+class="cmmi-10">&#x03B4; &#x003E;</span> <img 
+src="event_driven_collusion4x.png" alt="1
+2"  class="frac" align="middle">,
+given one player has deviated, it is weakly dominant for each player to charge
+<span 
+class="cmmi-10">&#x03B8;</span>.
+<!--l. 87--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">1.2   </span> <a 
+ id="x1-30001.2"></a>Literature Review</h4>
+<!--l. 88--><p class="noindent" >Recent literature on Bertrand competition has taken a two-pronged approach. The
+first approach is to extend the game of perfect observability of the other player&#8217;s
+price to understand other phenomenon. For example, <span class="cite">[<a 
+href="#XAB">1</a>]</span> model a Bertrand game in
+which each firm&#8217;s per-unit cost dynamics are described by a two-state Markov chain.
+They show that there exists an equilibrium where all firms charge the reserve price in
+every period, regardless of their per-unit cost. Again, note that the firms&#8217; pricing
+decisions are fully observable.
+<!--l. 98--><p class="indent" >   Another example with perfectly observable prices is <span class="cite">[<a 
+href="#Xdifferentialresource">3</a>]</span>. This game is a differential
+game in which player&#8217;s must also consume a renewable resource. Also note
+that in this game, the demand function is linear and not a reserve price.
+Nevertheless, the demand function and the parameters are known exactly to the
+players. The authors then show that a collusive equilibrium exists (although
+collusion was not the main focus of their paper). Again, this is a game with <span 
+class="cmti-10">no</span>
+uncertainty.
+<!--l. 107--><p class="indent" >   The second approach in extending Bertrand games is with secret price cuts. That
+is, players do <span 
+class="cmti-10">not </span>observe the action of the other player in the previous round.
+Instead, after each period stochastic profits are realized and firms base their
+continuation strategy off of such a signal. For example, <span class="cite">[<a 
+href="#Xgreenold">4</a>]</span> shows that there exists a
+collusive equilibrium in which players play the collusive price if the total profit of
+everyone is greater than a certain constant and then play revert to marginal cost
+pricing for <span 
+class="cmmi-10">T </span>periods if the sum total of profits is below <span 
+class="cmmi-10">c</span>, and then return. In
+other words, there is a finite punishment period in which the players cut
+prices.
+<!--l. 118--><p class="indent" >   Other work such as <span class="cite">[<a 
+href="#Xpowercomm">5</a>]</span> and <span class="cite">[<a 
+href="#Xcommandcoll">2</a>]</span> show how there exist information sharing
+mechanisms that facilitate collusion. For example, after each period firms may have
+an incentive to share their private profit information. For example, if firms profits are
+correlated, each has an incentive to truthfully announce their profits because if they
+announce profits that are &#8220;far away&#8221; from their opponent, the opponent will think
+they are lying and therefore enter a punishment phase. Again, these models assume
+<span 
+class="cmti-10">private </span>profit and pricing information.
+<!--l. 128--><p class="indent" >   Note the difference between the two approaches to the repeated Bertrand game.
+One is where all information is known and observable (demand, prices, profits, etc)
+and the other is when firms receive a signal that is correlated with both demand and
+the other player&#8217;s prices. That is, firms can choose to undercut the market but they
+run the risk of their signal being too strong. The event-driven framework falls into
+the second category of secrete price cuts. However, the nature of the &#8220;correlation&#8221;
+between prices and information is different. In the event-driven framework, a player
+
+can undercut the market without generating <span 
+class="cmti-10">any </span>signal to the other players.
+The reason is that in the event-driven framework, the players observe their
+opponents prices subject to a stochastic lag. That is, if player <span 
+class="cmmi-10">i </span>under undercuts
+the market at time <span 
+class="cmmi-10">t</span>, player <span 
+class="cmmi-10">j </span>might not find out about the undercut until
+time <span 
+class="cmmi-10">t </span>+ <span 
+class="cmmi-10">&#x03C4;</span>. However, neither <span 
+class="cmmi-10">i </span>nor <span 
+class="cmmi-10">j </span>know <span 
+class="cmti-10">exactly </span>when prices will be made
+public. Therefore, it might be optimal for <span 
+class="cmmi-10">i </span>to undercut the market for a fixed
+amount of time and then, after realizing he has not been caught, return to
+the collusive price. In other words, players in the event-driven Bertrand
+model do not focus on <span 
+class="cmti-10">what </span>their information tells them about the other
+player&#8217;s strategies but <span 
+class="cmti-10">when </span>they will receive information about other player&#8217;s
+strategies.
+<!--l. 151--><p class="indent" >   Although this will be made clearer in the following section, in the event-driven
+Bertrand model, almost always the players do not know demand or the other player&#8217;s
+price. They only observe signals in sporadic intervals and there is no restriction that
+players must learn of a change immediately after it happens. In other words,
+the event-driven Bertrand game is a new version of secret price cuts (in
+which players are not apprised of the exact state of demand or other players&#8217;
+prices).
+<!--l. 165--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">2   </span> <a 
+ id="x1-40002"></a>Model</h3>
+<!--l. 166--><p class="noindent" >There is a market node whose state space consists of <span 
+class="cmsy-10">{</span><span class="underline">r</span><span 
+class="cmmi-10">,</span><span class="overline"><span 
+class="cmmi-10">r</span></span><span 
+class="cmsy-10">} </span>(as well as the prices of
+each firm&#8217;s product). The market changes states spontaneously at rate <span 
+class="cmmi-10">&#x03B3;</span>. Intuitively,
+there are two reserve prices. The market alternates between these reserve prices at
+rate <span 
+class="cmmi-10">&#x03B3;</span>. At rate <span 
+class="cmmi-10">&#x03BB;</span><sub><span 
+class="cmr-7">1</span></sub>, the market emits a message that travels instantaneously to player
+1 that informs player 1 of the reserve price. This message is noiseless. At a
+rate of <span 
+class="cmmi-10">&#x03BB;</span><sub><span 
+class="cmr-7">2</span></sub>, the market does the same but the message is directed to player
+2.
+<!--l. 176--><p class="indent" >   When player, <span 
+class="cmmi-10">i </span>= 1<span 
+class="cmmi-10">,</span>2 receives a message, he must make two decisions. First, he
+must decide what price to charge in <span 
+class="msbm-10">&#x211D;</span><sup><span 
+class="cmr-7">+</span></sup>. Secondly, he can decide whether or not
+to send a message to player 2, indicating what message he just received.
+The players are not restricted to telling the truth and the message to the
+other player is costless. In other words, the players can engage in cheap
+talk.
+<!--l. 183--><p class="indent" >   The rewards for player <span 
+class="cmmi-10">i </span>given his price is <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">i</span></sub>, the other player&#8217;s price is <span 
+class="cmmi-10">p</span><sub><span 
+class="cmmi-7">j</span></sub> and the
+reserve price is <span 
+class="cmmi-10">r </span>is given by:
+   <table 
+class="equation"><tr><td><a 
+ id="x1-4001r2"></a>
+   <center class="math-display" >
+
+<img 
+src="event_driven_collusion5x.png" alt="          (
+          |{pi  pi &#x003C; pj,pi &#x003C; r
+ri(pi,pj) =   pi- pi = pj,pi &#x003C; r
+          |( 2
+           0    otherwise
+" class="math-display" ></center></td><td class="equation-label">(2)</td></tr></table>
+<!--l. 192--><p class="nopar" >
+In other words, the players split the market if they both charge below the reward
+price and charge the same price. If the players charge two different prices, the player
+with the lowest price captures the entire market. If player <span 
+class="cmmi-10">i </span>is undercut or is charging
+above the reserve price, then he earns zero reward. Here I normalize per unit cost to
+0. Therefore, the term &#8220;marginal cost pricing&#8221; will be referred to the case when a
+firm charges 0.
+<!--l. 201--><p class="indent" >   Finally, the market sends messages to player 1 and player 2 simultaneously at rate
+<span 
+class="cmmi-10">&#x03BC; </span>and those messages traverse instantaneously. The messages reveal the price of each
+player&#8217;s product currently in the market. Upon receiving the public message, each
+player can decide to either revert to marginal cost pricing or maintain its current
+price.
+<!--l. 208--><p class="indent" >   There are a ton of assumptions built into this model. Without explaining, I just
+want to enumerate which ones can be relaxed.
+     <ol  class="enumerate1" >
+     <li 
+  class="enumerate" id="x1-4003x1">We can change from perfect substitutes to a case of linear demand.
+     </li>
+     <li 
+  class="enumerate" id="x1-4005x2">We can change to a case where firms also observe their profits instead of
+     the exact state of the market.
+     </li>
+     <li 
+  class="enumerate" id="x1-4007x3">The public price message does not have to contain both players&#8217; price. In
+     other words, it could be at rate <span 
+class="cmmi-10">&#x03BC;</span><sub><span 
+class="cmr-7">1</span></sub> player 1&#8217;s price is known publicly and
+     at rate <span 
+class="cmmi-10">&#x03BC;</span><sub><span 
+class="cmr-7">2</span></sub>, player 2&#8217;s price is known publicly. What is essential (at least for
+     now) is that the price revelations are public (i.e. player 1 sometimes learns
+     player 2&#8217;s price and player 2 knows player 1 learned player 2&#8217;s price.)
+     </li>
+     <li 
+  class="enumerate" id="x1-4009x4">We can change to a case where instead of public realizations of prices,
+     there is a public realization of profits.
+     </li>
+     <li 
+  class="enumerate" id="x1-4011x5">We can extend to <span 
+class="cmmi-10">N </span>firms.
+     </li>
+     <li 
+  class="enumerate" id="x1-4013x6">We can extend to Cournot
+     </li>
+     <li 
+  class="enumerate" id="x1-4015x7">Upon receiving the public announcement, firms need not be limited to only
+     changing their price to marginal cost pricing. However, the results will not
+
+     be affected if this restriction is changed but the formal justification will
+     be much more involved.</li></ol>
+<!--l. 231--><p class="noindent" >All of these assumptions are used to make the initial math easier and a bit cleaner. Each
+new assumption will add parameters and make the math messier but all (to some
+degree) are able to be relaxed.
+<!--l. 235--><p class="indent" >   Now, let&#8217;s define a collusive information sharing strategy as follows:
+<!--l. 237--><p class="noindent" ><span 
+class="cmbx-10">Truthful information sharing strategy: </span>Upon receiving a message that the
+reserve price is <span class="underline">r</span> (<span class="overline"><span 
+class="cmmi-10">r</span></span>), inform the other player that the reserve price is <span class="underline">r</span> (<span class="overline"><span 
+class="cmmi-10">r</span></span>), set price
+equal to <span class="underline">r</span>. Upon being told by the other player that the reserve price is <span class="underline">r</span> (<span class="overline"><span 
+class="cmmi-10">r</span></span>), set
+price equal to <span class="underline">r</span> (<span class="overline"><span 
+class="cmmi-10">r</span></span>). Upon receiving a public message that the the price of both
+players in the market is the same, take no action. Upon receiving a public message
+that the prices of the two firms in the market are <span 
+class="cmti-10">not </span>the same, set price equal to 0
+forever
+<!--l. 248--><p class="indent" >   Intuitively, the truthful information sharing strategy is one in which all
+information is shared between the firms and the firms charge the reserve price
+whenever they are informed of it. The claim is that for specific parameter values,
+there exists a Nash equilibrium in which both players play the Truthful information
+sharing strategy.
+<!--l. 254--><p class="noindent" >
+   <h3 class="sectionHead"><span class="titlemark">3   </span> <a 
+ id="x1-50003"></a>Results</h3>
+<!--l. 255--><p class="noindent" >Below is an interactive plot (you need to install the Mathematica plugin,
+fairly simple) that illustrates the parameter region in which the truthful
+information sharing strategy exists. The shaded region is the &#8220;collusive&#8221;
+      region.
+
+<script type="text/javascript" src="http://www.wolfram.com/cdf-player/plugin/v2.1/cdfplugin.js"></script>
+<script type="text/javascript">
+var cdf = new cdfplugin();
+cdf.setDefaultContent('<a href="http://www.wolfram.com/cdf-player/"><img  src="collusiveregion.png"></a>');
+cdf.embed('collusiveregion.cdf', 1066, 466);
+</script>
+<!--l. 261--><p class="indent" >   As a &#8220;first pass&#8221; result, we see that firms have more incentive when <span 
+class="cmmi-10">&#x03B4; </span>is low
+(remember in continuous time, low <span 
+class="cmmi-10">&#x03B4; </span>means more value placed on future rewards)
+and the rate of public price revelation <span 
+class="cmmi-10">&#x03BC;</span>, (i.e. the rate of being caught), is
+low.
+<!--l. 1--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-60003"></a>References</h3>
+<!--l. 1--><p class="noindent" >
+   <div class="thebibliography">
+   <p class="bibitem" ><span class="biblabel">
+ [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XAB"></a>Susan Athey and Kyle Bagwell.  Collusion with persistent cost shocks.
+   <span 
+class="cmti-10">Econometrica</span>, 76(3):493&#8211;540, 2008.
+   </p>
+
+   <p class="bibitem" ><span class="biblabel">
+ [2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xcommandcoll"></a>Yu&#x00A0;Awaya and Vijay Krishna.  On communication and collusion.  <span 
+class="cmti-10">The</span>
+   <span 
+class="cmti-10">American Economic Review</span>, 2015.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xdifferentialresource"></a>Luca Colombo and Paola Labrecciosa.  On the markovian efficiency of
+   bertrand and cournot equilibria.  <span 
+class="cmti-10">Journal of Economic Theory</span>, 155:332 &#8211;
+   358, 2015.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [4]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xgreenold"></a>Robert H.&#x00A0;Porter Edward J.&#x00A0;Green.   Noncooperative collusion under
+   imperfect price information. <span 
+class="cmti-10">Econometrica</span>, 52(1):87&#8211;100, 1984.
+   </p>
+   <p class="bibitem" ><span class="biblabel">
+ [5]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpowercomm"></a>David Rahman. The power of communication. <span 
+class="cmti-10">The American Economic</span>
+   <span 
+class="cmti-10">Review</span>, 104(11):3737&#8211;3751, 2014.
+</p>
+   </div>
+    
+</body></html> 
+
+
+
