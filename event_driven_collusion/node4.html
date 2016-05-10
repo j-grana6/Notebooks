@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<!--Converted with LaTeX2HTML 2008 (1.71)
+original version by:  Nikos Drakos, CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Model</TITLE>
+<META NAME="description" CONTENT="Model">
+<META NAME="keywords" CONTENT="event_driven_collusion">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META NAME="Generator" CONTENT="LaTeX2HTML v2008">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="STYLESHEET" HREF="event_driven_collusion.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node1.html">
+<LINK REL="up" HREF="event_driven_collusion.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A NAME="tex2html49"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html47"
+  HREF="event_driven_collusion.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html50"
+  HREF="node5.html">Results</A>
+<B> Up:</B> <A NAME="tex2html48"
+  HREF="event_driven_collusion.html">Event-Driven Collusion</A>
+<B> Previous:</B> <A NAME="tex2html42"
+  HREF="node3.html">Literature Review</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A NAME="SECTION00020000000000000000">
+Model</A>
+</H1>
+ There is a market node whose state space consists of <!-- MATH
+ $\{\underbar{r},
+\overline{r}\}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="41" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img30.png"
+ ALT="$ \{\underbar{r},
+\overline{r}\}$"></SPAN> (as well as the prices of each firm's product).  The market
+changes states spontaneously at rate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ \gamma$"></SPAN>. 
+Intuitively, there are two reserve prices.  The market alternates
+between these reserve prices at rate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img31.png"
+ ALT="$ \gamma$"></SPAN>.  At rate <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img32.png"
+ ALT="$ \lambda_1$"></SPAN>,
+the market emits a message that travels instantaneously to player
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ 1$"></SPAN> that informs player <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ 1$"></SPAN> of the reserve price.  This message is
+noiseless.  At a rate of <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img33.png"
+ ALT="$ \lambda_2$"></SPAN>, the market does the same but the
+message is directed to player <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img34.png"
+ ALT="$ 2$"></SPAN>.
+
+<P>
+When player, <SPAN CLASS="MATH"><IMG
+ WIDTH="54" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img35.png"
+ ALT="$ i=1,2$"></SPAN> receives a message, he must make two decisions.  First,
+he must decide what price to charge in <!-- MATH
+ $\mathbb{R}^+$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="27" HEIGHT="19" ALIGN="BOTTOM" BORDER="0"
+ SRC="img36.png"
+ ALT="$ \mathbb{R}^+$"></SPAN>.  Secondly, he
+can decide whether or not to send a message to player <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img34.png"
+ ALT="$ 2$"></SPAN>, indicating
+what message he just received.  The players are not restricted to
+telling the truth and the message to the other player is costless.  In
+other words, the players can engage in cheap talk.
+
+<P>
+The rewards for player <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ i$"></SPAN> given his price is <SPAN CLASS="MATH"><IMG
+ WIDTH="18" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img5.png"
+ ALT="$ p_i$"></SPAN>, the other
+player's price is <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img12.png"
+ ALT="$ p_j$"></SPAN> and the reserve price is <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img19.png"
+ ALT="$ r$"></SPAN> is given by:
+<P></P>
+<DIV ALIGN="CENTER" CLASS="mathdisplay"><A NAME="eq:rewards"></A><!-- MATH
+ \begin{equation}
+r_i(p_i, p_j) =  \begin{cases}
+      p_i & p_i<p_j, p_i<r \\
+      \frac{p_i}{2} & p_i=p_j, p_i<r \\
+      0 & \text{ otherwise }
+    \end{cases}
+\end{equation}
+ -->
+<TABLE CLASS="equation" CELLPADDING="0" WIDTH="100%" ALIGN="CENTER">
+<TR VALIGN="MIDDLE">
+<TD NOWRAP ALIGN="CENTER"><SPAN CLASS="MATH"><IMG
+ WIDTH="232" HEIGHT="85" ALIGN="MIDDLE" BORDER="0"
+ SRC="img37.png"
+ ALT="$\displaystyle r_i(p_i, p_j) = \begin{cases}p_i &amp; p_i&lt;p_j, p_i&lt;r \\ \frac{p_i}{2} &amp; p_i=p_j, p_i&lt;r \\ 0 &amp; \text{ otherwise } \end{cases}$"></SPAN></TD>
+<TD NOWRAP CLASS="eqno" WIDTH="10" ALIGN="RIGHT">
+(<SPAN CLASS="arabic">2</SPAN>)</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+In other words, the players split the market if they both charge below
+the reward price and charge the same price.  If the players charge two
+different prices, the player with the lowest price captures the entire
+market.  If player <SPAN CLASS="MATH"><IMG
+ WIDTH="10" HEIGHT="17" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1.png"
+ ALT="$ i$"></SPAN> is undercut or is charging above the reserve
+price, then he earns zero reward.  Here I normalize per unit cost to
+<SPAN CLASS="MATH">0</SPAN>.  Therefore, the term ``marginal cost pricing'' will be referred
+to the case when a firm charges <SPAN CLASS="MATH">0</SPAN>.  
+
+<P>
+Finally, the market sends messages to player <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img22.png"
+ ALT="$ 1$"></SPAN> and player <SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="13" ALIGN="BOTTOM" BORDER="0"
+ SRC="img34.png"
+ ALT="$ 2$"></SPAN>
+simultaneously at rate <SPAN CLASS="MATH"><IMG
+ WIDTH="14" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img38.png"
+ ALT="$ \mu$"></SPAN> and those messages traverse
+instantaneously.  The messages reveal the price of each player's
+product currently in the market.  Upon receiving the public message,
+each player can decide to either revert to marginal cost pricing or
+maintain its current price.
+
+<P>
+There are a ton of assumptions built into this model.  Without
+explaining, I just want to enumerate which ones can be relaxed.
+
+<OL>
+<LI>We can change from perfect substitutes to a case of linear
+    demand.
+</LI>
+<LI>We can change to a case where firms also observe their profits
+    instead of the exact state of the market.
+</LI>
+<LI>The public price message does not have to contain both players'
+    price.  In other words, it could be at rate <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img39.png"
+ ALT="$ \mu_1$"></SPAN> player 1's
+    price is known publicly and at rate <SPAN CLASS="MATH"><IMG
+ WIDTH="21" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img40.png"
+ ALT="$ \mu_2$"></SPAN>, player 2's price is
+    known publicly.  What is essential (at least for now) is that the
+    price revelations are public (i.e. player 1 sometimes learns
+    player 2's price and player 2 knows player 1 learned player 2's
+    price.)
+</LI>
+<LI>We can change to a case where instead of public realizations of
+   prices, there is a public realization of profits.
+</LI>
+<LI>We can extend to <SPAN CLASS="MATH"><IMG
+ WIDTH="19" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img41.png"
+ ALT="$ N$"></SPAN> firms.
+</LI>
+<LI>We can extend to Cournot
+</LI>
+<LI>Upon receiving the public announcement, firms need not be
+   limited to only changing their price to marginal cost pricing.
+   However, the results will not be affected if this restriction is
+   changed but the formal justification will be much more involved.  
+</LI>
+</OL>
+All of these assumptions are used to make the initial math easier and
+a bit cleaner.  Each new assumption will add parameters and make the
+math messier but all (to some degree) are able to be relaxed.
+
+<P>
+Now, let's define a collusive information sharing strategy as follows:
+
+<P>
+<SPAN  CLASS="textbf">Truthful information sharing strategy:</SPAN> Upon receiving a
+message that the reserve price is <!-- MATH
+ $\underbar{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \underbar{r}$"></SPAN> (<!-- MATH
+ $\overline{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ \overline{r}$"></SPAN>), inform the other
+player that the reserve price is <!-- MATH
+ $\underbar{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \underbar{r}$"></SPAN> (<!-- MATH
+ $\overline{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ \overline{r}$"></SPAN>), set
+price equal to <!-- MATH
+ $\underbar{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \underbar{r}$"></SPAN>.  Upon being told by the other player
+that the reserve price is  <!-- MATH
+ $\underbar{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \underbar{r}$"></SPAN> (<!-- MATH
+ $\overline{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ \overline{r}$"></SPAN>), set price
+equal to <!-- MATH
+ $\underbar{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="11" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img42.png"
+ ALT="$ \underbar{r}$"></SPAN> (<!-- MATH
+ $\overline{r}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ WIDTH="12" HEIGHT="14" ALIGN="BOTTOM" BORDER="0"
+ SRC="img43.png"
+ ALT="$ \overline{r}$"></SPAN>).  Upon receiving a public
+message that the the price of both players in the market is the same,
+take no action.  Upon receiving a public message that the prices of
+the two firms in the market are <SPAN  CLASS="textit">not</SPAN> the same, set price equal
+to <SPAN CLASS="MATH">0</SPAN> forever
+
+<P>
+Intuitively, the truthful information sharing strategy is one in which
+all information is shared between the firms and the firms charge the
+reserve price whenever they are informed of it.  The claim is that for
+specific parameter values, there exists a Nash equilibrium in which
+both players play the Truthful information sharing strategy.  
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html49"
+  HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="next"
+ SRC="/usr/share/latex2html/icons/next.png"></A> 
+<A NAME="tex2html47"
+  HREF="event_driven_collusion.html">
+<IMG WIDTH="26" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="up"
+ SRC="/usr/share/latex2html/icons/up.png"></A> 
+<A NAME="tex2html41"
+  HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALIGN="BOTTOM" BORDER="0" ALT="previous"
+ SRC="/usr/share/latex2html/icons/prev.png"></A>   
+<BR>
+<B> Next:</B> <A NAME="tex2html50"
+  HREF="node5.html">Results</A>
+<B> Up:</B> <A NAME="tex2html48"
+  HREF="event_driven_collusion.html">Event-Driven Collusion</A>
+<B> Previous:</B> <A NAME="tex2html42"
+  HREF="node3.html">Literature Review</A></DIV>
+<!--End of Navigation Panel-->
+<ADDRESS>
+justin
+2016-05-10
+</ADDRESS>
+</BODY>
+</HTML>
