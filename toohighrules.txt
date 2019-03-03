@@ -1,4 +1,4 @@
-* Every team has the option to keep 3 players from the previous year.  These players will then be used as your first-third round draft picks (standard ESPN rules).
+* Every team has the option to keep 3 players from the previous year.  These players will then be used as your first-third round draft picks (standard ESPN rules).  If you do not keep three players, you get picks in the first three rounds.  For example, if you keep two players, those two players are your first and second round pick and then you get to pick from all non-keepers in the third round.  
 
 * Draft pick trading is allowed.  Any trade involving a draft pick must be posted on the league message board and it is the responsibility of the teams that traded to make sure the trade is executed during the draft.
 
@@ -7,15 +7,8 @@
 * Real life MLB starters can be placed in the RP slot, provided they have eligibility.
 
 
-
-* Pitchers are no longer limited by week.  Instead, you are limited to 162 GS per year.  If you go to the standings page, you can see how many GS you have so far.  To get an idea if you are on pace, compare your GS to the total number of games played by your favorite MLB team.  If your GS are more, you are on pace to run out of pitchers before the end of the season.  If you are less, you are on pace to not start the full 162.  
-
-
-
-
-THe below is not valid for Roto Leagues
-* Starting Pitcher Reminder (This was sent out via email to all owners prior to the season):
-I just wanted to remind everybody that there is a limit of 9 games started (GS) for starting pitchers unless ESPN specifies otherwise (see All-star break matchup)
+* Starting Pitcher Reminder 
+I just wanted to remind everybody that there is a limit of 7 games started (GS) for starting pitchers unless ESPN specifies otherwise (see All-star break matchup)
 
 Remember that ESPN locks starting pitchers at the end of the day, not as GS accrue.  That means that *you* have to be dilligent to make sure that you don't go over.  For example, if on Saturday you have already reached the GS limit, then ESPN will not let you start any pitchers on Sunday.  However, if on Saturday you have 8 GS, ESPN will *not* prevent you from starting 2 pitchers on Sunday, giving you a total of 10 GS.  If that happens, the pitchers with the most points on Sunday will be deducted from your score and you will be penalized an additional 50 points.  Basically, just make sure you don't go over.
 
