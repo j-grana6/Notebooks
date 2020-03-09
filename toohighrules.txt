@@ -2,7 +2,7 @@
 
 * Draft pick trading is allowed.  Any trade involving a draft pick must be posted on the league message board and it is the responsibility of the teams that traded to make sure the trade is executed during the draft.
 
-* Real life MLB relievers with SP eligibility cannot be placed in the SP slot.  If a reliever makes a spot start, then he can be placed in the SP slot for that start.
+* Real life MLB relievers with SP eligibility cannot be placed in the SP slot.  If a reliever makes a spot start, then he can be placed in the SP slot for that start.  I am done explaining this rule so if you either a) break the rule or b) ask for clarification, I will kick you, not out of the leage.  Literally kick you.  
 
 * Real life MLB starters can be placed in the RP slot, provided they have eligibility.
 
@@ -10,5 +10,5 @@
 * Starting Pitcher Reminder 
 I just wanted to remind everybody that there is a limit of 7 games started (GS) for starting pitchers unless ESPN specifies otherwise (see All-star break matchup)
 
-Remember that ESPN locks starting pitchers at the end of the day, not as GS accrue.  That means that *you* have to be dilligent to make sure that you don't go over.  For example, if on Saturday you have already reached the GS limit, then ESPN will not let you start any pitchers on Sunday.  However, if on Saturday you have 8 GS, ESPN will *not* prevent you from starting 2 pitchers on Sunday, giving you a total of 10 GS.  If that happens, the pitchers with the most points on Sunday will be deducted from your score and you will be penalized an additional 50 points.  Basically, just make sure you don't go over.
+Remember that ESPN locks starting pitchers at the end of the day, not as GS accrue.  That means that *you* have to be dilligent to make sure that you don't go over.  For example, if on Saturday you have already reached the GS limit, then ESPN will not let you start any pitchers on Sunday.  Horwever, if on Saturday you have 8 GS, ESPN will *not* prevent you from starting 2 pitchers on Sunday, giving you a total of 10 GS.  If that happens, the pitchers with the most points on Sunday will be deducted from your score and you will be penalized an additional 50 points.  Basically, just make sure you don't go over.
 
